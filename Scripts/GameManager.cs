@@ -20,6 +20,11 @@ public class GameManager {
 		get => airPercentage;
 		set {
 			airPercentage = value;
+			if (airPercentage > 1) {
+				airPercentage = 1;
+			} else if (airPercentage < 0) {
+				airPercentage = 0;
+			}
 
 			// TODO: Set UI
 		}
