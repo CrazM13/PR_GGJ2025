@@ -8,6 +8,7 @@ public partial class LevelBuilder : Node {
 
 	[ExportGroup("Generation Settings")]
 	[Export] private int mazeSize = 64;
+	[Export] private int roomMultiplier = 50;
 	[Export] private int hallwayWidth = 2;
 	[Export] private int wallWidth = 2;
 
@@ -20,6 +21,7 @@ public partial class LevelBuilder : Node {
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
 	public override void _Ready() {
 		base._Ready();
+		GameManager.Instance.Level = this;
 
 		perfectMaze = new PerfectMazeGenerator(mazeSize, mazeSize);
 		wallTiles = new List<Vector2I>();
@@ -35,10 +37,36 @@ public partial class LevelBuilder : Node {
 			layers[0].SetCell(cell, floorTile.Source, floorTile.AtlasCoordinates, floorTile.Alternative);
 		}
 
-		PlacePattern(100);
+		PlacePattern(roomMultiplier);
+
+		Vector2 realExitPos = GetExitLocation() * layers[0].TileSet.TileSize;
+		Area2D exitTrigger = new Area2D() {
+			GlobalPosition = realExitPos
+		};
+		exitTrigger.AddChild(new CollisionShape2D() {
+			Shape = new RectangleShape2D() {
+				Size = new Vector2(6 * 32, 6 * 32)
+			}
+		});
+		exitTrigger.BodyEntered += (body) => {
+			if (body is Player) {
+				// TODO WIN
+				SceneManagement.SceneManager.Instance.LoadScene(GetTree().CurrentScene.SceneFilePath);
+			}
+		};
+		AddChild(exitTrigger);
+
+	}
+
+	public override void _ExitTree() {
+		base._ExitTree();
+
+		if (GameManager.Instance.Level == this) GameManager.Instance.Level = null;
 	}
 
 	public void BuildNode(MazeNode node) {
+		if (!node.Buildable) return;
+
 		int roomWidth = hallwayWidth + (wallWidth * 2);
 		Vector2I startingPosition = node.Position * roomWidth;
 
@@ -99,6 +127,16 @@ public partial class LevelBuilder : Node {
 				layers[0].SetPattern(position, room);
 			}
 		}
+	}
+
+	public Vector2I GetStartingLocation() {
+		int roomWidth = hallwayWidth + (wallWidth * 2);
+		return (perfectMaze.Entrence * roomWidth) + new Vector2I(roomWidth / 2, roomWidth / 2);
+	}
+
+	public Vector2I GetExitLocation() {
+		int roomWidth = hallwayWidth + (wallWidth * 2);
+		return (perfectMaze.Exit * roomWidth) + new Vector2I(roomWidth / 2, roomWidth / 2);
 	}
 
 }

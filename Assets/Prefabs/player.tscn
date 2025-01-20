@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtjcm8qovoq1h"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
+[ext_resource type="Texture2D" uid="uid://blj347n6khuc1" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype.png" id="2_jbjw4"]
+[ext_resource type="Script" path="res://Project Tools/Playwrite/Scripts/Components/MovementComponent.cs" id="3_5l61o"]
+
+[sub_resource type="Gradient" id="Gradient_3tok7"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rbfog"]
+gradient = SubResource("Gradient_3tok7")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
+size = Vector2(20, 60)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(66, 60)
+script = ExtResource("1_e5m1v")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_rbfog")
+texture_scale = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jbjw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tqmvg")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("SourceEntity")]
+script = ExtResource("3_5l61o")
+baseMovementSpeed = 20.0
+SourceEntity = NodePath("../..")
+
+[node name="CameraRig" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraRig"]
+zoom = Vector2(4, 4)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraRig/Camera2D"]
+layer = -120
+
+[node name="ColorRect" type="ColorRect" parent="CameraRig/Camera2D/CanvasLayer"]
+z_index = -120
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

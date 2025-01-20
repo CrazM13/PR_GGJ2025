@@ -16,6 +16,10 @@ public class PerfectMazeGenerator {
 	private List<Vector2I> used;
 	private RandomNumberGenerator rng;
 
+	private int exitCount = 0;
+	public Vector2I Entrence { get; set; }
+	public Vector2I Exit { get; set; }
+
 	public PerfectMazeGenerator(int width, int height) {
 		this.WIDTH = width;
 		this.HEIGHT = height;
@@ -27,6 +31,8 @@ public class PerfectMazeGenerator {
 			Root.Position
 		};
 
+		exitCount = 0;
+
 		RecursivePathMaker(Root);
 	}
 
@@ -34,12 +40,24 @@ public class PerfectMazeGenerator {
 		int offset = rng.RandiRange(0, 4);
 		for (int i = 0; i < NEIGHBORS.Length; i++) {
 			Vector2I newPos = node.Position + NEIGHBORS[(i + offset) % NEIGHBORS.Length];
-			if (IsInMaze(newPos) && !used.Contains(newPos)) {
-				MazeNode newNode = new MazeNode(newPos);
-				node.Children.Add(newNode);
-				newNode.Parent = node;
-				used.Add(newPos);
-				RecursivePathMaker(newNode);
+			if (!used.Contains(newPos)) {
+				if (IsInMaze(newPos)) {
+					MazeNode newNode = new MazeNode(newPos);
+					node.Children.Add(newNode);
+					newNode.Parent = node;
+					used.Add(newPos);
+					RecursivePathMaker(newNode);
+				} else if (exitCount < 2) {
+					if (exitCount == 0) Entrence = newPos;
+					else Exit = newPos;
+					MazeNode newNode = new MazeNode(newPos) {
+						Buildable = exitCount == 0,
+					};
+					node.Children.Add(newNode);
+					newNode.Parent = node;
+
+					exitCount++;
+				}
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://de02uqmymh1kh"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://de02uqmymh1kh"]
 
 [ext_resource type="Texture2D" uid="uid://cctuiuue3wrna" path="res://Assets/Textures/Tiles/Floor_1.png" id="1_oq5ti"]
 [ext_resource type="Texture2D" uid="uid://dw0y0u5vbgbq7" path="res://Assets/Textures/Tiles/Floor_2.png" id="2_h55ap"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://birm7slyloqxm" path="res://Assets/Textures/Tiles/Wall_4.png" id="6_e25j8"]
 [ext_resource type="Texture2D" uid="uid://copbhimy1pdcb" path="res://Assets/Textures/Tiles/Wall_5.png" id="7_ogyrf"]
 [ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/air_source.tscn" id="8_d3bd5"]
+[ext_resource type="Texture2D" uid="uid://cq6fiddoif7kf" path="res://Assets/Textures/Tiles/Wall_6.png" id="9_330ii"]
+[ext_resource type="Texture2D" uid="uid://b5vv7lp5xp0iy" path="res://Assets/Textures/Tiles/Wall_7.png" id="10_gny2h"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_mp8cw"]
 tile_data = PackedInt32Array(0, 3, 0, 327680, 3, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 65538, 0, 0, 131074, 7, 65536, 196610, 0, 0, 262146, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 262147, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, 262148, 0, 0, 5, 3, 0, 327685, 3, 0)
@@ -99,6 +101,18 @@ texture_region_size = Vector2i(32, 32)
 resource_name = "Effects"
 scenes/1/scene = ExtResource("8_d3bd5")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjoyy"]
+texture = ExtResource("9_330ii")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_as76n"]
+texture = ExtResource("10_gny2h")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -115,6 +129,8 @@ sources/4 = SubResource("TileSetAtlasSource_sibni")
 sources/5 = SubResource("TileSetAtlasSource_2ljxp")
 sources/6 = SubResource("TileSetAtlasSource_a4n3t")
 sources/7 = SubResource("TileSetScenesCollectionSource_tqsa3")
+sources/8 = SubResource("TileSetAtlasSource_yjoyy")
+sources/9 = SubResource("TileSetAtlasSource_as76n")
 pattern_0 = SubResource("TileMapPattern_mp8cw")
 pattern_1 = SubResource("TileMapPattern_87h66")
 pattern_2 = SubResource("TileMapPattern_uem6o")

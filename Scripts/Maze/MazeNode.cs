@@ -8,10 +8,12 @@ public class MazeNode {
 
 	public List<MazeNode> Children { get; private set; }
 	public MazeNode Parent { get; set; }
+	public bool Buildable { get; set; }
 
 	public MazeNode(Vector2I position) {
 		this.Position = position;
 		this.Children = new List<MazeNode>();
+		this.Buildable = true;
 	}
 
 }

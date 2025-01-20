@@ -10,6 +10,7 @@ public partial class Player : Entity {
 		base._Ready();
 
 		movement = GetComponent<MovementComponent>();
+		this.GlobalPosition = GameManager.Instance.Level.GetStartingLocation() * 32;
 	}
 
 	public override void _Process(double delta) {

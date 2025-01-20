@@ -30,4 +30,6 @@ public class GameManager {
 		}
 	}
 
+	public LevelBuilder Level { get; set; }
+
 }
