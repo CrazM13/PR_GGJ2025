@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dyg8wi4auc3fq"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/AirSource.cs" id="1_4r5ir"]
-[ext_resource type="Texture2D" uid="uid://dw0y0u5vbgbq7" path="res://Assets/Textures/Tiles/Floor_2.png" id="2_5q8hc"]
+[ext_resource type="Texture2D" uid="uid://dw0y0u5vbgbq7" path="res://Assets/Textures/Tiles/Floor/Floor_2.png" id="2_ichtn"]
 [ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="2_sip50"]
 [ext_resource type="AudioStream" uid="uid://dsppr0gqddc1r" path="res://Assets/Audio/Ambience/SlowBubble.wav" id="4_8wjcy"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomizeStartAudio.cs" id="5_rppj0"]
@@ -42,7 +42,7 @@ particles = NodePath("GPUParticles2D")
 maxDistance = 512.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_5q8hc")
+texture = ExtResource("2_ichtn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mu07n")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://q0vql2ah3jd"]
+[gd_scene load_steps=5 format=3 uid="uid://x1a27p8bk33i"]
 
 [ext_resource type="Texture2D" uid="uid://ccb6ghpwgu2of" path="res://Assets/Textures/O2/O2_Interior.png" id="1_6bu7s"]
 [ext_resource type="Texture2D" uid="uid://bm8el1ixng1ns" path="res://Assets/Textures/O2/O2_Tank.png" id="2_f8kj4"]
@@ -8,8 +8,10 @@
 [node name="GameHud" type="CanvasLayer"]
 
 [node name="OxygenTank" type="TextureProgressBar" parent="."]
+texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(3, 3)
 max_value = 1.0
 step = 0.0
 value = 0.5
