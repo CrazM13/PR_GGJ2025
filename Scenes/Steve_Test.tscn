@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cp416p02xp8dw"]
+
+[node name="Test" type="Node2D"]
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+
+[node name="SpawnPoint0" type="Node2D" parent="EnemySpawner"]
+
+[node name="SpawnPoint1" type="Node2D" parent="EnemySpawner"]
+position = Vector2(1152, 0)
+
+[node name="SpawnPoint2" type="Node2D" parent="EnemySpawner"]
+position = Vector2(1152, 640)
+
+[node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
+position = Vector2(0, 640)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-377.798, 315.469)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
