@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=29 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Script" path="res://Scripts/Maze/TileIndentifier.cs" id="2_mjq2s"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cgpt5m2ykuo74" path="res://Assets/Audio/Ambience/ScaryNoise-03.wav" id="13_elgui"]
 [ext_resource type="AudioStream" uid="uid://cofdq08u5j3p4" path="res://Assets/Audio/Ambience/ScaryNoise-04.wav" id="14_ierga"]
 [ext_resource type="AudioStream" uid="uid://ijpbnub51od7" path="res://Assets/Audio/Ambience/Sonar.wav" id="15_uhgdu"]
+[ext_resource type="PackedScene" uid="uid://q0vql2ah3jd" path="res://Assets/Prefabs/game_hud.tscn" id="16_mwf54"]
 
 [sub_resource type="Resource" id="Resource_lqq64"]
 script = ExtResource("2_mjq2s")
@@ -142,6 +143,8 @@ streams = Array[AudioStream]([ExtResource("10_h8c7v"), ExtResource("11_empdc"), 
 [node name="Timer" type="Timer" parent="RandomAmbience"]
 wait_time = 29.0
 autostart = true
+
+[node name="GameHud" parent="." instance=ExtResource("16_mwf54")]
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]

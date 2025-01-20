@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp416p02xp8dw"]
+[gd_scene load_steps=4 format=3 uid="uid://cp416p02xp8dw"]
 
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="1_pts7x"]
 [ext_resource type="PackedScene" uid="uid://dmg4bgoec65o" path="res://Scenes/enemy_scn.tscn" id="2_8sgep"]
+[ext_resource type="PackedScene" uid="uid://q0vql2ah3jd" path="res://Assets/Prefabs/game_hud.tscn" id="3_wltk6"]
 
 [node name="Test" type="Node2D"]
 
@@ -21,3 +22,5 @@ position = Vector2(800, 448)
 
 [node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
 position = Vector2(288, 448)
+
+[node name="GameHud" parent="." instance=ExtResource("3_wltk6")]
