@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=14 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://blj347n6khuc1" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype.png" id="2_jbjw4"]
+[ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="3_4am3i"]
 [ext_resource type="Script" path="res://Project Tools/Playwrite/Scripts/Components/MovementComponent.cs" id="3_5l61o"]
+[ext_resource type="AudioStream" uid="uid://cclblcuwo7gm6" path="res://Assets/Audio/Ambience/Breathing.wav" id="4_ataj6"]
+[ext_resource type="AudioStream" uid="uid://bi7woyumj2it1" path="res://Assets/Audio/Ambience/Cough.wav" id="5_f28d5"]
 
 [sub_resource type="Gradient" id="Gradient_3tok7"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -15,21 +18,70 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bsh3"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_isf2r"]
+_data = [Vector2(0, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.253333, 1), 0.0, 0.0, 0, 0, Vector2(0.946667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5w7gx"]
+curve = SubResource("Curve_isf2r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_23bvg"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -6, 0)
+emission_shape = 3
+emission_box_extents = Vector3(12, 2, 1)
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 2.05
+gravity = Vector3(0, -24, 0)
+scale_min = 0.25
+scale_curve = SubResource("CurveTexture_5w7gx")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
 size = Vector2(20, 60)
 
 [node name="Player" type="CharacterBody2D"]
+light_mask = 512
 position = Vector2(66, 60)
 script = ExtResource("1_e5m1v")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="ShadowLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.5
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_rbfog")
-texture_scale = 4.0
+texture_scale = 5.0
+
+[node name="IlluminatingLight" type="PointLight2D" parent="ShadowLight"]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.25
+range_item_cull_mask = 513
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_rbfog")
+texture_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_jbjw4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.25098)
+z_index = 2
+material = SubResource("CanvasItemMaterial_7bsh3")
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_23bvg")
+texture = ExtResource("3_4am3i")
+one_shot = true
+explosiveness = 0.3
+
+[node name="Timer" type="Timer" parent="Sprite2D/GPUParticles2D"]
+wait_time = 2.5
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tqmvg")
@@ -60,3 +112,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Breathing" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_ataj6")
+autoplay = true
+
+[node name="Cough" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_f28d5")
+volume_db = -11.886
+pitch_scale = 0.81
+max_polyphony = 2
+
+[node name="Timer" type="Timer" parent="Audio"]
+wait_time = 17.23
+autostart = true
+
+[node name="Timer2" type="Timer" parent="Audio"]
+wait_time = 13.3
+autostart = true
+
+[connection signal="timeout" from="Sprite2D/GPUParticles2D/Timer" to="Sprite2D/GPUParticles2D" method="set_emitting" binds= [true]]
+[connection signal="finished" from="Audio/Breathing" to="Audio/Breathing" method="play" binds= [0.0]]
+[connection signal="timeout" from="Audio/Timer" to="Audio/Cough" method="play" binds= [0.0]]
+[connection signal="timeout" from="Audio/Timer2" to="Audio/Cough" method="play" binds= [0.0]]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbb8k1h861453"]
+[gd_scene load_steps=9 format=3 uid="uid://cbb8k1h861453"]
 
 [ext_resource type="TileSet" uid="uid://de02uqmymh1kh" path="res://Data/IndoorTileSet.tres" id="1_ar2j7"]
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_bv2ty"]
 [ext_resource type="Script" path="res://Scripts/Maze/TileIndentifier.cs" id="2_w44v0"]
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_0kc15"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_qd5bw"]
+[ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_keixc"]
 
 [sub_resource type="Resource" id="Resource_dgr5a"]
 script = ExtResource("2_w44v0")
@@ -35,6 +36,12 @@ tile_set = ExtResource("1_ar2j7")
 [node name="Player" parent="." instance=ExtResource("4_0kc15")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.225997, 0.338568, 0.487179, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="SceneBase" parent="." instance=ExtResource("5_qd5bw")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_keixc")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
