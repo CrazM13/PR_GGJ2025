@@ -1,21 +1,23 @@
-[gd_scene format=3 uid="uid://cp416p02xp8dw"]
+[gd_scene load_steps=3 format=3 uid="uid://cp416p02xp8dw"]
+
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="1_pts7x"]
+[ext_resource type="PackedScene" uid="uid://dmg4bgoec65o" path="res://Scenes/enemy_scn.tscn" id="2_8sgep"]
 
 [node name="Test" type="Node2D"]
 
-[node name="EnemySpawner" type="Node2D" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_pts7x")
+enemy_scn = ExtResource("2_8sgep")
+spawn_points = [NodePath("SpawnPoint0"), NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3")]
 
 [node name="SpawnPoint0" type="Node2D" parent="EnemySpawner"]
+position = Vector2(224, 224)
 
 [node name="SpawnPoint1" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1152, 0)
+position = Vector2(704, 192)
 
 [node name="SpawnPoint2" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1152, 640)
+position = Vector2(800, 448)
 
 [node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
-position = Vector2(0, 640)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(-377.798, 315.469)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(288, 448)

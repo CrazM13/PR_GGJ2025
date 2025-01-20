@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmg4bgoec65o"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_6q67n"]
+[ext_resource type="Texture2D" uid="uid://wcwfttp2ga21" path="res://Assets/Textures/Character_Tiles/Monster_In_The_Dark.png" id="1_qnf76"]
+
+[node name="EnemyScn" type="Node2D"]
+script = ExtResource("1_6q67n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qnf76")

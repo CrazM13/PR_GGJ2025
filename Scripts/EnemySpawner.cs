@@ -31,7 +31,11 @@ public partial class EnemySpawner : Node
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
         Vector2 location = spawn_points[rng.Randi() % spawn_points.Length].GlobalPosition;
+
         Enemy enemy = (Enemy)enemy_scn.Instantiate();
+        enemy.GlobalPosition = location;
+
+        GetTree().Root.AddChild(enemy);
 
     }
 }
