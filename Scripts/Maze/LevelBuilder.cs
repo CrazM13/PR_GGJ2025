@@ -11,6 +11,7 @@ public partial class LevelBuilder : Node {
 	[Export] private int mazeSize = 64;
 	[Export] private int roomMultiplier = 50;
 	[Export] private int cellsPerFrame = 1;
+	[Export] private int roomsPerFrame = 1;
 
 	PerfectMazeGenerator perfectMaze;
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -46,7 +47,7 @@ public partial class LevelBuilder : Node {
 		}
 
 		if (toLoadRoom.Count > 0) {
-			for (int _ = 0; _ < cellsPerFrame; _++) {
+			for (int _ = 0; _ < roomsPerFrame; _++) {
 				if (toLoadRoom.Count > 0) {
 					(TileMapPattern room, Vector2I position) node = toLoadRoom.Dequeue();
 

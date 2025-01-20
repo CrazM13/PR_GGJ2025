@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=21 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Script" path="res://Scripts/Maze/TileIndentifier.cs" id="2_mjq2s"]
 [ext_resource type="Script" path="res://Scripts/Maze/MazeRoomBuilder.cs" id="2_sjnlm"]
 [ext_resource type="TileSet" uid="uid://de02uqmymh1kh" path="res://Data/IndoorTileSet.tres" id="3_7y6iu"]
+[ext_resource type="Script" path="res://Scripts/Maze/RuleTileIdentifier.cs" id="4_2tkya"]
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
@@ -13,6 +14,72 @@ script = ExtResource("2_mjq2s")
 Source = 9
 AtlasCoordinates = Vector2i(0, 0)
 Alternative = 0
+
+[sub_resource type="Resource" id="Resource_f8fj5"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(1, 2)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_luavu"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(0, 2)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_7lmqh"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(2, 2)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_exj0d"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(1, 1)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_cdgpu"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(0, 1)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_yexg0"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(2, 1)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_hkcqp"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(1, 0)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_glrqk"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(0, 0)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_di6lb"]
+script = ExtResource("2_mjq2s")
+Source = 10
+AtlasCoordinates = Vector2i(2, 0)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_lcvym"]
+script = ExtResource("4_2tkya")
+TopLeft = SubResource("Resource_glrqk")
+TopCenter = SubResource("Resource_hkcqp")
+TopRight = SubResource("Resource_di6lb")
+Left = SubResource("Resource_cdgpu")
+Center = SubResource("Resource_exj0d")
+Right = SubResource("Resource_yexg0")
+BottomLeft = SubResource("Resource_luavu")
+BottomCenter = SubResource("Resource_f8fj5")
+BottomRight = SubResource("Resource_7lmqh")
 
 [sub_resource type="Resource" id="Resource_5kkvq"]
 script = ExtResource("2_mjq2s")
@@ -34,6 +101,7 @@ cellsPerFrame = 32
 [node name="CellBuilder" type="Node" parent="Map"]
 script = ExtResource("2_sjnlm")
 wallTile = SubResource("Resource_lqq64")
+wallRuleTile = SubResource("Resource_lcvym")
 floorTile = SubResource("Resource_5kkvq")
 hallwayWidth = 4
 wallWidth = 4

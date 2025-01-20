@@ -39,6 +39,7 @@ scale_curve = SubResource("CurveTexture_kjiy5")
 texture_filter = 1
 script = ExtResource("1_4r5ir")
 particles = NodePath("GPUParticles2D")
+maxDistance = 512.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_5q8hc")
@@ -51,6 +52,7 @@ self_modulate = Color(1, 1, 1, 0.501961)
 z_index = 5
 z_as_relative = false
 material = SubResource("CanvasItemMaterial_3du1r")
+emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_nqvgg")
 texture = ExtResource("2_sip50")

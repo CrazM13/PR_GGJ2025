@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://de02uqmymh1kh"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://de02uqmymh1kh"]
 
 [ext_resource type="Texture2D" uid="uid://cctuiuue3wrna" path="res://Assets/Textures/Tiles/Floor_1.png" id="1_oq5ti"]
+[ext_resource type="Texture2D" uid="uid://bm54dbfh2hdyr" path="res://Assets/Textures/Tiles/Testing/TileTemplate.png" id="2_a51ue"]
 [ext_resource type="Texture2D" uid="uid://hal410ejf83c" path="res://Assets/Textures/Tiles/Wall_1.png" id="3_1gssn"]
 [ext_resource type="Texture2D" uid="uid://bxbmhcgt3pw65" path="res://Assets/Textures/Tiles/Wall_2.png" id="4_vdy18"]
 [ext_resource type="Texture2D" uid="uid://dgus6120pdb33" path="res://Assets/Textures/Tiles/Wall_3.png" id="5_sdvqa"]
@@ -31,6 +32,28 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_swjm6"]
+texture = ExtResource("2_a51ue")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klyfd"]
 texture = ExtResource("3_1gssn")
@@ -120,5 +143,6 @@ sources/6 = SubResource("TileSetAtlasSource_a4n3t")
 sources/7 = SubResource("TileSetScenesCollectionSource_tqsa3")
 sources/8 = SubResource("TileSetAtlasSource_yjoyy")
 sources/9 = SubResource("TileSetAtlasSource_as76n")
+sources/10 = SubResource("TileSetAtlasSource_swjm6")
 pattern_0 = SubResource("TileMapPattern_wf04a")
 pattern_1 = SubResource("TileMapPattern_km8ac")
