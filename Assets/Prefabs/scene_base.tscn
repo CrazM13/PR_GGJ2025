@@ -1,12 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8vs8ik72a41f"]
 
 [ext_resource type="Script" path="res://Project Tools/SceneManagement/SceneManager.cs" id="1_332ob"]
-[ext_resource type="Script" path="res://Project Tools/AudioManager/Scripts/AudioManager.cs" id="2_qe6vq"]
+
+[sub_resource type="Curve" id="Curve_r3m4d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49505, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="SceneBase" type="Node"]
 
 [node name="SceneManagement" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("1_332ob")
-
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("2_qe6vq")
+fadeCurve = SubResource("Curve_r3m4d")
+minLoadingTime = 0.5

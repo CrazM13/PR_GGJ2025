@@ -1,14 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=25 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://blj347n6khuc1" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype.png" id="2_jbjw4"]
 [ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="3_4am3i"]
-[ext_resource type="Script" path="res://Project Tools/Playwrite/Scripts/Components/MovementComponent.cs" id="3_5l61o"]
 [ext_resource type="AudioStream" uid="uid://cclblcuwo7gm6" path="res://Assets/Audio/Ambience/Breathing.wav" id="4_ataj6"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterMovement.cs" id="4_vllac"]
 [ext_resource type="AudioStream" uid="uid://bi7woyumj2it1" path="res://Assets/Audio/Ambience/Cough.wav" id="5_f28d5"]
+[ext_resource type="AudioStream" uid="uid://bi8hjk2x4yfj4" path="res://Assets/Audio/Ambience/BreathBubbles.wav" id="7_bw06o"]
+[ext_resource type="Script" path="res://Scripts/Audio/RandomAudio.cs" id="8_ddxl3"]
+[ext_resource type="AudioStream" uid="uid://8xunr33f1s0b" path="res://Assets/Audio/Voice/Collectable-01.wav" id="9_hg5jm"]
+[ext_resource type="AudioStream" uid="uid://bu58fhjan31qh" path="res://Assets/Audio/Voice/Collectable-02.wav" id="10_jd6nc"]
+[ext_resource type="AudioStream" uid="uid://c2e0kq1qtnsnd" path="res://Assets/Audio/Voice/Collectable-03.wav" id="11_qeiv2"]
+[ext_resource type="AudioStream" uid="uid://d0i4ipv6rchlg" path="res://Assets/Audio/Voice/Collectable-04.wav" id="12_lif2p"]
+[ext_resource type="AudioStream" uid="uid://uhiajtivdj68" path="res://Assets/Audio/Voice/Collectable-05.wav" id="13_s7wdo"]
+[ext_resource type="AudioStream" uid="uid://cihknfoqgadmn" path="res://Assets/Audio/Voice/Collectable-06.wav" id="14_hwonq"]
+[ext_resource type="AudioStream" uid="uid://cpttrddrf3r8b" path="res://Assets/Audio/Voice/Collectable-07.wav" id="15_p63mo"]
+[ext_resource type="AudioStream" uid="uid://crdmvxhn0vybb" path="res://Assets/Audio/Voice/Collectable-08.wav" id="16_p1anf"]
 
 [sub_resource type="Gradient" id="Gradient_3tok7"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.831169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rbfog"]
 gradient = SubResource("Gradient_3tok7")
@@ -17,6 +28,12 @@ height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xfqri"]
+gradient = SubResource("Gradient_3tok7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.46789)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bsh3"]
 blend_mode = 1
@@ -45,24 +62,26 @@ scale_curve = SubResource("CurveTexture_5w7gx")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
 size = Vector2(20, 60)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine")]
 light_mask = 512
 position = Vector2(66, 60)
 script = ExtResource("1_e5m1v")
+movement = NodePath("Components/MovementComponent")
+collectLine = NodePath("Audio/CollectVoice")
 
 [node name="ShadowLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_rbfog")
-texture_scale = 5.0
+texture_scale = 18.0
 
 [node name="IlluminatingLight" type="PointLight2D" parent="ShadowLight"]
 color = Color(0.654902, 1, 1, 1)
-energy = 0.25
+energy = 0.5
 range_item_cull_mask = 513
 shadow_filter = 1
-texture = SubResource("GradientTexture2D_rbfog")
+texture = SubResource("GradientTexture2D_xfqri")
 texture_scale = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -88,15 +107,15 @@ shape = SubResource("RectangleShape2D_tqmvg")
 
 [node name="Components" type="Node" parent="."]
 
-[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("SourceEntity")]
-script = ExtResource("3_5l61o")
+[node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("sourceEntity")]
+script = ExtResource("4_vllac")
+sourceEntity = NodePath("../..")
 baseMovementSpeed = 20.0
-SourceEntity = NodePath("../..")
 
 [node name="CameraRig" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig"]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
@@ -117,13 +136,21 @@ color = Color(0, 0, 0, 1)
 
 [node name="Breathing" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("4_ataj6")
+volume_db = -5.0
 autoplay = true
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("5_f28d5")
-volume_db = -11.886
+volume_db = -20.0
 pitch_scale = 0.81
 max_polyphony = 2
+
+[node name="Bubbles" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_bw06o")
+
+[node name="CollectVoice" type="AudioStreamPlayer2D" parent="Audio"]
+script = ExtResource("8_ddxl3")
+streams = Array[AudioStream]([ExtResource("9_hg5jm"), ExtResource("10_jd6nc"), ExtResource("11_qeiv2"), ExtResource("12_lif2p"), ExtResource("13_s7wdo"), ExtResource("14_hwonq"), ExtResource("15_p63mo"), ExtResource("16_p1anf")])
 
 [node name="Timer" type="Timer" parent="Audio"]
 wait_time = 17.23
@@ -133,7 +160,9 @@ autostart = true
 wait_time = 13.3
 autostart = true
 
+[connection signal="timeout" from="Sprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="Sprite2D/GPUParticles2D/Timer" to="Sprite2D/GPUParticles2D" method="set_emitting" binds= [true]]
+[connection signal="timeout" from="Sprite2D/GPUParticles2D/Timer" to="Audio/Bubbles" method="play" binds= [0.0]]
 [connection signal="finished" from="Audio/Breathing" to="Audio/Breathing" method="play" binds= [0.0]]
 [connection signal="timeout" from="Audio/Timer" to="Audio/Cough" method="play" binds= [0.0]]
 [connection signal="timeout" from="Audio/Timer2" to="Audio/Cough" method="play" binds= [0.0]]

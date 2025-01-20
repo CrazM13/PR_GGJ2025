@@ -1,16 +1,19 @@
 using Godot;
-using Playwrite;
 using System;
 
-public partial class Player : Entity {
+public partial class Player : CharacterBody2D {
 
-	private MovementComponent movement;
+	[Export] private CharacterMovement movement;
+	[Export] private RandomAudio collectLine;
+
+	[Export] private float airRequirement = 0.01f;
 
 	public override void _Ready() {
 		base._Ready();
 
-		movement = GetComponent<MovementComponent>();
 		this.GlobalPosition = GameManager.Instance.Level.GetStartingLocation() * 32;
+
+		GameManager.Instance.AirPercentage = 1;
 	}
 
 	public override void _Process(double delta) {
@@ -24,6 +27,14 @@ public partial class Player : Entity {
 		Vector2 joyInput = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
 
 		movement.Move(joyInput);
+	}
+
+	private void ConsumeAirTick() {
+		GameManager.Instance.AirPercentage -= airRequirement;
+	}
+
+	public void OnCollect(Collectable collectable) {
+		if (!collectLine.Playing) collectLine.PlayRandom();
 	}
 
 

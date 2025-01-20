@@ -25,11 +25,11 @@ public class GameManager {
 			} else if (airPercentage < 0) {
 				airPercentage = 0;
 			}
-
-			// TODO: Set UI
 		}
 	}
 
 	public LevelBuilder Level { get; set; }
+
+	public float LoadingPercentage { get; set; }
 
 }

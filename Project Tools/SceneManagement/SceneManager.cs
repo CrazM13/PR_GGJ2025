@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace SceneManagement {
 	[GlobalClass]
@@ -9,6 +11,7 @@ namespace SceneManagement {
 		private static readonly Color TRANSPARENT = new Color(0, 0, 0, 0);
 
 		[Export] private float fadeDuration = 0.25f;
+		[Export] private Curve fadeCurve;
 		[Export, ExportGroup("Async Loading")] private bool allowAsyncLoading = false;
 		[Export] private float minLoadingTime = 0.25f;
 
@@ -40,7 +43,12 @@ namespace SceneManagement {
 			internalCanvas.Layer = 100;
 
 			AddChild(internalCanvas);
+		}
+
+		public override void _Ready() {
+			base._Ready();
 			sceneLoadingMode = SceneLoadingMode.LOADING_IN;
+			GetTree().Paused = true;
 		}
 
 		public override void _EnterTree() {
@@ -80,6 +88,7 @@ namespace SceneManagement {
 			isLoadingAsync = true;
 			ResourceLoader.LoadThreadedRequest(scenePath);
 			ForceLoadScene(loadingScenePath);
+			GetTree().Paused = true;
 		}
 
 		public void LoadScene(string scenePath) {
@@ -89,6 +98,7 @@ namespace SceneManagement {
 			}
 
 			ForceLoadScene(scenePath);
+			GetTree().Paused = true;
 		}
 
 		public void LoadScene(PackedScene scene) {
@@ -98,6 +108,7 @@ namespace SceneManagement {
 			}
 
 			ForceLoadScene(scene);
+			GetTree().Paused = true;
 		}
 
 		public static float GetLoadingProgress() {
@@ -116,12 +127,12 @@ namespace SceneManagement {
 		}
 		#endregion
 
-		private void ForceLoadScene(string scenePath) {
+		private Node ForceLoadScene(string scenePath) {
 			PackedScene newScene = ResourceLoader.Load<PackedScene>(scenePath);
-			ForceLoadScene(newScene);
+			return ForceLoadScene(newScene);
 		}
 
-		private void ForceLoadScene(PackedScene scene) {
+		private Node ForceLoadScene(PackedScene scene) {
 			this.AddChild(internalCanvas);
 
 			fadeTime = 0;
@@ -134,6 +145,8 @@ namespace SceneManagement {
 				sceneTree.UnloadCurrentScene();
 				sceneTree.CurrentScene = newRoot;
 			};
+
+			return newRoot;
 		}
 
 		private void UpdateLoadingAnimation(float delta) {
@@ -141,14 +154,15 @@ namespace SceneManagement {
 
 			switch (sceneLoadingMode) {
 				case SceneLoadingMode.LOADING_OUT:
-					internalColourRect.Color = TRANSPARENT.Lerp(BLACK, fadeTime / fadeDuration);
+					internalColourRect.Color = TRANSPARENT.Lerp(BLACK, fadeCurve.Sample(fadeTime / fadeDuration));
 					break;
 				case SceneLoadingMode.LOADING_IN:
-					internalColourRect.Color = BLACK.Lerp(TRANSPARENT, fadeTime / fadeDuration);
+					internalColourRect.Color = BLACK.Lerp(TRANSPARENT, fadeCurve.Sample(fadeTime / fadeDuration));
 
 					if (fadeTime >= fadeDuration) {
 						sceneLoadingMode = SceneLoadingMode.IDLE;
 						this.RemoveChild(internalCanvas);
+						GetTree().Paused = false;
 					}
 					break;
 			}
