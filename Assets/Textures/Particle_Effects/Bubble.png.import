@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnlatrk43vhuv"
-path="res://.godot/imported/Main_Character_Prototype.png-c0aeb2834da33b0a5c6b303b52dec55e.ctex"
+uid="uid://bkfvpda7pfujs"
+path="res://.godot/imported/Bubble.png-535e59d284b556a8f4cafad30c5c229e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Character_Tiles/Main_Character_Prototype.png"
-dest_files=["res://.godot/imported/Main_Character_Prototype.png-c0aeb2834da33b0a5c6b303b52dec55e.ctex"]
+source_file="res://Assets/Textures/Particle_Effects/Bubble.png"
+dest_files=["res://.godot/imported/Bubble.png-535e59d284b556a8f4cafad30c5c229e.ctex"]
 
 [params]
 
