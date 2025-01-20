@@ -117,7 +117,7 @@ public partial class LevelBuilder : Node {
 		exitTrigger.BodyEntered += (body) => {
 			if (body is Player) {
 				// TODO WIN
-				SceneManagement.SceneManager.Instance.LoadScene(GetTree().CurrentScene.SceneFilePath, "res://Scenes/loading_scene.tscn");
+				SceneManagement.SceneManager.Instance.LoadScene(GetTree().CurrentScene.SceneFilePath);
 			}
 		};
 		AddChild(exitTrigger);

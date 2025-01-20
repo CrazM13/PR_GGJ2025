@@ -7,11 +7,19 @@ public partial class AirSource : Area2D {
 	[Export] private GpuParticles2D particles;
 	[Export] private float maxDistance = 1024;
 
+	private bool isInSource = false;
+
 	public override void _Ready() {
 		base._Ready();
 
 		this.BodyEntered += this.BodyEnteredArea;
+		this.BodyExited += this.BodyExitedArea;
+	}
 
+	private void BodyExitedArea(Node2D body) {
+		if (body is Player) {
+			isInSource = false;
+		}
 	}
 
 	public override void _Process(double delta) {
@@ -23,11 +31,15 @@ public partial class AirSource : Area2D {
 			particles.Emitting = distance < maxDistance * maxDistance;
 		}
 
+		if (isInSource) {
+			GameManager.Instance.AirPercentage += airRate;
+		}
+
 	}
 
 	private void BodyEnteredArea(Node2D body) {
 		if (body is Player) {
-			GameManager.Instance.AirPercentage += airRate;
+			isInSource = true;
 		}
 	}
 }
