@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=28 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Script" path="res://Scripts/Maze/TileIndentifier.cs" id="2_mjq2s"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
+[ext_resource type="Script" path="res://Scripts/Audio/RandomAmbience.cs" id="9_60fcr"]
+[ext_resource type="AudioStream" uid="uid://w7a83b6dej3d" path="res://Assets/Audio/Ambience/ACAmbience.wav" id="10_h8c7v"]
+[ext_resource type="AudioStream" uid="uid://c4o8njxtd2bas" path="res://Assets/Audio/Ambience/ScaryNoise-01.wav" id="11_empdc"]
+[ext_resource type="AudioStream" uid="uid://cas2f4lx07rmd" path="res://Assets/Audio/Ambience/ScaryNoise-02.wav" id="12_jimd6"]
+[ext_resource type="AudioStream" uid="uid://cgpt5m2ykuo74" path="res://Assets/Audio/Ambience/ScaryNoise-03.wav" id="13_elgui"]
+[ext_resource type="AudioStream" uid="uid://cofdq08u5j3p4" path="res://Assets/Audio/Ambience/ScaryNoise-04.wav" id="14_ierga"]
+[ext_resource type="AudioStream" uid="uid://ijpbnub51od7" path="res://Assets/Audio/Ambience/Sonar.wav" id="15_uhgdu"]
 
 [sub_resource type="Resource" id="Resource_lqq64"]
 script = ExtResource("2_mjq2s")
@@ -127,6 +134,16 @@ autoplay = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="RandomAmbience" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("9_60fcr")
+range = 512.0
+streams = Array[AudioStream]([ExtResource("10_h8c7v"), ExtResource("11_empdc"), ExtResource("12_jimd6"), ExtResource("13_elgui"), ExtResource("14_ierga"), ExtResource("15_uhgdu")])
+
+[node name="Timer" type="Timer" parent="RandomAmbience"]
+wait_time = 29.0
+autostart = true
+
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
+[connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]
 
 [editable path="SceneBase"]
