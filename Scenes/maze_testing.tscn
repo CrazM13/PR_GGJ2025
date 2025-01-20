@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbb8k1h861453"]
+
+[ext_resource type="TileSet" uid="uid://de02uqmymh1kh" path="res://Data/IndoorTileSet.tres" id="1_ar2j7"]
+[ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_bv2ty"]
+[ext_resource type="Script" path="res://Scripts/Maze/TileIndentifier.cs" id="2_w44v0"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="4_47kjt"]
+[ext_resource type="Script" path="res://Project Tools/Playwrite/Scripts/Components/MovementComponent.cs" id="5_32ywf"]
+[ext_resource type="Texture2D" uid="uid://cnlatrk43vhuv" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype.png" id="5_uvlgu"]
+
+[sub_resource type="Resource" id="Resource_dgr5a"]
+script = ExtResource("2_w44v0")
+Source = 0
+AtlasCoordinates = Vector2i(0, 0)
+Alternative = 0
+
+[sub_resource type="Resource" id="Resource_n5ksi"]
+script = ExtResource("2_w44v0")
+Source = 6
+AtlasCoordinates = Vector2i(0, 0)
+Alternative = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
+size = Vector2(20, 60)
+
+[node name="MazeTesting" type="Node2D"]
+texture_filter = 1
+
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("layers")]
+show_behind_parent = true
+script = ExtResource("1_bv2ty")
+layers = [NodePath("BaseLayer")]
+hallwayWidth = 4
+wallWidth = 1
+floorTile = SubResource("Resource_dgr5a")
+wallTile = SubResource("Resource_n5ksi")
+
+[node name="BaseLayer" type="TileMapLayer" parent="Map"]
+tile_set = ExtResource("1_ar2j7")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(66, 60)
+script = ExtResource("4_47kjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_uvlgu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_tqmvg")
+
+[node name="Components" type="Node" parent="Player"]
+
+[node name="MovementComponent" type="Node" parent="Player/Components" node_paths=PackedStringArray("SourceEntity")]
+script = ExtResource("5_32ywf")
+baseMovementSpeed = 100.0
+SourceEntity = NodePath("../..")
+
+[node name="CameraRig" type="Node2D" parent="Player"]
+
+[node name="Camera2D" type="Camera2D" parent="Player/CameraRig"]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true

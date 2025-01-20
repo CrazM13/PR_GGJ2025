@@ -1,0 +1,29 @@
+using Godot;
+using Playwrite;
+using System;
+
+public partial class Player : Entity {
+
+	private MovementComponent movement;
+
+	public override void _Ready() {
+		base._Ready();
+
+		movement = GetComponent<MovementComponent>();
+	}
+
+	public override void _Process(double delta) {
+		base._Process(delta);
+
+		GetMovementInput((float) delta);
+	}
+
+	private void GetMovementInput(float delta) {
+
+		Vector2 joyInput = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
+
+		movement.Move(joyInput);
+	}
+
+
+}
