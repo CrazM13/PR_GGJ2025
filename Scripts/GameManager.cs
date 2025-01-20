@@ -29,6 +29,7 @@ public class GameManager {
 	}
 
 	public LevelBuilder Level { get; set; }
+	public Player Player { get; set; }
 
 	public float LoadingPercentage { get; set; }
 

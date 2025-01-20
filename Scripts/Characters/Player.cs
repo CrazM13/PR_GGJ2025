@@ -14,6 +14,15 @@ public partial class Player : CharacterBody2D {
 		this.GlobalPosition = GameManager.Instance.Level.GetStartingLocation() * 32;
 
 		GameManager.Instance.AirPercentage = 1;
+		GameManager.Instance.Player = this;
+	}
+
+	public override void _ExitTree() {
+		base._ExitTree();
+
+		if (GameManager.Instance.Player == this) {
+			GameManager.Instance.Player = null;
+		}
 	}
 
 	public override void _Process(double delta) {

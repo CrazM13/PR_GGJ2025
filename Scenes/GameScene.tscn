@@ -28,9 +28,8 @@ process_mode = 3
 script = ExtResource("1_62vjt")
 layers = [NodePath("BaseLayer")]
 cellBuilder = NodePath("CellBuilder")
-mazeSize = 32
 roomMultiplier = 2
-cellsPerFrame = 16
+cellsPerFrame = 32
 
 [node name="CellBuilder" type="Node" parent="Map"]
 script = ExtResource("2_sjnlm")
