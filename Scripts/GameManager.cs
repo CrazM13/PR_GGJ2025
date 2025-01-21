@@ -24,6 +24,9 @@ public class GameManager {
 				airPercentage = 1;
 			} else if (airPercentage < 0) {
 				airPercentage = 0;
+
+				// TODO Game Lose
+				SceneManagement.SceneManager.Instance.LoadScene(SceneManagement.SceneManager.Instance.GetTree().CurrentScene.SceneFilePath);
 			}
 		}
 	}
