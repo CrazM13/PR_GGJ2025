@@ -35,5 +35,6 @@ public class GameManager {
 	public Player Player { get; set; }
 
 	public float LoadingPercentage { get; set; }
+	public float MonsterStrength { get; set; } = 0;
 
 }

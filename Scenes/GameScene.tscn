@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=31 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Script" path="res://Scripts/Maze/TileIndentifier.cs" id="2_mjq2s"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://cofdq08u5j3p4" path="res://Assets/Audio/Ambience/ScaryNoise-04.wav" id="14_ierga"]
 [ext_resource type="AudioStream" uid="uid://ijpbnub51od7" path="res://Assets/Audio/Ambience/Sonar.wav" id="15_uhgdu"]
 [ext_resource type="PackedScene" uid="uid://x1a27p8bk33i" path="res://Assets/Prefabs/game_hud.tscn" id="16_mwf54"]
+[ext_resource type="Texture2D" uid="uid://cvxp57lsuiqcx" path="res://Assets/Textures/Overlay/Overlay_Tentacles.png" id="17_nfisi"]
+[ext_resource type="Script" path="res://Scripts/Effects/Vignette.cs" id="18_gkvf2"]
 
 [sub_resource type="Resource" id="Resource_lqq64"]
 script = ExtResource("2_mjq2s")
@@ -103,8 +105,9 @@ process_mode = 3
 script = ExtResource("1_62vjt")
 layers = [NodePath("BaseLayer")]
 cellBuilder = NodePath("CellBuilder")
-roomMultiplier = 2
+roomMultiplier = 20
 cellsPerFrame = 32
+roomsPerFrame = 4
 
 [node name="CellBuilder" type="Node" parent="Map"]
 script = ExtResource("2_sjnlm")
@@ -143,6 +146,29 @@ wait_time = 29.0
 autostart = true
 
 [node name="GameHud" parent="." instance=ExtResource("16_mwf54")]
+
+[node name="NinePatchRect2" type="TextureRect" parent="GameHud"]
+process_mode = 3
+self_modulate = Color(0.290196, 0.0862745, 0.454902, 0.25098)
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("17_nfisi")
+script = ExtResource("18_gkvf2")
+speed = 0.125
+maxScale = 1.25
+minScale = 1.0
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]

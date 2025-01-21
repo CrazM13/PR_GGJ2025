@@ -107,7 +107,8 @@ public partial class LevelBuilder : Node {
 	private void CreateExit() {
 		Vector2 realExitPos = GetExitLocation() * layers[0].TileSet.TileSize;
 		Area2D exitTrigger = new Area2D() {
-			GlobalPosition = realExitPos
+			GlobalPosition = realExitPos,
+			Name = "EXIT AREA"
 		};
 		exitTrigger.AddChild(new CollisionShape2D() {
 			Shape = new RectangleShape2D() {

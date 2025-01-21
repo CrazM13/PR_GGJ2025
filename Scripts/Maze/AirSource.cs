@@ -5,6 +5,7 @@ public partial class AirSource : Area2D {
 
 	[Export] private float airRate = 0.01f;
 	[Export] private GpuParticles2D particles;
+	[Export] private AudioStreamPlayer2D audio;
 	[Export] private float maxDistance = 1024;
 
 	private bool isInSource = false;
@@ -27,12 +28,13 @@ public partial class AirSource : Area2D {
 
 		if (GameManager.Instance.Player != null) {
 			float distance = this.GlobalPosition.DistanceSquaredTo(GameManager.Instance.Player.GlobalPosition);
-
+		
 			particles.Emitting = distance < maxDistance * maxDistance;
+			audio.Playing = distance < maxDistance * maxDistance;
 		}
 
 		if (isInSource) {
-			GameManager.Instance.AirPercentage += airRate;
+			GameManager.Instance.AirPercentage += airRate * (float) delta;
 		}
 
 	}
