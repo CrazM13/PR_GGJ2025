@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=37 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -136,8 +136,20 @@ gravity = Vector3(0, -24, 0)
 scale_min = 0.25
 scale_curve = SubResource("CurveTexture_5w7gx")
 
+[sub_resource type="Gradient" id="Gradient_4jcsv"]
+offsets = PackedFloat32Array(0, 0.71, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d6phw"]
+gradient = SubResource("Gradient_4jcsv")
+width = 32
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.4)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
-size = Vector2(20, 60)
+size = Vector2(20, 22)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine", "bubbleGun", "sprite")]
 light_mask = 512
@@ -178,7 +190,14 @@ explosiveness = 0.3
 wait_time = 2.5
 autostart = true
 
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+self_modulate = Color(1, 1, 1, 0.25098)
+show_behind_parent = true
+position = Vector2(0, 30)
+texture = SubResource("GradientTexture2D_d6phw")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 19)
 shape = SubResource("RectangleShape2D_tqmvg")
 
 [node name="Components" type="Node" parent="."]
