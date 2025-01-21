@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D {
 	[Export] private CharacterMovement movement;
 	[Export] private RandomAudio collectLine;
 	[Export] private BubbleGun bubbleGun;
+	[Export] private AnimatedSprite2D sprite;
 
 	[Export] private float airRequirement = 0.01f;
 
@@ -45,7 +46,20 @@ public partial class Player : CharacterBody2D {
 
 		Vector2 joyInput = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
 
-		if (joyInput.LengthSquared() != 0) lastInput = joyInput;
+		if (joyInput.LengthSquared() != 0) {
+			lastInput = joyInput;
+
+			if (sprite.Animation != "dead") {
+				if (movement.IsMoving()) {
+					if (sprite.Animation != "walking") sprite.Play("walking");
+				} else {
+					if (sprite.Animation != "idle") sprite.Play("idle");
+				}
+			}
+			
+		} else {
+			if (sprite.Animation == "walking") sprite.Play("idle");
+		}
 		movement.Move(joyInput);
 	}
 
@@ -57,5 +71,8 @@ public partial class Player : CharacterBody2D {
 		if (!collectLine.Playing) collectLine.PlayRandom();
 	}
 
+	public void Die() {
+		if (sprite.Animation != "dead") sprite.Play("dead");
+	}
 
 }

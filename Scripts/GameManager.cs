@@ -26,6 +26,7 @@ public class GameManager {
 				airPercentage = 0;
 
 				// TODO Game Lose
+				Player.Die();
 				SceneManagement.SceneManager.Instance.LoadScene(SceneManagement.SceneManager.Instance.GetTree().CurrentScene.SceneFilePath);
 			}
 		}
