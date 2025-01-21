@@ -38,6 +38,7 @@ scale_curve = SubResource("CurveTexture_kjiy5")
 [node name="AirSource" type="Area2D" node_paths=PackedStringArray("particles", "audio")]
 texture_filter = 1
 script = ExtResource("1_4r5ir")
+airRate = 0.1
 particles = NodePath("GPUParticles2D")
 audio = NodePath("BubbleSound")
 maxDistance = 512.0
