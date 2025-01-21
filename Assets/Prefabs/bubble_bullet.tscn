@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfjdsws2lpq1p"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/BubbleBullet.cs" id="1_2rj0o"]
+[ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="2_lotbx"]
+[ext_resource type="AudioStream" uid="uid://b15o4me1cee3k" path="res://Assets/Audio/SFX/Pop.wav" id="3_w20m8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3llgd"]
+radius = 4.0
+
+[node name="BubbleBullet" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "popSound")]
+collision_layer = 128
+collision_mask = 17
+script = ExtResource("1_2rj0o")
+sprite = NodePath("Sprite2D")
+popSound = NodePath("AudioStreamPlayer2D")
+scaleMax = 1.0
+scaleMin = 0.75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3llgd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lotbx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w20m8")
+volume_db = -10.667
+attenuation = 4.75683

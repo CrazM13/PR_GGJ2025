@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=26 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://blj347n6khuc1" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype.png" id="2_jbjw4"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://cihknfoqgadmn" path="res://Assets/Audio/Voice/Collectable-06.wav" id="14_hwonq"]
 [ext_resource type="AudioStream" uid="uid://cpttrddrf3r8b" path="res://Assets/Audio/Voice/Collectable-07.wav" id="15_p63mo"]
 [ext_resource type="AudioStream" uid="uid://crdmvxhn0vybb" path="res://Assets/Audio/Voice/Collectable-08.wav" id="16_p1anf"]
+[ext_resource type="Script" path="res://Scripts/Characters/BubbleGun.cs" id="17_huff7"]
+[ext_resource type="PackedScene" uid="uid://bfjdsws2lpq1p" path="res://Assets/Prefabs/bubble_bullet.tscn" id="18_7a4ph"]
 
 [sub_resource type="Gradient" id="Gradient_3tok7"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -54,12 +56,14 @@ scale_curve = SubResource("CurveTexture_5w7gx")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
 size = Vector2(20, 60)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine", "bubbleGun")]
 light_mask = 512
 position = Vector2(66, 60)
+collision_layer = 8
 script = ExtResource("1_e5m1v")
 movement = NodePath("Components/MovementComponent")
 collectLine = NodePath("Audio/CollectVoice")
+bubbleGun = NodePath("BubbleGun")
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -144,6 +148,12 @@ autostart = true
 [node name="Timer2" type="Timer" parent="Audio"]
 wait_time = 13.3
 autostart = true
+
+[node name="BubbleGun" type="Node2D" parent="."]
+script = ExtResource("17_huff7")
+bubblePrefab = ExtResource("18_7a4ph")
+cooldown = 0.1
+spread = 10.0
 
 [connection signal="timeout" from="Sprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="Sprite2D/GPUParticles2D/Timer" to="Sprite2D/GPUParticles2D" method="set_emitting" binds= [true]]
