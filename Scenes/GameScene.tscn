@@ -32,9 +32,6 @@ tile_set = ExtResource("3_7y6iu")
 
 [node name="Player" parent="." instance=ExtResource("4_j18ty")]
 
-[node name="MovementComponent" parent="Player/Components" index="0"]
-baseMovementSpeed = 200.0
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
