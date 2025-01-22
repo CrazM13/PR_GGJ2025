@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=39 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -16,8 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://cihknfoqgadmn" path="res://Assets/Audio/Voice/Collectable-06.wav" id="14_hwonq"]
 [ext_resource type="AudioStream" uid="uid://cpttrddrf3r8b" path="res://Assets/Audio/Voice/Collectable-07.wav" id="15_p63mo"]
 [ext_resource type="AudioStream" uid="uid://crdmvxhn0vybb" path="res://Assets/Audio/Voice/Collectable-08.wav" id="16_p1anf"]
-[ext_resource type="Script" path="res://Scripts/Characters/BubbleGun.cs" id="17_huff7"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilityFireProjectile.cs" id="17_yrwpy"]
 [ext_resource type="PackedScene" uid="uid://bfjdsws2lpq1p" path="res://Assets/Prefabs/bubble_bullet.tscn" id="18_7a4ph"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilityDraw.cs" id="19_dg2nr"]
+[ext_resource type="Texture2D" uid="uid://c4e2isyv7k3hf" path="res://Assets/Textures/Particle_Effects/ChalkDust.png" id="20_ou6ad"]
 
 [sub_resource type="Gradient" id="Gradient_3tok7"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -151,15 +153,15 @@ fill_to = Vector2(1, 0.4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
 size = Vector2(20, 22)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine", "bubbleGun", "sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine", "sprite", "ability")]
 light_mask = 512
 position = Vector2(66, 60)
 collision_mask = 9
 script = ExtResource("1_e5m1v")
 movement = NodePath("Components/MovementComponent")
 collectLine = NodePath("Audio/CollectVoice")
-bubbleGun = NodePath("BubbleGun")
 sprite = NodePath("AnimatedSprite2D")
+ability = NodePath("Abilities/Chalk")
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -255,11 +257,21 @@ autostart = true
 wait_time = 13.3
 autostart = true
 
-[node name="BubbleGun" type="Node2D" parent="."]
-script = ExtResource("17_huff7")
-bubblePrefab = ExtResource("18_7a4ph")
+[node name="Abilities" type="Node" parent="."]
+
+[node name="BubbleGun" type="Node" parent="Abilities"]
+script = ExtResource("17_yrwpy")
+bulletPrefab = ExtResource("18_7a4ph")
 cooldown = 0.1
 spread = 10.0
+cost = 0.001
+recoil = 4.0
+
+[node name="Chalk" type="Node" parent="Abilities"]
+script = ExtResource("19_dg2nr")
+texture = ExtResource("20_ou6ad")
+scale = 1.0
+showOnMinimap = true
 
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="AnimatedSprite2D/GPUParticles2D" method="set_emitting" binds= [true]]

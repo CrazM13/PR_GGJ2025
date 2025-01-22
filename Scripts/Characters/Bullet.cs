@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BubbleBullet : CharacterBody2D {
+public partial class Bullet : CharacterBody2D {
 
 	[Export] private Sprite2D sprite;
 	[Export] private AudioStreamPlayer2D popSound;
@@ -12,7 +12,7 @@ public partial class BubbleBullet : CharacterBody2D {
 
 	public bool IsActive { get; set; } = true;
 
-	public void Randomize(RandomNumberGenerator rng) {
+	public void RandomizeScale(RandomNumberGenerator rng) {
 		float scale = (rng.Randf() * (scaleMax - scaleMin)) + scaleMin;
 		this.Scale = new Vector2(scale, scale);
 	}

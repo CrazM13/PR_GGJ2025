@@ -5,12 +5,10 @@ public partial class Player : CharacterBody2D {
 
 	[Export] private CharacterMovement movement;
 	[Export] private RandomAudio collectLine;
-	[Export] private BubbleGun bubbleGun;
 	[Export] private AnimatedSprite2D sprite;
+	[Export] private BaseAbility ability;
 
 	[Export] private float airRequirement = 0.01f;
-
-	private Vector2 lastInput = Vector2.Zero;
 
 	public override void _Ready() {
 		base._Ready();
@@ -34,11 +32,9 @@ public partial class Player : CharacterBody2D {
 
 		GetMovementInput((float) delta);
 
-		if (Input.IsActionPressed("use_action") && lastInput != Vector2.Zero) {
-			if (bubbleGun.Fire(lastInput)) {
-				GameManager.Instance.AirPercentage -= airRequirement * 0.5f;
-				movement.Move(-lastInput);
-			}
+		if (Input.IsActionPressed("use_action")) {
+
+			ability.UseAbility(this);
 		}
 	}
 
@@ -47,7 +43,6 @@ public partial class Player : CharacterBody2D {
 		Vector2 joyInput = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
 
 		if (joyInput.LengthSquared() != 0) {
-			lastInput = joyInput;
 
 			if (sprite.Animation != "dead") {
 				if (movement.IsMoving()) {
@@ -56,10 +51,18 @@ public partial class Player : CharacterBody2D {
 					if (sprite.Animation != "idle") sprite.Play("idle");
 				}
 			}
-			
+
+			movement.SpeedModifier = Input.IsActionPressed("move_sprint") ? 3f : 1;
+			if (movement.SpeedModifier != 1) {
+				GameManager.Instance.AirPercentage -= airRequirement * delta;
+			}
+
 		} else {
 			if (sprite.Animation == "walking") sprite.Play("idle");
 		}
+
+		
+
 		movement.Move(joyInput);
 	}
 
@@ -73,6 +76,10 @@ public partial class Player : CharacterBody2D {
 
 	public void Die() {
 		if (sprite.Animation != "dead") sprite.Play("dead");
+	}
+
+	public void MoveInDirection(Vector2 direction) {
+		movement.Move(direction);
 	}
 
 }

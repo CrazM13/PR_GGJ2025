@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=19 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Resource" uid="uid://ddvbk1vpojhvn" path="res://Data/Maze/MazeRules.tres" id="2_f4ijh"]
@@ -17,6 +17,17 @@
 [ext_resource type="Texture2D" uid="uid://cvxp57lsuiqcx" path="res://Assets/Textures/Overlay/Overlay_Tentacles.png" id="17_nfisi"]
 [ext_resource type="Script" path="res://Scripts/Effects/Vignette.cs" id="18_gkvf2"]
 
+[sub_resource type="Gradient" id="Gradient_x2llv"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.97491, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5sdif"]
+gradient = SubResource("Gradient_x2llv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.2)
+
 [node name="GameScene" type="Node2D"]
 texture_filter = 1
 
@@ -24,7 +35,7 @@ texture_filter = 1
 process_mode = 3
 script = ExtResource("1_62vjt")
 ruleSet = ExtResource("2_f4ijh")
-cellsPerFrame = 32
+cellsPerFrame = 16
 
 [node name="Player" parent="." instance=ExtResource("4_j18ty")]
 
@@ -76,7 +87,8 @@ speed = 0.125
 maxScale = 1.25
 minScale = 1.0
 
-[node name="MinimapFrame" type="ColorRect" parent="GameHud"]
+[node name="MinimapFrame" type="TextureRect" parent="GameHud"]
+self_modulate = Color(0, 0, 0, 1)
 clip_children = 2
 anchors_preset = 1
 anchor_left = 1.0
@@ -84,7 +96,7 @@ anchor_right = 1.0
 offset_left = -256.0
 offset_bottom = 256.0
 grow_horizontal = 0
-color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_5sdif")
 
 [node name="TextureRect" type="TextureRect" parent="GameHud/MinimapFrame" node_paths=PackedStringArray("level")]
 texture_filter = 1
@@ -103,5 +115,4 @@ playerSize = 3
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]
 
-[editable path="Player"]
 [editable path="SceneBase"]
