@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public partial class LevelBuilder : Node {
 
-	[Export] private TileMapLayer[] layers;
 	[Export] private MazeRuleSet ruleSet;
 
 	[ExportGroup("Generation Settings")]
@@ -12,7 +11,9 @@ public partial class LevelBuilder : Node {
 	[Export] private int cellsPerFrame = 1;
 	[Export] private int cellSize = 16;
 
+	public Vector2I MapSize => new Vector2I((mazeSize + 2) * cellSize, (mazeSize + 2) * cellSize);
 
+	public Color[,] Minimap { get; set; }
 
 	PerfectMazeGenerator perfectMaze;
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -25,7 +26,15 @@ public partial class LevelBuilder : Node {
 		GameManager.Instance.Level = this;
 		GameManager.Instance.LoadingPercentage = 0;
 
+		Minimap = new Color[MapSize.X, MapSize.Y];
+
 		perfectMaze = new PerfectMazeGenerator(mazeSize, mazeSize);
+
+		for (int x = 0; x < MapSize.X; x++) {
+			for (int y = 0; y < MapSize.Y; y++) {
+				Minimap[x, y] = Colors.Black;
+			}
+		}
 
 		BuildNode(perfectMaze.Root);
 	}
@@ -68,6 +77,16 @@ public partial class LevelBuilder : Node {
 			Node2D cellRoot = cell.Instantiate<Node2D>();
 			cellRoot.GlobalPosition = startingPosition * 32;
 			AddChild(cellRoot);
+
+			// Minimap
+			startingPosition = (node.Position + Vector2I.One) * cellSize;
+
+			TileMapLayer map = cellRoot.GetChild<TileMapLayer>(0);
+			for (int x = 0; x < cellSize; x++) {
+				for (int y = 0; y < cellSize; y++) {
+					Minimap[startingPosition.X + x, startingPosition.Y + y] = map.GetCellTileData(new Vector2I(x, y))?.GetCustomDataByLayerId(0).As<Color>() ?? Colors.Black;
+				}
+			}
 		}
 
 		loadedCells++;
@@ -87,7 +106,7 @@ public partial class LevelBuilder : Node {
 	}
 
 	private void CreateExit() {
-		Vector2 realExitPos = GetExitLocation() * layers[0].TileSet.TileSize;
+		Vector2 realExitPos = GetExitLocation() * 32;
 		Area2D exitTrigger = new Area2D() {
 			GlobalPosition = realExitPos,
 			Name = "EXIT AREA"

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Resource" uid="uid://ddvbk1vpojhvn" path="res://Data/Maze/MazeRules.tres" id="2_f4ijh"]
-[ext_resource type="TileSet" uid="uid://de02uqmymh1kh" path="res://Data/IndoorTileSet.tres" id="3_7y6iu"]
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
@@ -14,21 +13,18 @@
 [ext_resource type="AudioStream" uid="uid://cofdq08u5j3p4" path="res://Assets/Audio/Ambience/ScaryNoise-04.wav" id="14_ierga"]
 [ext_resource type="AudioStream" uid="uid://ijpbnub51od7" path="res://Assets/Audio/Ambience/Sonar.wav" id="15_uhgdu"]
 [ext_resource type="PackedScene" uid="uid://x1a27p8bk33i" path="res://Assets/Prefabs/game_hud.tscn" id="16_mwf54"]
+[ext_resource type="Script" path="res://Scripts/Minimap/Minimap.cs" id="16_yw6gk"]
 [ext_resource type="Texture2D" uid="uid://cvxp57lsuiqcx" path="res://Assets/Textures/Overlay/Overlay_Tentacles.png" id="17_nfisi"]
 [ext_resource type="Script" path="res://Scripts/Effects/Vignette.cs" id="18_gkvf2"]
 
 [node name="GameScene" type="Node2D"]
 texture_filter = 1
 
-[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("layers")]
+[node name="Map" type="Node2D" parent="."]
 process_mode = 3
 script = ExtResource("1_62vjt")
-layers = [NodePath("BaseLayer")]
 ruleSet = ExtResource("2_f4ijh")
 cellsPerFrame = 32
-
-[node name="BaseLayer" type="TileMapLayer" parent="Map"]
-tile_set = ExtResource("3_7y6iu")
 
 [node name="Player" parent="." instance=ExtResource("4_j18ty")]
 
@@ -79,6 +75,30 @@ script = ExtResource("18_gkvf2")
 speed = 0.125
 maxScale = 1.25
 minScale = 1.0
+
+[node name="MinimapFrame" type="ColorRect" parent="GameHud"]
+clip_children = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 256.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="GameHud/MinimapFrame" node_paths=PackedStringArray("level")]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_yw6gk")
+level = NodePath("../../../Map")
+revealRange = 32
+updateInterval = 0.1
+playerSize = 3
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]
