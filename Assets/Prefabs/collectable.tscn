@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://43xk8xq44d2l"]
+[gd_scene load_steps=4 format=3 uid="uid://43xk8xq44d2l"]
 
 [ext_resource type="Script" path="res://Scripts/Collectables/Collectable.cs" id="1_i5737"]
-[ext_resource type="Texture2D" uid="uid://cctuiuue3wrna" path="res://Assets/Textures/Tiles/Floor/Floor_1.png" id="2_hegmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu07n"]
 size = Vector2(32, 32)
@@ -13,9 +12,6 @@ size = Vector2(8, 8)
 texture_filter = 1
 script = ExtResource("1_i5737")
 sprite = NodePath("Sprite2D")
-
-[node name="FloorTile" type="Sprite2D" parent="."]
-texture = ExtResource("2_hegmw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mu07n")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MazeRuleCell" load_steps=3 format=3 uid="uid://upuybt1lpmel"]
+
+[ext_resource type="Script" path="res://Scripts/Maze/MazeRuleCell.cs" id="1_jo1fg"]
+[ext_resource type="PackedScene" uid="uid://1kwt22c10oqn" path="res://Assets/Prefabs/MazeCells/Rooms/UpRoom1.tscn" id="1_kwmtq"]
+
+[resource]
+script = ExtResource("1_jo1fg")
+Connections = 1
+SceneSet = Array[PackedScene]([ExtResource("1_kwmtq")])

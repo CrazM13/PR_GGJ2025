@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="MazeRuleSet" load_steps=29 format=3 uid="uid://ddvbk1vpojhvn"]
+
+[ext_resource type="Resource" uid="uid://cerwhwgd5o1la" path="res://Data/Maze/Rooms/DownRoom.tres" id="1_khfuf"]
+[ext_resource type="Script" path="res://Scripts/Maze/MazeRuleSet.cs" id="1_pjnxv"]
+[ext_resource type="Resource" uid="uid://2yt88gou2at8" path="res://Data/Maze/Rooms/LeftRoom.tres" id="2_wq05x"]
+[ext_resource type="Resource" uid="uid://drpwcijjk455e" path="res://Data/Maze/Rooms/RightRoom.tres" id="3_8tfv1"]
+[ext_resource type="Resource" uid="uid://upuybt1lpmel" path="res://Data/Maze/Rooms/UpRoom.tres" id="4_8llba"]
+[ext_resource type="PackedScene" uid="uid://b76m7t7bxbvvg" path="res://Assets/Prefabs/MazeCells/Hallways/FourWayHallway.tscn" id="5_dmu2w"]
+[ext_resource type="Script" path="res://Scripts/Maze/MazeRuleCell.cs" id="6_qt6gx"]
+[ext_resource type="PackedScene" uid="uid://d01shln63act3" path="res://Assets/Prefabs/MazeCells/Hallways/VerticalHallway.tscn" id="7_pkser"]
+[ext_resource type="PackedScene" uid="uid://bytsiexjc7vu8" path="res://Assets/Prefabs/MazeCells/Hallways/HorizontalHallway.tscn" id="8_1rncc"]
+[ext_resource type="PackedScene" uid="uid://6fgs0tru4aj2" path="res://Assets/Prefabs/MazeCells/Hallways/UpDownLeftHallway.tscn" id="9_0l4ar"]
+[ext_resource type="PackedScene" uid="uid://c8kr354oh0eri" path="res://Assets/Prefabs/MazeCells/Hallways/LeftRightDownHallway.tscn" id="10_vv6cb"]
+[ext_resource type="PackedScene" uid="uid://c6s5a7pnd32y6" path="res://Assets/Prefabs/MazeCells/Hallways/LeftRightUpHallway.tscn" id="11_8hx2j"]
+[ext_resource type="PackedScene" uid="uid://b5mq1fq660mr7" path="res://Assets/Prefabs/MazeCells/Hallways/UpDownRightHallway.tscn" id="11_uwyvy"]
+[ext_resource type="PackedScene" uid="uid://vqrvj8ixxtkw" path="res://Assets/Prefabs/MazeCells/Hallways/UpLeftHallway.tscn" id="12_134ch"]
+[ext_resource type="PackedScene" uid="uid://c7e3uefl7hp36" path="res://Assets/Prefabs/MazeCells/Hallways/UpRightHallway.tscn" id="13_m3ym5"]
+[ext_resource type="PackedScene" uid="uid://b6ku1eotcihsu" path="res://Assets/Prefabs/MazeCells/Hallways/DownLeftHallway.tscn" id="14_odn3y"]
+[ext_resource type="PackedScene" uid="uid://ckrbjfqusy2gf" path="res://Assets/Prefabs/MazeCells/Hallways/DownRightHallway.tscn" id="15_tfkrj"]
+
+[sub_resource type="Resource" id="Resource_gqgmd"]
+script = ExtResource("6_qt6gx")
+Connections = 15
+SceneSet = Array[PackedScene]([ExtResource("5_dmu2w")])
+
+[sub_resource type="Resource" id="Resource_tfw8k"]
+script = ExtResource("6_qt6gx")
+Connections = 3
+SceneSet = Array[PackedScene]([ExtResource("7_pkser")])
+
+[sub_resource type="Resource" id="Resource_ka33r"]
+script = ExtResource("6_qt6gx")
+Connections = 12
+SceneSet = Array[PackedScene]([ExtResource("8_1rncc")])
+
+[sub_resource type="Resource" id="Resource_b0rgt"]
+script = ExtResource("6_qt6gx")
+Connections = 7
+SceneSet = Array[PackedScene]([ExtResource("9_0l4ar")])
+
+[sub_resource type="Resource" id="Resource_vhn3l"]
+script = ExtResource("6_qt6gx")
+Connections = 14
+SceneSet = Array[PackedScene]([ExtResource("10_vv6cb")])
+
+[sub_resource type="Resource" id="Resource_lvu4q"]
+script = ExtResource("6_qt6gx")
+Connections = 13
+SceneSet = Array[PackedScene]([ExtResource("11_8hx2j")])
+
+[sub_resource type="Resource" id="Resource_rovmx"]
+script = ExtResource("6_qt6gx")
+Connections = 11
+SceneSet = Array[PackedScene]([ExtResource("11_uwyvy")])
+
+[sub_resource type="Resource" id="Resource_4vlfx"]
+script = ExtResource("6_qt6gx")
+Connections = 5
+SceneSet = Array[PackedScene]([ExtResource("12_134ch")])
+
+[sub_resource type="Resource" id="Resource_jjd1p"]
+script = ExtResource("6_qt6gx")
+Connections = 9
+SceneSet = Array[PackedScene]([ExtResource("13_m3ym5")])
+
+[sub_resource type="Resource" id="Resource_3n7g7"]
+script = ExtResource("6_qt6gx")
+Connections = 6
+SceneSet = Array[PackedScene]([ExtResource("14_odn3y")])
+
+[sub_resource type="Resource" id="Resource_vcw8i"]
+script = ExtResource("6_qt6gx")
+Connections = 10
+SceneSet = Array[PackedScene]([ExtResource("15_tfkrj")])
+
+[resource]
+script = ExtResource("1_pjnxv")
+rules = Array[Object]([ExtResource("1_khfuf"), ExtResource("2_wq05x"), ExtResource("3_8tfv1"), ExtResource("4_8llba"), SubResource("Resource_gqgmd"), SubResource("Resource_tfw8k"), SubResource("Resource_ka33r"), SubResource("Resource_b0rgt"), SubResource("Resource_vhn3l"), SubResource("Resource_lvu4q"), SubResource("Resource_rovmx"), SubResource("Resource_4vlfx"), SubResource("Resource_jjd1p"), SubResource("Resource_3n7g7"), SubResource("Resource_vcw8i")])

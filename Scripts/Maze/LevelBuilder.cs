@@ -5,19 +5,19 @@ using System.Collections.Generic;
 public partial class LevelBuilder : Node {
 
 	[Export] private TileMapLayer[] layers;
-	[Export] private MazeRoomBuilder cellBuilder;
+	[Export] private MazeRuleSet ruleSet;
 
 	[ExportGroup("Generation Settings")]
 	[Export] private int mazeSize = 64;
-	[Export] private int roomMultiplier = 50;
 	[Export] private int cellsPerFrame = 1;
-	[Export] private int roomsPerFrame = 1;
+	[Export] private int cellSize = 16;
+
+
 
 	PerfectMazeGenerator perfectMaze;
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
 
 	private Queue<MazeNode> toLoadCell = new Queue<MazeNode>();
-	private Queue<(TileMapPattern, Vector2I)> toLoadRoom = new Queue<(TileMapPattern, Vector2I)>();
 	private int loadedCells;
 
 	public override void _Ready() {
@@ -40,18 +40,7 @@ public partial class LevelBuilder : Node {
 
 					BuildNode(node);
 				} else {
-					PlacePattern(roomMultiplier);
 					CreateExit();
-				}
-			}
-		}
-
-		if (toLoadRoom.Count > 0) {
-			for (int _ = 0; _ < roomsPerFrame; _++) {
-				if (toLoadRoom.Count > 0) {
-					(TileMapPattern room, Vector2I position) node = toLoadRoom.Dequeue();
-
-					layers[0].SetPattern(node.position, node.room);
 				}
 			}
 		}
@@ -67,11 +56,19 @@ public partial class LevelBuilder : Node {
 	public void BuildNode(MazeNode node) {
 		if (!node.Buildable) return;
 
-		Vector2I startingPosition = node.Position * cellBuilder.RoomSize;
+		Vector2I startingPosition = node.Position * cellSize;
 
 		CellConnections connections = ConvertNodeToConnections(node);
-		TileMapPattern cell = cellBuilder.BuildCellWithConntections(connections);
-		layers[0].SetPattern(startingPosition, cell);
+
+		PackedScene cell = ruleSet.GetCellPrefab(connections, rng);
+
+		if (cell == null) {
+			GD.Print(connections);
+		} else {
+			Node2D cellRoot = cell.Instantiate<Node2D>();
+			cellRoot.GlobalPosition = startingPosition * 32;
+			AddChild(cellRoot);
+		}
 
 		loadedCells++;
 		GameManager.Instance.LoadingPercentage = (float)loadedCells / (mazeSize * mazeSize);
@@ -81,27 +78,12 @@ public partial class LevelBuilder : Node {
 		}
 	}
 
-	private void PlacePattern(int count) {
-		int roomCount = layers[0].TileSet.GetPatternsCount();
-
-		for (int i = 0; i < roomCount * count; i++) {
-			TileMapPattern room = layers[0].TileSet.GetPattern(i % roomCount);
-
-			Vector2I size = room.GetSize();
-			Vector2I position = new Vector2I(rng.RandiRange(0, mazeSize), rng.RandiRange(0, mazeSize)) * cellBuilder.RoomSize;
-
-			if (layers[0].GetUsedRect().HasPoint(position + size + Vector2I.One) && layers[0].GetUsedRect().HasPoint(position - Vector2I.One)) {
-				toLoadRoom.Enqueue((room, position));
-			}
-		}
-	}
-
 	public Vector2I GetStartingLocation() {
-		return (perfectMaze.Entrence * cellBuilder.RoomSize) + new Vector2I(cellBuilder.RoomSize / 2, cellBuilder.RoomSize / 2);
+		return (perfectMaze.Entrence * cellSize) + new Vector2I(cellSize / 2, cellSize / 2);
 	}
 
 	public Vector2I GetExitLocation() {
-		return (perfectMaze.Exit * cellBuilder.RoomSize) + new Vector2I(cellBuilder.RoomSize / 2, cellBuilder.RoomSize / 2);
+		return (perfectMaze.Exit * cellSize) + new Vector2I(cellSize / 2, cellSize / 2);
 	}
 
 	private void CreateExit() {
@@ -112,7 +94,7 @@ public partial class LevelBuilder : Node {
 		};
 		exitTrigger.AddChild(new CollisionShape2D() {
 			Shape = new RectangleShape2D() {
-				Size = new Vector2(cellBuilder.RoomSize * 32, cellBuilder.RoomSize * 32)
+				Size = new Vector2(cellSize * 32, cellSize * 32)
 			}
 		});
 		exitTrigger.BodyEntered += (body) => {
@@ -125,7 +107,7 @@ public partial class LevelBuilder : Node {
 	}
 
 	private static CellConnections ConvertNodeToConnections(MazeNode node) {
-		CellConnections connections = CellConnections.NONE;
+		CellConnections connections = 0;
 
 		if (node.Parent != null) {
 
