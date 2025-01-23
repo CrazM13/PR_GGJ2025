@@ -26,8 +26,10 @@ public class GameManager {
 				airPercentage = 0;
 
 				// TODO Game Lose
-				Player.Die();
-				SceneManagement.SceneManager.Instance.LoadScene(SceneManagement.SceneManager.Instance.GetTree().CurrentScene.SceneFilePath);
+				if (Player != null) {
+					Player.Die();
+					SceneManagement.SceneManager.Instance.LoadScene(SceneManagement.SceneManager.Instance.GetTree().CurrentScene.SceneFilePath);
+				}
 			}
 		}
 	}
@@ -47,5 +49,14 @@ public class GameManager {
 	}
 
 	public int CoinCount { get; set; } = 0;
+	public bool[] ActivatedAbilities { get; set; } = new bool[7] {
+		true,
+		true,
+		false,
+		false,
+		false,
+		false,
+		false
+	};
 
 }

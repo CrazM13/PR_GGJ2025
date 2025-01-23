@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6mtoanaqffw3"]
+
+[ext_resource type="Texture2D" uid="uid://bil3wabd018b1" path="res://Assets/Textures/Character_Tiles/Wrath/JellyBossTendrils.png" id="1_ja1ba"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Wrath/WrathBoss.cs" id="1_qcbrx"]
+[ext_resource type="PackedScene" uid="uid://bwjx1xlsss88p" path="res://Assets/Prefabs/lighting_attack.tscn" id="2_366ua"]
+[ext_resource type="Texture2D" uid="uid://8n47mg6u4ygu" path="res://Assets/Textures/Character_Tiles/Wrath/JellyBossHead.png" id="2_675vd"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="5_3q6h7"]
+[ext_resource type="Texture2D" uid="uid://0xcfws4usrmt" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealth.png" id="6_qdr1j"]
+[ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="7_hxxp7"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_je4e2"]
+
+[sub_resource type="Gradient" id="Gradient_3tok7"]
+offsets = PackedFloat32Array(0, 0.831169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_koce6"]
+gradient = SubResource("Gradient_3tok7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.46789)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1i3v"]
+size = Vector2(239, 107)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pny2"]
+size = Vector2(512, 512)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhqga"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 0.776471)
+
+[node name="Wrath" type="CharacterBody2D" node_paths=PackedStringArray("head", "tendrils", "bossHud")]
+process_mode = 3
+collision_layer = 16
+script = ExtResource("1_qcbrx")
+head = NodePath("JellyHead")
+tendrils = NodePath("Tendrals")
+bossHud = NodePath("BossHUD")
+attackPrefab = ExtResource("2_366ua")
+attackCooldown = 0.5
+waveCooldown = 8.0
+attacksPerWave = 32
+MaxHealth = 1000
+
+[node name="IlluminatingLight" type="PointLight2D" parent="."]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.25
+range_item_cull_mask = 513
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_koce6")
+texture_scale = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -10.5)
+shape = SubResource("RectangleShape2D_p1i3v")
+
+[node name="Tendrals" type="Sprite2D" parent="."]
+texture = ExtResource("1_ja1ba")
+
+[node name="JellyHead" type="Sprite2D" parent="."]
+z_index = 60
+z_as_relative = false
+texture = ExtResource("2_675vd")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+monitorable = false
+script = ExtResource("5_3q6h7")
+boss = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6pny2")
+
+[node name="BossHUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="BossHUD"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="BossHUD/CenterContainer"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BossHUD/CenterContainer/Control" node_paths=PackedStringArray("boss")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(128, 0)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_right = 16
+texture_under = ExtResource("7_hxxp7")
+texture_over = ExtResource("6_qdr1j")
+texture_progress = ExtResource("7_hxxp7")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.901961, 0.470588, 0.541176, 1)
+script = ExtResource("8_je4e2")
+boss = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="BossHUD/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wrath"
+label_settings = SubResource("LabelSettings_dhqga")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true

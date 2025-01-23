@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwjx1xlsss88p"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Wrath/LightningAttack.cs" id="1_7s4yu"]
+[ext_resource type="Texture2D" uid="uid://o5bupx4m68tl" path="res://Assets/Textures/Particle_Effects/StaticEffect.png" id="2_inxfi"]
+[ext_resource type="Texture2D" uid="uid://bgi73b1ymxvy3" path="res://Assets/Textures/Shapes/Circle.png" id="3_3jlom"]
+[ext_resource type="Texture2D" uid="uid://cmend1i7o12rd" path="res://Assets/Textures/Particle_Effects/Lightning.png" id="3_ew66t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t3n40"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 4
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qx2f8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(32, 32, 32)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 3.29
+anim_speed_max = 3.29
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ful0j"]
+atlas = ExtResource("3_ew66t")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_het4f"]
+atlas = ExtResource("3_ew66t")
+region = Rect2(32, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m75p2"]
+atlas = ExtResource("3_ew66t")
+region = Rect2(64, 0, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xkx26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ful0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_het4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m75p2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n5umb"]
+blend_mode = 1
+
+[node name="LightingAttack" type="Node2D" node_paths=PackedStringArray("attackSprite", "staticParticles")]
+script = ExtResource("1_7s4yu")
+attackSprite = NodePath("AnimatedSprite2D")
+staticParticles = NodePath("GPUParticles2D")
+warningDuration = 5.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_t3n40")
+process_material = SubResource("ParticleProcessMaterial_qx2f8")
+texture = ExtResource("2_inxfi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 50
+z_as_relative = false
+position = Vector2(0, -52)
+sprite_frames = SubResource("SpriteFrames_xkx26")
+autoplay = "default"
+frame_progress = 0.876456
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 0.501961)
+material = SubResource("CanvasItemMaterial_n5umb")
+texture = ExtResource("3_3jlom")

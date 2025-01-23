@@ -27,7 +27,7 @@ process_mode = 3
 script = ExtResource("1_62vjt")
 ruleSet = ExtResource("2_f4ijh")
 bossRuleSet = ExtResource("3_hhsqo")
-mazeSize = 16
+mazeSize = 4
 cellsPerFrame = 16
 
 [node name="Player" parent="." instance=ExtResource("4_j18ty")]
@@ -89,4 +89,3 @@ mapSize = 16
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]
 
 [editable path="SceneBase"]
-[editable path="GameHud"]

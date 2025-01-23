@@ -1,15 +1,32 @@
 using Godot;
 using System;
 
-public partial class Enemy : Node2D
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+public abstract partial class Enemy : CharacterBody2D {
+	[Export] public int MaxHealth { get; set; } = 100;
+	public bool IsActive { get; set; } = false;
+
+	public int CurrentHealth { get; set; }
+
+	public override void _Ready() {
+		base._Ready();
+
+		CurrentHealth = MaxHealth;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+	public abstract void ActivateEnemy();
+	public abstract void OnDeath();
+	public abstract void OnDamage();
+
+	public void Damage(int damage) {
+		OnDamage();
+
+		if (CurrentHealth > 0) {
+			CurrentHealth -= damage;
+
+			if (CurrentHealth <= 0) {
+				OnDeath();
+			}
+		}
+
 	}
 }

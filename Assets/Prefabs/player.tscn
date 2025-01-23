@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=41 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
 [ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="3_4am3i"]
 [ext_resource type="AudioStream" uid="uid://cclblcuwo7gm6" path="res://Assets/Audio/Ambience/Breathing.wav" id="4_ataj6"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterMovement.cs" id="4_vllac"]
+[ext_resource type="Script" path="res://Scripts/Characters/CameraController.cs" id="5_al5yg"]
 [ext_resource type="AudioStream" uid="uid://bi7woyumj2it1" path="res://Assets/Audio/Ambience/Cough.wav" id="5_f28d5"]
 [ext_resource type="AudioStream" uid="uid://bi8hjk2x4yfj4" path="res://Assets/Audio/Ambience/BreathBubbles.wav" id="7_bw06o"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomAudio.cs" id="8_ddxl3"]
@@ -19,14 +20,15 @@
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityFireProjectile.cs" id="17_yrwpy"]
 [ext_resource type="PackedScene" uid="uid://bfjdsws2lpq1p" path="res://Assets/Prefabs/bubble_bullet.tscn" id="18_7a4ph"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityDraw.cs" id="19_dg2nr"]
+[ext_resource type="PackedScene" uid="uid://xxuv5vtg1ax8" path="res://Assets/Prefabs/lightning_bullet.tscn" id="20_cbvj8"]
 [ext_resource type="Texture2D" uid="uid://c4e2isyv7k3hf" path="res://Assets/Textures/Particle_Effects/ChalkDust.png" id="20_ou6ad"]
 
-[sub_resource type="Gradient" id="Gradient_3tok7"]
+[sub_resource type="Gradient" id="Gradient_rysg4"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xfqri"]
-gradient = SubResource("Gradient_3tok7")
+gradient = SubResource("Gradient_rysg4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.46789)
@@ -153,7 +155,7 @@ fill_to = Vector2(1, 0.4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
 size = Vector2(20, 22)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "collectLine", "sprite", "abilities")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "camera", "collectLine", "sprite", "abilities")]
 light_mask = 512
 z_index = 5
 z_as_relative = false
@@ -161,9 +163,10 @@ position = Vector2(66, 60)
 collision_mask = 9
 script = ExtResource("1_e5m1v")
 movement = NodePath("Components/MovementComponent")
+camera = NodePath("CameraRig")
 collectLine = NodePath("Audio/CollectVoice")
 sprite = NodePath("AnimatedSprite2D")
-abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun")]
+abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt")]
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -175,6 +178,7 @@ texture_scale = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 process_mode = 3
+position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_tn6n5")
 animation = &"walking"
 autoplay = "idle"
@@ -201,7 +205,7 @@ position = Vector2(0, 30)
 texture = SubResource("GradientTexture2D_d6phw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 19)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_tqmvg")
 
 [node name="Components" type="Node" parent="."]
@@ -211,7 +215,10 @@ script = ExtResource("4_vllac")
 sourceEntity = NodePath("../..")
 baseMovementSpeed = 20.0
 
-[node name="CameraRig" type="Node2D" parent="."]
+[node name="CameraRig" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
+process_mode = 3
+script = ExtResource("5_al5yg")
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig"]
 zoom = Vector2(2, 2)
@@ -268,6 +275,13 @@ cooldown = 0.1
 spread = 10.0
 cost = 0.001
 recoil = 4.0
+
+[node name="LightningBolt" type="Node" parent="Abilities"]
+script = ExtResource("17_yrwpy")
+bulletPrefab = ExtResource("20_cbvj8")
+power = 0.25
+cooldown = 2.0
+spread = 0.0
 
 [node name="Chalk" type="Node" parent="Abilities"]
 script = ExtResource("19_dg2nr")

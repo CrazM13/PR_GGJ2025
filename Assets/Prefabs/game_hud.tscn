@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://q0vql2ah3jd"]
+[gd_scene load_steps=16 format=3 uid="uid://q0vql2ah3jd"]
 
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_2vlt0"]
 [ext_resource type="Texture2D" uid="uid://ccb6ghpwgu2of" path="res://Assets/Textures/O2/O2_Interior.png" id="1_6bu7s"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/Oxygen.cs" id="4_i2m87"]
 [ext_resource type="Script" path="res://Scripts/Minimap/Minimap.cs" id="6_6yffa"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityBarUI.cs" id="7_wnhjv"]
+[ext_resource type="Texture2D" uid="uid://bch6243sa3iwr" path="res://Assets/Textures/AbilityUI/Ring.png" id="8_jsgyu"]
+[ext_resource type="Texture2D" uid="uid://ujuerfniyov0" path="res://Assets/Textures/AbilityUI/Circle.png" id="9_vhfgc"]
+[ext_resource type="Texture2D" uid="uid://dmr612tr6i046" path="res://Assets/Textures/AbilityUI/Lock.png" id="10_vnq7o"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3feg7"]
 
@@ -121,11 +124,12 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="AbilityBar" type="HBoxContainer" parent="MarginContainer" node_paths=PackedStringArray("abilityIcons")]
+[node name="AbilityBar" type="HBoxContainer" parent="MarginContainer" node_paths=PackedStringArray("abilityIcons", "lockIcons")]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 script = ExtResource("7_wnhjv")
 abilityIcons = [NodePath("AbilityContainer0/TextureRect"), NodePath("AbilityContainer1/TextureRect"), NodePath("AbilityContainer2/TextureRect"), NodePath("AbilityContainer3/TextureRect"), NodePath("AbilityContainer4/TextureRect"), NodePath("AbilityContainer5/TextureRect"), NodePath("AbilityContainer6/TextureRect")]
+lockIcons = [NodePath("AbilityContainer0/TextureRect/TextureRect4"), NodePath("AbilityContainer1/TextureRect/TextureRect4"), NodePath("AbilityContainer2/TextureRect/TextureRect4"), NodePath("AbilityContainer3/TextureRect/TextureRect4"), NodePath("AbilityContainer4/TextureRect/TextureRect4"), NodePath("AbilityContainer5/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4")]
 
 [node name="AbilityContainer0" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -138,7 +142,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer0/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer0/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer0/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
 
 [node name="AbilityContainer1" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -149,9 +184,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -4.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer1/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer1/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer1/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
 
 [node name="AbilityContainer2" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -162,9 +232,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -4.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer2/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer2/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
 
 [node name="AbilityContainer3" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -175,9 +280,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -4.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer3/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer3/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer3/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
 
 [node name="AbilityContainer4" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -188,9 +328,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -4.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer4/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer4/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer4/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
 
 [node name="AbilityContainer5" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -201,9 +376,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -4.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer5/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer5/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer5/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
 
 [node name="AbilityContainer6" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -214,6 +424,41 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -4.0
+offset_right = -32.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer6/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer6/TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer6/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3

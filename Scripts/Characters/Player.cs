@@ -4,6 +4,7 @@ using System;
 public partial class Player : CharacterBody2D {
 
 	[Export] private CharacterMovement movement;
+	[Export] private CameraController camera;
 	[Export] private RandomAudio collectLine;
 	[Export] private AnimatedSprite2D sprite;
 	[Export] private BaseAbility[] abilities;
@@ -37,7 +38,9 @@ public partial class Player : CharacterBody2D {
 			int selectedAbility = GameManager.Instance.SelectedAbility;
 
 			if (selectedAbility < abilities.Length) {
-				abilities[selectedAbility].UseAbility(this);
+				if (GameManager.Instance.ActivatedAbilities[selectedAbility]) {
+					abilities[selectedAbility].UseAbility(this);
+				}
 			}
 			
 		}
@@ -109,6 +112,14 @@ public partial class Player : CharacterBody2D {
 		} else if (Input.IsActionJustPressed("ability_select_prev")) {
 			GameManager.Instance.SelectedAbility--;
 		}
+	}
+
+	public void CameraLookAt(Vector2 position) {
+		camera.CameraLookAt(position);
+	}
+
+	public void CameraReset() {
+		camera.CameraLookAtLocal(Vector2.Zero);
 	}
 
 }

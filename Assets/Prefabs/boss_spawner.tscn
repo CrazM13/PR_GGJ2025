@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://h15pfocoukmm"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossSpawner.cs" id="1_i1hkm"]
-[ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/collectable.tscn" id="2_n54fd"]
+[ext_resource type="PackedScene" uid="uid://b6mtoanaqffw3" path="res://Assets/Prefabs/wrath_boss.tscn" id="2_in1yk"]
 
 [node name="BossSpawner" type="Node2D"]
+position = Vector2(-16, -16)
 script = ExtResource("1_i1hkm")
-bossPrefab = ExtResource("2_n54fd")
+bossPrefab = ExtResource("2_in1yk")
