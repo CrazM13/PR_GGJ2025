@@ -1,62 +1,90 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cn475u34w3aj2"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cn475u34w3aj2"]
 
-[ext_resource type="Texture2D" uid="uid://b5g4jth4pi2ru" path="res://Assets/Textures/Tiles/Atlas.png" id="1_xknlo"]
+[ext_resource type="Texture2D" uid="uid://do1vaydlab3fr" path="res://Assets/Textures/Tiles/Wall_Set/Wall_Set_3.png" id="1_fe7b3"]
 [ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/air_source.tscn" id="2_3x3pn"]
+[ext_resource type="Texture2D" uid="uid://cctuiuue3wrna" path="res://Assets/Textures/Tiles/Floor/Floor_1.png" id="2_58e6l"]
 [ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/collectable.tscn" id="3_vqcow"]
+[ext_resource type="Texture2D" uid="uid://dw0y0u5vbgbq7" path="res://Assets/Textures/Tiles/Floor/Floor_2.png" id="3_xteuw"]
 [ext_resource type="PackedScene" uid="uid://h15pfocoukmm" path="res://Assets/Prefabs/boss_spawner.tscn" id="4_ac0bi"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pvb"]
-resource_name = "Base"
-texture = ExtResource("1_xknlo")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k4fib"]
+texture = ExtResource("1_fe7b3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/custom_data_0 = Color(0.321728, 0.321728, 0.321728, 1)
-0:0/0/custom_data_1 = Color(0.623314, 0.633462, 0.841684, 1)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 1:0/0 = 0
-1:0/0/custom_data_0 = Color(0.321728, 0.321728, 0.321728, 1)
-1:0/0/custom_data_1 = Color(0.623314, 0.633462, 0.841684, 1)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-2:0/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+2:0/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:0/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-3:0/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+3:0/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-4:0/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-4:0/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+4:0/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:1/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-2:1/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+2:1/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:1/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-3:1/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+3:1/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-4:1/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-4:1/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+4:1/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:2/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-2:2/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+2:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:2/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-3:2/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+3:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-4:2/0/custom_data_0 = Color(0.0846899, 0.0846899, 0.0846899, 1)
-4:2/0/custom_data_1 = Color(0.182071, 0.181152, 0.334378, 1)
+4:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymmnf"]
+texture = ExtResource("2_58e6l")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = Color(0.625597, 0.625597, 0.625597, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e6akc"]
+texture = ExtResource("3_xteuw")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = Color(0.625597, 0.625597, 0.625597, 1)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_yylsv"]
 resource_name = "Objects"
 scenes/1/scene = ExtResource("2_3x3pn")
+scenes/1/display_placeholder = ExtResource("2_3x3pn")
 scenes/2/scene = ExtResource("3_vqcow")
+scenes/2/display_placeholder = ExtResource("3_vqcow")
 scenes/3/scene = ExtResource("4_ac0bi")
+scenes/3/display_placeholder = ExtResource("4_ac0bi")
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -65,5 +93,8 @@ custom_data_layer_0/name = "map_colour"
 custom_data_layer_0/type = 20
 custom_data_layer_1/name = "sonar_colour"
 custom_data_layer_1/type = 20
-sources/0 = SubResource("TileSetAtlasSource_y7pvb")
-sources/3 = SubResource("TileSetScenesCollectionSource_yylsv")
+sources/2 = SubResource("TileSetScenesCollectionSource_yylsv")
+sources/10 = SubResource("TileSetAtlasSource_k4fib")
+sources/11 = SubResource("TileSetAtlasSource_ymmnf")
+sources/12 = SubResource("TileSetAtlasSource_e6akc")
+tile_proxies/coords_level = [[0, Vector2i(0, 0)], [2, Vector2i(0, 0)], [0, Vector2i(1, 0)], [2, Vector2i(1, 0)], [0, Vector2i(2, 0)], [2, Vector2i(2, 0)], [0, Vector2i(2, 1)], [2, Vector2i(2, 1)], [0, Vector2i(2, 2)], [2, Vector2i(2, 2)], [0, Vector2i(3, 0)], [2, Vector2i(3, 0)], [0, Vector2i(3, 1)], [2, Vector2i(3, 1)], [0, Vector2i(3, 2)], [2, Vector2i(3, 2)], [0, Vector2i(4, 0)], [2, Vector2i(4, 0)], [0, Vector2i(4, 1)], [2, Vector2i(4, 1)], [0, Vector2i(4, 2)], [2, Vector2i(4, 2)], [5, Vector2i(0, 0)], [8, Vector2i(0, 0)], [5, Vector2i(0, 1)], [8, Vector2i(0, 1)], [5, Vector2i(0, 2)], [8, Vector2i(0, 2)], [5, Vector2i(1, 0)], [8, Vector2i(1, 0)], [5, Vector2i(1, 1)], [8, Vector2i(1, 1)], [5, Vector2i(1, 2)], [8, Vector2i(1, 2)], [5, Vector2i(2, 0)], [8, Vector2i(2, 0)], [5, Vector2i(2, 1)], [8, Vector2i(2, 1)], [5, Vector2i(2, 2)], [8, Vector2i(2, 2)], [5, Vector2i(3, 0)], [8, Vector2i(3, 0)], [5, Vector2i(3, 1)], [8, Vector2i(3, 1)], [5, Vector2i(3, 2)], [8, Vector2i(3, 2)], [5, Vector2i(4, 0)], [8, Vector2i(4, 0)], [5, Vector2i(4, 1)], [8, Vector2i(4, 1)], [5, Vector2i(4, 2)], [8, Vector2i(4, 2)], [5, Vector2i(5, 0)], [8, Vector2i(5, 0)], [5, Vector2i(5, 1)], [8, Vector2i(5, 1)], [5, Vector2i(5, 2)], [8, Vector2i(5, 2)], [6, Vector2i(0, 0)], [8, Vector2i(6, 0)], [7, Vector2i(0, 0)], [8, Vector2i(7, 0)]]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5g4jth4pi2ru"
-path="res://.godot/imported/Atlas.png-4711e06dd3ada217954483b5a5f3710d.ctex"
+uid="uid://do1vaydlab3fr"
+path="res://.godot/imported/Wall_Set_3.png-3992110302db746e00f228fb6d238de8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Tiles/Atlas.png"
-dest_files=["res://.godot/imported/Atlas.png-4711e06dd3ada217954483b5a5f3710d.ctex"]
+source_file="res://Assets/Textures/Tiles/Wall_Set/Wall_Set_3.png"
+dest_files=["res://.godot/imported/Wall_Set_3.png-3992110302db746e00f228fb6d238de8.ctex"]
 
 [params]
 
