@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cgpt5m2ykuo74" path="res://Assets/Audio/Ambience/ScaryNoise-03.wav" id="13_elgui"]
 [ext_resource type="AudioStream" uid="uid://cofdq08u5j3p4" path="res://Assets/Audio/Ambience/ScaryNoise-04.wav" id="14_ierga"]
 [ext_resource type="AudioStream" uid="uid://ijpbnub51od7" path="res://Assets/Audio/Ambience/Sonar.wav" id="15_uhgdu"]
-[ext_resource type="PackedScene" uid="uid://x1a27p8bk33i" path="res://Assets/Prefabs/game_hud.tscn" id="16_mwf54"]
+[ext_resource type="PackedScene" uid="uid://q0vql2ah3jd" path="res://Assets/Prefabs/game_hud.tscn" id="16_mwf54"]
 [ext_resource type="Script" path="res://Scripts/Minimap/Minimap.cs" id="16_yw6gk"]
 [ext_resource type="Texture2D" uid="uid://cvxp57lsuiqcx" path="res://Assets/Textures/Overlay/Overlay_Tentacles.png" id="17_nfisi"]
 [ext_resource type="Script" path="res://Scripts/Effects/Vignette.cs" id="18_gkvf2"]
@@ -88,6 +88,7 @@ maxScale = 1.25
 minScale = 1.0
 
 [node name="MinimapFrame" type="TextureRect" parent="GameHud"]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
 clip_children = 2
 anchors_preset = 1
@@ -116,3 +117,4 @@ playerSize = 3
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]
 
 [editable path="SceneBase"]
+[editable path="GameHud"]

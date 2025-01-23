@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cyu3cbtx6m3ou"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cn475u34w3aj2"]
 
 [ext_resource type="Texture2D" uid="uid://b5g4jth4pi2ru" path="res://Assets/Textures/Tiles/Atlas.png" id="1_xknlo"]
 [ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/air_source.tscn" id="2_3x3pn"]

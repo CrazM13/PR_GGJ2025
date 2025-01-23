@@ -38,4 +38,6 @@ public class GameManager {
 	public float LoadingPercentage { get; set; }
 	public float MonsterStrength { get; set; } = 0;
 
+	public int CoinCount { get; set; } = 0;
+
 }

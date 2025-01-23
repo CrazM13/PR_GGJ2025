@@ -30,6 +30,8 @@ public partial class Collectable : Area2D {
 			player.OnCollect(this);
 			sprite.QueueFree();
 			collected = true;
+
+			GameManager.Instance.CoinCount++;
 		}
 	}
 }
