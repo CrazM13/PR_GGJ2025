@@ -4,14 +4,23 @@ using System;
 public partial class EnemySpawner : Node
 {
 	[Export] PackedScene enemy_scn;
-	[Export] Node2D[] spawn_points;
 	[Export] float eps = 1f;
+
+	[Export] private int mapSize = 64;
+	private Vector2[] spawnPoints;
 
 	float spawn_rate;
 	float time_until_spawn = 0;
 
     public override void _Ready()
     {
+		spawnPoints = new Vector2[mapSize * mapSize];
+		for (int i = 0, x = 0; x < mapSize; x++) {
+			for (int y = 0; y < mapSize; y++, i++) {
+				spawnPoints[i] = new Vector2(x * 512, y * 512);
+			}
+		}
+
 		spawn_rate = 1 / eps;
     }
 
@@ -30,9 +39,9 @@ public partial class EnemySpawner : Node
     private void Spawn()
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        Vector2 location = spawn_points[rng.Randi() % spawn_points.Length].GlobalPosition;
+        Vector2 location = spawnPoints[rng.Randi() % spawnPoints.Length];
 
-        Enemy enemy = (Enemy)enemy_scn.Instantiate();
+        Node2D enemy = (Node2D) enemy_scn.Instantiate();
         enemy.GlobalPosition = location;
 
         GetTree().Root.AddChild(enemy);
