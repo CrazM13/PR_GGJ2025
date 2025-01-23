@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://dnllvqk3luhyn" path="res://Data/Maze/BossRules.tres" id="3_hhsqo"]
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
+[ext_resource type="PackedScene" uid="uid://bwjx1xlsss88p" path="res://Assets/Prefabs/lighting_attack.tscn" id="5_ee2me"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomAmbience.cs" id="9_60fcr"]
 [ext_resource type="AudioStream" uid="uid://w7a83b6dej3d" path="res://Assets/Audio/Ambience/ACAmbience.wav" id="10_h8c7v"]
@@ -16,7 +17,6 @@
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="16_70ogu"]
 [ext_resource type="PackedScene" uid="uid://q0vql2ah3jd" path="res://Assets/Prefabs/game_hud.tscn" id="16_mwf54"]
 [ext_resource type="Texture2D" uid="uid://cvxp57lsuiqcx" path="res://Assets/Textures/Overlay/Overlay_Tentacles.png" id="17_nfisi"]
-[ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/collectable.tscn" id="17_vli0n"]
 [ext_resource type="Script" path="res://Scripts/Effects/Vignette.cs" id="18_gkvf2"]
 
 [node name="GameScene" type="Node2D"]
@@ -27,8 +27,14 @@ process_mode = 3
 script = ExtResource("1_62vjt")
 ruleSet = ExtResource("2_f4ijh")
 bossRuleSet = ExtResource("3_hhsqo")
-mazeSize = 4
+mazeSize = 16
 cellsPerFrame = 16
+
+[node name="EnemySpawner" type="Node" parent="Map"]
+script = ExtResource("16_70ogu")
+enemy_scn = ExtResource("5_ee2me")
+eps = 4.0
+mapSize = 16
 
 [node name="Player" parent="." instance=ExtResource("4_j18ty")]
 
@@ -79,11 +85,6 @@ script = ExtResource("18_gkvf2")
 speed = 0.125
 maxScale = 1.25
 minScale = 1.0
-
-[node name="EnemySpawner" type="Node" parent="."]
-script = ExtResource("16_70ogu")
-enemy_scn = ExtResource("17_vli0n")
-mapSize = 16
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]

@@ -17,7 +17,7 @@ public partial class EnemySpawner : Node
 		spawnPoints = new Vector2[mapSize * mapSize];
 		for (int i = 0, x = 0; x < mapSize; x++) {
 			for (int y = 0; y < mapSize; y++, i++) {
-				spawnPoints[i] = new Vector2(x * 512, y * 512);
+				spawnPoints[i] = new Vector2((x + 0.5f) * 512, (y + 0.5f) * 512);
 			}
 		}
 
