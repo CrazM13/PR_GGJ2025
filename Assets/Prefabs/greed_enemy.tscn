@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://fc4y83auxpyt"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Greed/GreedEnemy.cs" id="1_l6qrh"]
+[ext_resource type="Texture2D" uid="uid://1vp5w23n6vyr" path="res://Assets/Textures/Character_Tiles/Greed/Goldfish.png" id="2_lr1sg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2c8r"]
+size = Vector2(30, 16)
+
+[node name="GreedEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 16
+collision_mask = 9
+script = ExtResource("1_l6qrh")
+sprite = NodePath("Sprite")
+airCost = 0.001
+MaxHealth = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lr1sg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u2c8r")

@@ -1,0 +1,220 @@
+[gd_scene load_steps=17 format=3 uid="uid://bo4yl3oic0ayo"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Greed/GreedBoss.cs" id="1_100tc"]
+[ext_resource type="Texture2D" uid="uid://db006mt0xf6f" path="res://Assets/Textures/Character_Tiles/Greed/OysterClosed.png" id="1_sjssc"]
+[ext_resource type="Texture2D" uid="uid://uvke2w07lycv" path="res://Assets/Textures/Character_Tiles/Greed/OysterOpen.png" id="2_7556s"]
+[ext_resource type="PackedScene" uid="uid://fc4y83auxpyt" path="res://Assets/Prefabs/greed_enemy.tscn" id="2_r2oie"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="3_842ft"]
+[ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="4_fthju"]
+[ext_resource type="Texture2D" uid="uid://do7fjdn5l72ig" path="res://Assets/Textures/Character_Tiles/Greed/Pearl.png" id="4_rw1li"]
+[ext_resource type="Texture2D" uid="uid://byx5e8inyh4ah" path="res://Assets/Textures/Character_Tiles/Greed/GreedHealth.png" id="5_dihuv"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="6_hn8v7"]
+
+[sub_resource type="Gradient" id="Gradient_3tok7"]
+offsets = PackedFloat32Array(0, 0.831169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kvhj2"]
+gradient = SubResource("Gradient_3tok7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.46789)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txuug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sjssc")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7556s")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmino"]
+radius = 37.054
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpe4s"]
+radius = 16.0312
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy7fu"]
+size = Vector2(512, 512)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eprkj"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 0.776471)
+
+[node name="GreedBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "pearlSprite", "protectors")]
+collision_layer = 8
+script = ExtResource("1_100tc")
+bossHud = NodePath("BossHUD")
+sprites = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D2"), NodePath("AnimatedSprite2D3"), NodePath("AnimatedSprite2D4")]
+pearlSprite = NodePath("CollisionShape2D")
+protectors = [NodePath("AnimatedSprite2D/StaticBody2D"), NodePath("AnimatedSprite2D2/StaticBody2D"), NodePath("AnimatedSprite2D3/StaticBody2D"), NodePath("AnimatedSprite2D4/StaticBody2D")]
+attackPrefab = ExtResource("2_r2oie")
+attackCooldown = 30.0
+MaxHealth = 1000
+
+[node name="IlluminatingLight" type="PointLight2D" parent="."]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.25
+range_item_cull_mask = 513
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_kvhj2")
+texture_scale = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(129, 76)
+sprite_frames = SubResource("SpriteFrames_txuug")
+animation = &"open"
+autoplay = "open"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D"]
+collision_layer = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(43, 59)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-48, 58)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(-2, 59)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-127, 76)
+sprite_frames = SubResource("SpriteFrames_txuug")
+animation = &"open"
+autoplay = "open"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D2"]
+collision_layer = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D2/StaticBody2D"]
+position = Vector2(43, 55)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D2/StaticBody2D"]
+position = Vector2(-48, 54)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D2/StaticBody2D"]
+position = Vector2(-2, 55)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-127, -181)
+sprite_frames = SubResource("SpriteFrames_txuug")
+animation = &"open"
+autoplay = "open"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D3"]
+collision_layer = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D3/StaticBody2D"]
+position = Vector2(42, 57)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D3/StaticBody2D"]
+position = Vector2(-49, 56)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D3/StaticBody2D"]
+position = Vector2(-3, 57)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(129, -181)
+sprite_frames = SubResource("SpriteFrames_txuug")
+animation = &"open"
+autoplay = "open"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D4"]
+collision_layer = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D4/StaticBody2D"]
+position = Vector2(45, 55)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatedSprite2D4/StaticBody2D"]
+position = Vector2(-46, 54)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AnimatedSprite2D4/StaticBody2D"]
+position = Vector2(0, 55)
+shape = SubResource("CircleShape2D_xmino")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lpe4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("4_rw1li")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+monitorable = false
+script = ExtResource("3_842ft")
+boss = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_yy7fu")
+
+[node name="BossHUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="BossHUD"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="BossHUD/CenterContainer"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BossHUD/CenterContainer/Control" node_paths=PackedStringArray("boss")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(128, 0)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_right = 16
+texture_under = ExtResource("4_fthju")
+texture_over = ExtResource("5_dihuv")
+texture_progress = ExtResource("4_fthju")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.901961, 0.470588, 0.541176, 1)
+script = ExtResource("6_hn8v7")
+boss = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="BossHUD/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Greed"
+label_settings = SubResource("LabelSettings_eprkj")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true

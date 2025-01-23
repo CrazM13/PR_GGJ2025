@@ -11,7 +11,7 @@ public partial class BossSpawner : Node2D {
 		Node2D boss = bossPrefab.Instantiate<Node2D>();
 		boss.Name = "Boss";
 
-		boss.GlobalPosition = this.GlobalPosition;
+		boss.GlobalPosition = this.GlobalPosition - new Vector2(16, 16);
 
 		GetTree().Root.AddChild(boss);
 	}
