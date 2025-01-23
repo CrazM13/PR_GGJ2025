@@ -6,7 +6,7 @@ public partial class Player : CharacterBody2D {
 	[Export] private CharacterMovement movement;
 	[Export] private RandomAudio collectLine;
 	[Export] private AnimatedSprite2D sprite;
-	[Export] private BaseAbility ability;
+	[Export] private BaseAbility[] abilities;
 
 	[Export] private float airRequirement = 0.01f;
 
@@ -31,10 +31,15 @@ public partial class Player : CharacterBody2D {
 		base._Process(delta);
 
 		GetMovementInput((float) delta);
+		AbilitySelectInput();
 
 		if (Input.IsActionPressed("use_action")) {
+			int selectedAbility = GameManager.Instance.SelectedAbility;
 
-			ability.UseAbility(this);
+			if (selectedAbility < abilities.Length) {
+				abilities[selectedAbility].UseAbility(this);
+			}
+			
 		}
 	}
 
@@ -80,6 +85,30 @@ public partial class Player : CharacterBody2D {
 
 	public void MoveInDirection(Vector2 direction) {
 		movement.Move(direction);
+	}
+
+	public void AbilitySelectInput() {
+		if (Input.IsActionJustPressed("ability_select0")) {
+			GameManager.Instance.SelectedAbility = 0;
+		} else if (Input.IsActionJustPressed("ability_select1")) {
+			GameManager.Instance.SelectedAbility = 1;
+		} else if (Input.IsActionJustPressed("ability_select2")) {
+			GameManager.Instance.SelectedAbility = 2;
+		} else if (Input.IsActionJustPressed("ability_select3")) {
+			GameManager.Instance.SelectedAbility = 3;
+		} else if (Input.IsActionJustPressed("ability_select4")) {
+			GameManager.Instance.SelectedAbility = 4;
+		} else if (Input.IsActionJustPressed("ability_select5")) {
+			GameManager.Instance.SelectedAbility = 5;
+		} else if (Input.IsActionJustPressed("ability_select6")) {
+			GameManager.Instance.SelectedAbility = 6;
+		}
+
+		if (Input.IsActionJustPressed("ability_select_next")) {
+			GameManager.Instance.SelectedAbility++;
+		} else if (Input.IsActionJustPressed("ability_select_prev")) {
+			GameManager.Instance.SelectedAbility--;
+		}
 	}
 
 }

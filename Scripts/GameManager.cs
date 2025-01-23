@@ -38,6 +38,14 @@ public class GameManager {
 	public float LoadingPercentage { get; set; }
 	public float MonsterStrength { get; set; } = 0;
 
+	private int selectedAbility = 0;
+	public int SelectedAbility {
+		get => selectedAbility;
+		set {
+			selectedAbility = (7 + value) % 7;
+		}
+	}
+
 	public int CoinCount { get; set; } = 0;
 
 }

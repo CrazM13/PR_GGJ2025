@@ -4,7 +4,6 @@ using System;
 
 public partial class Minimap : TextureRect {
 
-	[Export] private LevelBuilder level;
 	[Export] private int revealRange;
 	[Export] private float updateInterval = 1;
 	[Export] private int playerSize = 1;
@@ -14,7 +13,7 @@ public partial class Minimap : TextureRect {
 	private float timeUntilUpdate;
 
 	private void UpdateMinimap(Vector2I position) {
-		minimapImage ??= Image.CreateEmpty(level.Minimap.GetLength(0), level.Minimap.GetLength(1), false, Image.Format.Rgb8);
+		minimapImage ??= Image.CreateEmpty(GameManager.Instance.Level.Minimap.GetLength(0), GameManager.Instance.Level.Minimap.GetLength(1), false, Image.Format.Rgb8);
 
 		int minX = Mathf.Max(0, position.X - revealRange);
 		int maxX = Mathf.Min(minimapImage.GetWidth(), position.X + revealRange);
@@ -29,7 +28,7 @@ public partial class Minimap : TextureRect {
 					if (position.X + playerSize >= x && position.X - playerSize < x && position.Y - playerSize < y && position.Y + playerSize >= y) {
 						minimapImage.SetPixel(x, y, Colors.Yellow);
 					} else {
-						minimapImage.SetPixel(x, y, level.Minimap[x, y]);
+						minimapImage.SetPixel(x, y, GameManager.Instance.Level.Minimap[x, y]);
 					}
 				}
 			}

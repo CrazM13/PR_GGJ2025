@@ -4,14 +4,9 @@ using System;
 
 public partial class UI : CanvasLayer
 {
-	public Label score_label; 
+	[Export] public Label score_label;
 
 	public int score = 0;
-
-	public override void _Ready()
-	{
-		score_label = GetNode<Label>("CoinDisplay");
-	}
 
     public override void _Process(double delta)
     {
