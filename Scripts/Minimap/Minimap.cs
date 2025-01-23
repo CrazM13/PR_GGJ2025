@@ -54,7 +54,7 @@ public partial class Minimap : TextureRect {
 			Vector2I tilePosition = new Vector2I(Mathf.RoundToInt(playerPosition.X / 32), Mathf.RoundToInt(playerPosition.Y / 32)) + new Vector2I(16, 16);
 
 			UpdateMinimap(tilePosition);
-			this.Position = -tilePosition + (((Control)this.GetParent()).Size / 2);
+			this.Position = -tilePosition + (((Control)this.GetParent()).Size * 0.5f);
 
 			timeUntilUpdate = updateInterval;
 		}

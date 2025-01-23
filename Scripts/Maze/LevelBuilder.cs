@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class LevelBuilder : Node {
 
 	[Export] private MazeRuleSet ruleSet;
+	[Export] private MazeRuleSet bossRuleSet;
 
 	[ExportGroup("Generation Settings")]
 	[Export] private int mazeSize = 64;
@@ -48,8 +49,6 @@ public partial class LevelBuilder : Node {
 					MazeNode node = toLoadCell.Dequeue();
 
 					BuildNode(node);
-				} else {
-					CreateExit();
 				}
 			}
 		}
@@ -63,13 +62,18 @@ public partial class LevelBuilder : Node {
 	}
 
 	public void BuildNode(MazeNode node) {
-		if (!node.Buildable) return;
 
 		Vector2I startingPosition = node.Position * cellSize;
 
 		CellConnections connections = ConvertNodeToConnections(node);
 
-		PackedScene cell = ruleSet.GetCellPrefab(connections, rng);
+		PackedScene cell;
+
+		if (node.NonSpecial) {
+			cell = ruleSet.GetCellPrefab(connections, rng);
+		} else {
+			cell = bossRuleSet.GetCellPrefab(connections, rng);
+		}
 
 		if (cell == null) {
 			GD.Print(connections);
@@ -103,26 +107,6 @@ public partial class LevelBuilder : Node {
 
 	public Vector2I GetExitLocation() {
 		return (perfectMaze.Exit * cellSize) + new Vector2I(cellSize / 2, cellSize / 2);
-	}
-
-	private void CreateExit() {
-		Vector2 realExitPos = GetExitLocation() * 32;
-		Area2D exitTrigger = new Area2D() {
-			GlobalPosition = realExitPos,
-			Name = "EXIT AREA"
-		};
-		exitTrigger.AddChild(new CollisionShape2D() {
-			Shape = new RectangleShape2D() {
-				Size = new Vector2(cellSize * 32, cellSize * 32)
-			}
-		});
-		exitTrigger.BodyEntered += (body) => {
-			if (body is Player) {
-				// TODO WIN
-				SceneManagement.SceneManager.Instance.LoadScene(GetTree().CurrentScene.SceneFilePath);
-			}
-		};
-		AddChild(exitTrigger);
 	}
 
 	private static CellConnections ConvertNodeToConnections(MazeNode node) {

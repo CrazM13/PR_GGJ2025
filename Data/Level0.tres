@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cn475u34w3aj2"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cn475u34w3aj2"]
 
 [ext_resource type="Texture2D" uid="uid://b5g4jth4pi2ru" path="res://Assets/Textures/Tiles/Atlas.png" id="1_xknlo"]
 [ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/air_source.tscn" id="2_3x3pn"]
 [ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/collectable.tscn" id="3_vqcow"]
+[ext_resource type="PackedScene" uid="uid://h15pfocoukmm" path="res://Assets/Prefabs/boss_spawner.tscn" id="4_ac0bi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pvb"]
 resource_name = "Base"
@@ -55,6 +56,7 @@ texture_region_size = Vector2i(32, 32)
 resource_name = "Objects"
 scenes/1/scene = ExtResource("2_3x3pn")
 scenes/2/scene = ExtResource("3_vqcow")
+scenes/3/scene = ExtResource("4_ac0bi")
 
 [resource]
 tile_size = Vector2i(32, 32)

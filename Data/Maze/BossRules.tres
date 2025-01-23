@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="MazeRuleSet" load_steps=11 format=3 uid="uid://dnllvqk3luhyn"]
+
+[ext_resource type="PackedScene" uid="uid://cm06yk3j4ue62" path="res://Assets/Prefabs/MazeCells/BossRooms/DownRoomBoss.tscn" id="1_oshch"]
+[ext_resource type="PackedScene" uid="uid://c2p2ik1pjsggu" path="res://Assets/Prefabs/MazeCells/BossRooms/LeftRoomBoss.tscn" id="3_ur1sp"]
+[ext_resource type="PackedScene" uid="uid://6nfde1p25syb" path="res://Assets/Prefabs/MazeCells/BossRooms/RightRoomBoss.tscn" id="4_x4die"]
+[ext_resource type="PackedScene" uid="uid://w883m5iso4p2" path="res://Assets/Prefabs/MazeCells/BossRooms/UpRoomBoss.tscn" id="5_isdmh"]
+[ext_resource type="Script" path="res://Scripts/Maze/MazeRuleCell.cs" id="6_u7q8v"]
+[ext_resource type="Script" path="res://Scripts/Maze/MazeRuleSet.cs" id="17_brgvn"]
+
+[sub_resource type="Resource" id="Resource_s3kcp"]
+script = ExtResource("6_u7q8v")
+Connections = 2
+SceneSet = Array[PackedScene]([ExtResource("1_oshch")])
+
+[sub_resource type="Resource" id="Resource_keo43"]
+script = ExtResource("6_u7q8v")
+Connections = 4
+SceneSet = Array[PackedScene]([ExtResource("3_ur1sp")])
+
+[sub_resource type="Resource" id="Resource_520fi"]
+script = ExtResource("6_u7q8v")
+Connections = 8
+SceneSet = Array[PackedScene]([ExtResource("4_x4die")])
+
+[sub_resource type="Resource" id="Resource_chkse"]
+script = ExtResource("6_u7q8v")
+Connections = 1
+SceneSet = Array[PackedScene]([ExtResource("5_isdmh")])
+
+[resource]
+script = ExtResource("17_brgvn")
+rules = Array[Object]([SubResource("Resource_s3kcp"), SubResource("Resource_keo43"), SubResource("Resource_520fi"), SubResource("Resource_chkse")])

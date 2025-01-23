@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=19 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Resource" uid="uid://ddvbk1vpojhvn" path="res://Data/Maze/MazeRules.tres" id="2_f4ijh"]
+[ext_resource type="Resource" uid="uid://dnllvqk3luhyn" path="res://Data/Maze/BossRules.tres" id="3_hhsqo"]
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
@@ -25,6 +26,8 @@ texture_filter = 1
 process_mode = 3
 script = ExtResource("1_62vjt")
 ruleSet = ExtResource("2_f4ijh")
+bossRuleSet = ExtResource("3_hhsqo")
+mazeSize = 16
 cellsPerFrame = 16
 
 [node name="Player" parent="." instance=ExtResource("4_j18ty")]
@@ -80,6 +83,7 @@ minScale = 1.0
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource("16_70ogu")
 enemy_scn = ExtResource("17_vli0n")
+mapSize = 16
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 [connection signal="timeout" from="RandomAmbience/Timer" to="RandomAmbience" method="PlayAmbience"]

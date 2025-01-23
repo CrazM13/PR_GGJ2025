@@ -47,11 +47,11 @@ public class PerfectMazeGenerator {
 					newNode.Parent = node;
 					used.Add(newPos);
 					RecursivePathMaker(newNode);
-				} else if (exitCount < 2 && rng.RandiRange(0, 10) == 0) {
+				} else if (exitCount < 2) {
 					if (exitCount == 0) Entrence = newPos;
 					else Exit = newPos;
 					MazeNode newNode = new MazeNode(newPos) {
-						Buildable = exitCount == 0,
+						NonSpecial = exitCount == 0,
 					};
 					node.Children.Add(newNode);
 					newNode.Parent = node;
