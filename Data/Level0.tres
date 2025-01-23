@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cn475u34w3aj2"]
 
-[ext_resource type="Texture2D" uid="uid://do1vaydlab3fr" path="res://Assets/Textures/Tiles/Wall_Set/Wall_Set_3.png" id="1_fe7b3"]
+[ext_resource type="Texture2D" uid="uid://cmy1whahbnu81" path="res://Assets/Textures/Tiles/Wall_Set/Wall_Set_3.png" id="1_fe7b3"]
 [ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/air_source.tscn" id="2_3x3pn"]
 [ext_resource type="Texture2D" uid="uid://cctuiuue3wrna" path="res://Assets/Textures/Tiles/Floor/Floor_1.png" id="2_58e6l"]
 [ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/collectable.tscn" id="3_vqcow"]
@@ -64,6 +64,18 @@ texture_region_size = Vector2i(32, 32)
 5:2/0 = 0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 5:2/0/custom_data_0 = Color(0.129558, 0.129558, 0.129558, 1)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:1/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:1/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymmnf"]
 texture = ExtResource("2_58e6l")
