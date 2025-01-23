@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bek7laygqtvme"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Envy/EnvyEnemy.cs" id="1_w7n5i"]
+[ext_resource type="Texture2D" uid="uid://b82w6e7kh1r6r" path="res://Assets/Textures/Character_Tiles/Envy/MiniEel.png" id="2_cw6to"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4s6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cw6to")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2c8r"]
+size = Vector2(30, 8)
+
+[node name="EnvyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 16
+collision_mask = 9
+script = ExtResource("1_w7n5i")
+sprite = NodePath("Sprite")
+healing = 4
+MaxHealth = 4
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m4s6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u2c8r")
