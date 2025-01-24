@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="5_ty2cc"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="6_3vofn"]
 [ext_resource type="Texture2D" uid="uid://kia1x8hvwaee" path="res://Assets/Textures/Character_Tiles/Lust/Mermaid.png" id="6_q2uey"]
-[ext_resource type="Texture2D" uid="uid://0xcfws4usrmt" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealth.png" id="7_qtt7f"]
+[ext_resource type="Texture2D" uid="uid://3erlo1santqs" path="res://Assets/Textures/Character_Tiles/Lust/LustHealth.png" id="7_awrt7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_cf4x7"]
 
 [sub_resource type="Gradient" id="Gradient_epbvh"]
@@ -96,7 +96,7 @@ nine_patch_stretch = true
 stretch_margin_left = 16
 stretch_margin_right = 16
 texture_under = ExtResource("6_3vofn")
-texture_over = ExtResource("7_qtt7f")
+texture_over = ExtResource("7_awrt7")
 texture_progress = ExtResource("6_3vofn")
 tint_under = Color(0.180005, 0.180005, 0.180005, 1)
 tint_progress = Color(0.901961, 0.470588, 0.541176, 1)
@@ -111,7 +111,7 @@ anchor_bottom = 1.0
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Wrath"
+text = "Lust"
 label_settings = SubResource("LabelSettings_dhqga")
 horizontal_alignment = 1
 vertical_alignment = 2
