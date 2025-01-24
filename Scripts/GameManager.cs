@@ -29,7 +29,7 @@ public class GameManager {
 				if (Player != null) {
 					Player.Die();
 					WasSuccess = false;
-					GameManager.Instance.Level = null;
+					Level = null;
 					SceneManagement.SceneManager.Instance.LoadScene("res://Scenes/LobbyScene.tscn");
 				}
 			}

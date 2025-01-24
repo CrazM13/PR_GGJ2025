@@ -46,9 +46,9 @@ public partial class O2Frog : Area2D {
 		if (body is Player) {
 			isTransacting = true;
 			if (!hasInteracted) {
-				textBox.QueueText("Ribbit [TRANSLATION: Hello there!]", tts);
+				textBox.QueueText("Ribbit [TRANSLATION: Hello there! I'm Anura!]", tts);
 				textBox.QueueText("Ribbit [TRANSLATION: Bring me money and I bring you precious air!]", tts);
-				textBox.QueueText("Ribbit [TRANSLATION: I have a lot of air to spare.]", tts);
+				textBox.QueueText("Ribbit [TRANSLATION: I have a lot of air to spare!]", tts);
 
 				textBox.NextMessage();
 				hasInteracted = true;

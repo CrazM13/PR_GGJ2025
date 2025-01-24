@@ -17,7 +17,7 @@ public partial class AbilityDraw : BaseAbility {
 			Name = "Drawing Container"
 		};
 
-		GetTree().Root.AddChild(container);
+		GetTree().CurrentScene.AddChild(container);
 	}
 
 	protected override void OnUseAbility(Player player) {

@@ -13,7 +13,7 @@ public partial class BossSpawner : Node2D {
 
 		boss.GlobalPosition = this.GlobalPosition - new Vector2(16, 16);
 
-		GetTree().Root.AddChild(boss);
+		GetTree().CurrentScene.AddChild(boss);
 	}
 
 }

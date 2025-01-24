@@ -64,7 +64,7 @@ public partial class GreedBoss : Enemy {
 						Enemy attack = attackPrefab.Instantiate<Enemy>();
 						attack.GlobalPosition = sprites[i].GlobalPosition;
 
-						GetTree().Root.AddChild(attack);
+						GetTree().CurrentScene.AddChild(attack);
 					}
 				}
 

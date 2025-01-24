@@ -1,0 +1,286 @@
+[gd_scene load_steps=22 format=3 uid="uid://ck4i6eibrd6s0"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Gluttony/GluttonyBoss.cs" id="1_kotgs"]
+[ext_resource type="Texture2D" uid="uid://tyaxa7k4ruoi" path="res://Assets/Textures/Character_Tiles/Gluttony/GluttonyHealth.png" id="4_et352"]
+[ext_resource type="Texture2D" uid="uid://cueualmxjy5cx" path="res://Assets/Textures/Character_Tiles/Gluttony/Shark.png" id="6_gdls7"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="6_ilm3n"]
+[ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="7_lrej3"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="9_ephsf"]
+
+[sub_resource type="Gradient" id="Gradient_3tok7"]
+offsets = PackedFloat32Array(0, 0.831169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kvhj2"]
+gradient = SubResource("Gradient_3tok7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.46789)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy7fu"]
+size = Vector2(512, 512)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eprkj"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 0.776471)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shax0"]
+radius = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf7qa"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(64, 65, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amrs7"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(0, 65, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4hd6"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(192, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbwrc"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(128, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjgr3"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(64, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi6is"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(0, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2421"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(128, 130, 128, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8sok"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(128, 65, 128, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7lv0"]
+atlas = ExtResource("6_gdls7")
+region = Rect2(0, 130, 128, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yv38"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf7qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amrs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4hd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbwrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjgr3")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_oi6is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amrs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf7qa")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2421")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8sok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7lv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8sok")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="GluttonyBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "hitboxes")]
+collision_layer = 16
+script = ExtResource("1_kotgs")
+bossHud = NodePath("BossHUD")
+sprites = [NodePath("CanvasGroup/AnimatedSprite2D"), NodePath("CanvasGroup/AnimatedSprite2D2"), NodePath("CanvasGroup/AnimatedSprite2D3"), NodePath("CanvasGroup/AnimatedSprite2D4"), NodePath("CanvasGroup/AnimatedSprite2D5"), NodePath("CanvasGroup/AnimatedSprite2D6"), NodePath("CanvasGroup/AnimatedSprite2D7"), NodePath("CanvasGroup/AnimatedSprite2D8")]
+hitboxes = [NodePath("CollisionShape2D"), NodePath("CollisionShape2D2"), NodePath("CollisionShape2D3"), NodePath("CollisionShape2D4"), NodePath("CollisionShape2D5"), NodePath("CollisionShape2D6"), NodePath("CollisionShape2D7"), NodePath("CollisionShape2D8")]
+attackCooldown = 20.0
+damageDelay = 2.0
+seperation = 24.0
+speed = 2.0
+MaxHealth = 1000
+
+[node name="IlluminatingLight" type="PointLight2D" parent="."]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.25
+range_item_cull_mask = 513
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_kvhj2")
+texture_scale = 10.0
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+monitorable = false
+script = ExtResource("6_ilm3n")
+boss = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_yy7fu")
+
+[node name="BossHUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="BossHUD"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="BossHUD/CenterContainer"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BossHUD/CenterContainer/Control" node_paths=PackedStringArray("boss")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(128, 0)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_right = 16
+texture_under = ExtResource("7_lrej3")
+texture_over = ExtResource("4_et352")
+texture_progress = ExtResource("7_lrej3")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.901961, 0.470588, 0.541176, 1)
+script = ExtResource("9_ephsf")
+boss = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="BossHUD/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gluttony"
+label_settings = SubResource("LabelSettings_eprkj")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shax0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = -120
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+z_index = -120
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="CanvasGroup"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4yv38")
+animation = &"idle"
+autoplay = "idle"

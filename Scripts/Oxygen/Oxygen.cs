@@ -17,6 +17,6 @@ public partial class Oxygen : TextureProgressBar {
 	public override void _Process(double delta) {
 
 		this.Size = new Vector2(this.Size.X, minLength * GameManager.Instance.MaxAir);
-		this.Value = GameManager.Instance.GetAirPercentage();
+		this.Value = GameManager.Instance.GetAirPercentage() * 0.6f;
 	}
 }

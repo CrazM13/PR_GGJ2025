@@ -67,7 +67,7 @@ public partial class EnvyBoss : Enemy {
 					attack.GlobalPosition = this.GlobalPosition + attackSpawnpoint;
 					attack.Boss = this;
 
-					GetTree().Root.AddChild(attack);
+					GetTree().CurrentScene.AddChild(attack);
 				}
 
 				if (attacksThisWave >= attacksPerWave) {

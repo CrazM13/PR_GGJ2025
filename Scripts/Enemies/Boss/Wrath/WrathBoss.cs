@@ -82,8 +82,8 @@ public partial class WrathBoss : Enemy {
 					Vector2 offset = new Vector2(rng.RandiRange(-8, 8) * 32, rng.RandiRange(-8, 8) * 32);
 					attack.GlobalPosition = this.GlobalPosition + offset;
 				}
-				
-				GetTree().Root.AddChild(attack);
+
+				GetTree().CurrentScene.AddChild(attack);
 
 				if (attacksThisWave >= attacksPerWave) {
 					currentState = BossState.RESTING;

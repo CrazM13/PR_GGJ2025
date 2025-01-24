@@ -44,7 +44,7 @@ public partial class EnemySpawner : Node
         Node2D enemy = (Node2D) enemy_scn.Instantiate();
         enemy.GlobalPosition = location;
 
-        GetTree().Root.AddChild(enemy);
+		GetTree().CurrentScene.AddChild(enemy);
 
     }
 }

@@ -49,6 +49,6 @@ public partial class AbilityFireProjectile : BaseAbility {
 
 		bubble.Velocity = direction * power;
 		bubble.RandomizeScale(rng);
-		GetTree().Root.AddChild(bubble);
+		GetTree().CurrentScene.AddChild(bubble);
 	}
 }
