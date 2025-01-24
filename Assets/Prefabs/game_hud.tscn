@@ -98,7 +98,7 @@ offset_bottom = 256.0
 grow_horizontal = 0
 texture = SubResource("GradientTexture2D_635h4")
 
-[node name="TextureRect" type="TextureRect" parent="MinimapFrame"]
+[node name="TextureRect" type="TextureRect" parent="MinimapFrame" node_paths=PackedStringArray("fullMap")]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -111,6 +111,7 @@ script = ExtResource("6_6yffa")
 revealRange = 32
 updateInterval = 0.1
 playerSize = 3
+fullMap = NodePath("../../MarginContainer2/TextureRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 3
@@ -478,3 +479,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_vnq7o")
 stretch_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+visible = false
+layout_mode = 2
+stretch_mode = 5

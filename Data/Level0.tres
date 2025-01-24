@@ -1,14 +1,15 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cn475u34w3aj2"]
+[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://cn475u34w3aj2"]
 
-[ext_resource type="Texture2D" uid="uid://cmy1whahbnu81" path="res://Assets/Textures/Tiles/Wall_Set/Wall_Set_3.png" id="1_fe7b3"]
-[ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/air_source.tscn" id="2_3x3pn"]
+[ext_resource type="Texture2D" uid="uid://bvuqx8o86cyp3" path="res://Assets/Textures/Tiles/Tileset_1.png" id="1_q5bur"]
 [ext_resource type="Texture2D" uid="uid://cctuiuue3wrna" path="res://Assets/Textures/Tiles/Floor/Floor_1.png" id="2_58e6l"]
-[ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/collectable.tscn" id="3_vqcow"]
 [ext_resource type="Texture2D" uid="uid://dw0y0u5vbgbq7" path="res://Assets/Textures/Tiles/Floor/Floor_2.png" id="3_xteuw"]
-[ext_resource type="PackedScene" uid="uid://h15pfocoukmm" path="res://Assets/Prefabs/boss_spawner.tscn" id="4_ac0bi"]
+[ext_resource type="PackedScene" uid="uid://dyg8wi4auc3fq" path="res://Assets/Prefabs/Tiles/air_source.tscn" id="4_1mh6u"]
+[ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/Tiles/collectable.tscn" id="5_xbfjh"]
+[ext_resource type="PackedScene" uid="uid://h15pfocoukmm" path="res://Assets/Prefabs/Tiles/boss_spawner.tscn" id="6_26bib"]
+[ext_resource type="PackedScene" uid="uid://qar14y7ogj1d" path="res://Assets/Prefabs/Tiles/light_source.tscn" id="7_vdgf0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k4fib"]
-texture = ExtResource("1_fe7b3")
+texture = ExtResource("1_q5bur")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -76,6 +77,51 @@ texture_region_size = Vector2i(32, 32)
 6:1/0 = 0
 6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:1/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+0:3/0 = 0
+0:3/0/custom_data_0 = Color(0.623529, 0.623529, 0.623529, 1)
+1:3/0 = 0
+1:3/0/custom_data_0 = Color(0.623529, 0.623529, 0.623529, 1)
+2:3/0 = 0
+2:3/0/custom_data_0 = Color(0.623529, 0.623529, 0.623529, 1)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:3/0/custom_data_0 = Color(0.162066, 0.162066, 0.162066, 1)
+4:3/0 = 0
+4:3/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+5:3/0 = 0
+5:3/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:4/0/custom_data_0 = Color(0.160784, 0.160784, 0.160784, 1)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:4/0/custom_data_0 = Color(0.160784, 0.160784, 0.160784, 1)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:4/0/custom_data_0 = Color(0.160784, 0.160784, 0.160784, 1)
+3:4/0 = 0
+3:4/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+4:4/0 = 0
+4:4/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+5:4/0 = 0
+5:4/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+0:5/0 = 0
+0:5/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+1:5/0 = 0
+1:5/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+2:5/0 = 0
+2:5/0/custom_data_0 = Color(0.623529, 0.623529, 0.623529, 1)
+0:6/0 = 0
+0:6/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+1:6/0 = 0
+1:6/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:6/0/custom_data_0 = Color(0.162066, 0.162066, 0.162066, 1)
+0:7/0 = 0
+0:7/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
+1:7/0 = 0
+1:7/0/custom_data_0 = Color(0.129412, 0.129412, 0.129412, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ymmnf"]
 texture = ExtResource("2_58e6l")
@@ -91,9 +137,10 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_yylsv"]
 resource_name = "Objects"
-scenes/1/scene = ExtResource("2_3x3pn")
-scenes/2/scene = ExtResource("3_vqcow")
-scenes/3/scene = ExtResource("4_ac0bi")
+scenes/1/scene = ExtResource("4_1mh6u")
+scenes/2/scene = ExtResource("5_xbfjh")
+scenes/3/scene = ExtResource("6_26bib")
+scenes/4/scene = ExtResource("7_vdgf0")
 
 [resource]
 tile_size = Vector2i(32, 32)

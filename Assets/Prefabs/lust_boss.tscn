@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkfiuxu7cvl5u"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Lust/LustBoss.cs" id="1_viseg"]
+[ext_resource type="PackedScene" uid="uid://dwpqrhyq8l3nb" path="res://Assets/Prefabs/lust_bullet.tscn" id="2_qqca2"]
+[ext_resource type="Texture2D" uid="uid://c1bmi1ofqghke" path="res://Assets/Textures/Character_Tiles/Lust/Rock.png" id="5_dy4up"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="5_ty2cc"]
+[ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="6_3vofn"]
+[ext_resource type="Texture2D" uid="uid://kia1x8hvwaee" path="res://Assets/Textures/Character_Tiles/Lust/Mermaid.png" id="6_q2uey"]
+[ext_resource type="Texture2D" uid="uid://0xcfws4usrmt" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealth.png" id="7_qtt7f"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_cf4x7"]
+
+[sub_resource type="Gradient" id="Gradient_epbvh"]
+offsets = PackedFloat32Array(0, 0.831169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_koce6"]
+gradient = SubResource("Gradient_epbvh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.46789)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pny2"]
+size = Vector2(512, 512)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhqga"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 0.776471)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe0fw"]
+size = Vector2(24, 117.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jadq1"]
+size = Vector2(49, 27)
+
+[node name="LustBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud")]
+process_mode = 3
+collision_layer = 16
+script = ExtResource("1_viseg")
+sprite = NodePath("Sprite2D/Sprite2D")
+bossHud = NodePath("BossHUD")
+bulletPrefab = ExtResource("2_qqca2")
+attackCooldown = 0.75
+attackPower = 2.0
+MaxHealth = 1000
+
+[node name="IlluminatingLight" type="PointLight2D" parent="."]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.25
+range_item_cull_mask = 513
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_koce6")
+texture_scale = 10.0
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+monitorable = false
+script = ExtResource("5_ty2cc")
+boss = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6pny2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("5_dy4up")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("6_q2uey")
+offset = Vector2(0, -32)
+
+[node name="BossHUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="BossHUD"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="BossHUD/CenterContainer"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BossHUD/CenterContainer/Control" node_paths=PackedStringArray("boss")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(128, 0)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_right = 16
+texture_under = ExtResource("6_3vofn")
+texture_over = ExtResource("7_qtt7f")
+texture_progress = ExtResource("6_3vofn")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.901961, 0.470588, 0.541176, 1)
+script = ExtResource("8_cf4x7")
+boss = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="BossHUD/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wrath"
+label_settings = SubResource("LabelSettings_dhqga")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -77.75)
+shape = SubResource("RectangleShape2D_oe0fw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_jadq1")

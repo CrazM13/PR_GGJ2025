@@ -3,11 +3,11 @@ using System;
 
 public partial class Bullet : CharacterBody2D {
 
-	[Export] private Node2D sprite;
-	[Export] private AudioStreamPlayer2D popSound;
+	[Export] protected Node2D sprite;
+	[Export] protected AudioStreamPlayer2D popSound;
 
 	[Export] private float maxLifetime = 10;
-	[Export] private int damage = 1;
+	[Export] protected float damage = 1f;
 
 	[ExportGroup("Randomization")]
 	[Export] private float scaleMax;
@@ -31,18 +31,7 @@ public partial class Bullet : CharacterBody2D {
 		KinematicCollision2D collision = this.MoveAndCollide(this.Velocity);
 
 		if (collision != null) {
-			IsActive = false;
-			popSound?.Play();
-
-			sprite.Visible = false;
-
-			GetTree().CreateTimer(2).Timeout += () => {
-				QueueFree();
-			};
-
-			if (collision.GetCollider() is Enemy enemy) {
-				enemy.Damage(damage);
-			}
+			OnCollision(collision);
 		} else if (lifetime >= maxLifetime) {
 			IsActive = false;
 			popSound?.Play();
@@ -52,6 +41,21 @@ public partial class Bullet : CharacterBody2D {
 			GetTree().CreateTimer(2).Timeout += () => {
 				QueueFree();
 			};
+		}
+	}
+
+	protected virtual void OnCollision(KinematicCollision2D collision) {
+		IsActive = false;
+		popSound?.Play();
+
+		sprite.Visible = false;
+
+		GetTree().CreateTimer(2).Timeout += () => {
+			QueueFree();
+		};
+
+		if (collision.GetCollider() is Enemy enemy) {
+			enemy.Damage((int)damage);
 		}
 	}
 

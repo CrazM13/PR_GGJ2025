@@ -23,12 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://xxuv5vtg1ax8" path="res://Assets/Prefabs/lightning_bullet.tscn" id="20_cbvj8"]
 [ext_resource type="Texture2D" uid="uid://c4e2isyv7k3hf" path="res://Assets/Textures/Particle_Effects/ChalkDust.png" id="20_ou6ad"]
 
-[sub_resource type="Gradient" id="Gradient_rysg4"]
+[sub_resource type="Gradient" id="Gradient_6b7jc"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xfqri"]
-gradient = SubResource("Gradient_rysg4")
+gradient = SubResource("Gradient_6b7jc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.46789)
@@ -153,7 +153,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
-size = Vector2(20, 22)
+size = Vector2(34, 31)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "camera", "collectLine", "sprite", "abilities")]
 light_mask = 512
@@ -178,6 +178,8 @@ texture_scale = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 process_mode = 3
+z_index = 15
+z_as_relative = false
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_tn6n5")
 animation = &"walking"
@@ -201,11 +203,13 @@ autostart = true
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
 self_modulate = Color(1, 1, 1, 0.25098)
 show_behind_parent = true
+z_index = 10
+z_as_relative = false
 position = Vector2(0, 30)
 texture = SubResource("GradientTexture2D_d6phw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_tqmvg")
 
 [node name="Components" type="Node" parent="."]
@@ -260,11 +264,9 @@ streams = Array[AudioStream]([ExtResource("9_hg5jm"), ExtResource("10_jd6nc"), E
 
 [node name="Timer" type="Timer" parent="Audio"]
 wait_time = 17.23
-autostart = true
 
 [node name="Timer2" type="Timer" parent="Audio"]
 wait_time = 13.3
-autostart = true
 
 [node name="Abilities" type="Node" parent="."]
 

@@ -7,6 +7,7 @@ public partial class Minimap : TextureRect {
 	[Export] private int revealRange;
 	[Export] private float updateInterval = 1;
 	[Export] private int playerSize = 1;
+	[Export] private TextureRect fullMap;
 
 	private Image minimapImage;
 
@@ -35,6 +36,7 @@ public partial class Minimap : TextureRect {
 		}
 
 		this.Texture = ImageTexture.CreateFromImage(minimapImage);
+		fullMap.Texture = this.Texture;
 	}
 
 	public override void _Ready() {
@@ -66,7 +68,8 @@ public partial class Minimap : TextureRect {
 			} else {
 				((Control) this.GetParent()).Visible = false;
 			}
-			
+
+			fullMap.Visible = Input.IsActionPressed("use_map");
 
 			timeUntilUpdate = updateInterval;
 		}
