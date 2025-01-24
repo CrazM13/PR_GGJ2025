@@ -34,7 +34,7 @@ public partial class AirSource : Area2D {
 		}
 
 		if (isInSource) {
-			GameManager.Instance.AirPercentage += airRate * (float) delta;
+			GameManager.Instance.CurrentAir += airRate * (float) delta;
 		}
 
 	}

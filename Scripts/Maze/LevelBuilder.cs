@@ -58,7 +58,7 @@ public partial class LevelBuilder : Node {
 	public override void _ExitTree() {
 		base._ExitTree();
 
-		if (GameManager.Instance.Level == this) GameManager.Instance.Level = null;
+		GameManager.Instance.Level = null;
 	}
 
 	public void BuildNode(MazeNode node) {

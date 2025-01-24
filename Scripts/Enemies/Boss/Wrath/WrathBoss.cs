@@ -145,6 +145,8 @@ public partial class WrathBoss : Enemy {
 			GameManager.Instance.Player.CameraReset();
 			GetTree().Paused = false;
 
+			GameManager.Instance.WasSuccess = true;
+			GameManager.Instance.Level = null;
 			SceneManagement.SceneManager.Instance.LoadScene("res://Scenes/LobbyScene.tscn");
 		};
 	}

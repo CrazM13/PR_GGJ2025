@@ -35,7 +35,7 @@ public partial class AbilityFireProjectile : BaseAbility {
 
 		if (recoil != 0) player.MoveInDirection(-mouseDirection * recoil);
 
-		GameManager.Instance.AirPercentage -= cost;
+		GameManager.Instance.CurrentAir -= cost;
 
 		remainingCooldown = cooldown;
 	}

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public partial class Textbox : CanvasLayer {
 
+	[Signal] public delegate void OnTexboxCompleteEventHandler();
+
 	[Export] private Label text;
 	[Export] private AudioStreamPlayer ttsAudio;
 
@@ -24,6 +26,7 @@ public partial class Textbox : CanvasLayer {
 	}
 
 	public void DisplayText(TextItem text) {
+		Visible = true;
 		this.text.Text = text.text;
 		ttsAudio.Stream = text.tts;
 		ttsAudio.Play(0);
@@ -38,6 +41,14 @@ public partial class Textbox : CanvasLayer {
 			text = text,
 			tts = tts
 		});
+	}
+
+	public override void _Ready() {
+		base._Ready();
+
+		this.text.Text = "";
+		ttsAudio.Stop();
+		Visible = false;
 	}
 
 	public override void _Process(double delta) {
@@ -58,6 +69,7 @@ public partial class Textbox : CanvasLayer {
 		if (queuedLines.Count > 0) {
 			DisplayText(queuedLines.Dequeue());
 		} else {
+			EmitSignal(SignalName.OnTexboxComplete);
 			Visible = false;
 		}
 	}

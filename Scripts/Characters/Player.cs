@@ -18,7 +18,7 @@ public partial class Player : CharacterBody2D {
 			this.GlobalPosition = GameManager.Instance.Level.GetStartingLocation() * 32;
 		}
 
-		GameManager.Instance.AirPercentage = 1;
+		GameManager.Instance.CurrentAir = 1;
 		GameManager.Instance.Player = this;
 	}
 
@@ -64,7 +64,7 @@ public partial class Player : CharacterBody2D {
 
 			movement.SpeedModifier = Input.IsActionPressed("move_sprint") ? 3f : 1;
 			if (movement.SpeedModifier != 1) {
-				GameManager.Instance.AirPercentage -= airRequirement * delta;
+				GameManager.Instance.CurrentAir -= airRequirement * delta;
 			}
 
 		} else {
@@ -77,7 +77,7 @@ public partial class Player : CharacterBody2D {
 	}
 
 	private void ConsumeAirTick() {
-		GameManager.Instance.AirPercentage -= airRequirement;
+		GameManager.Instance.CurrentAir -= airRequirement;
 	}
 
 	public void OnCollect(Collectable collectable) {

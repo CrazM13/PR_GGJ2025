@@ -123,7 +123,7 @@ blend_mode = 1
 _data = [Vector2(0, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.253333, 1), 0.0, 0.0, 0, 0, Vector2(0.946667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_5w7gx"]
+[sub_resource type="CurveTexture" id="CurveTexture_tka4a"]
 curve = SubResource("Curve_isf2r")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_23bvg"]
@@ -138,7 +138,7 @@ direction = Vector3(0, 1, 0)
 initial_velocity_max = 2.05
 gravity = Vector3(0, -24, 0)
 scale_min = 0.25
-scale_curve = SubResource("CurveTexture_5w7gx")
+scale_curve = SubResource("CurveTexture_tka4a")
 
 [sub_resource type="Gradient" id="Gradient_4jcsv"]
 offsets = PackedFloat32Array(0, 0.71, 1)
@@ -213,7 +213,7 @@ shape = SubResource("RectangleShape2D_tqmvg")
 [node name="MovementComponent" type="Node" parent="Components" node_paths=PackedStringArray("sourceEntity")]
 script = ExtResource("4_vllac")
 sourceEntity = NodePath("../..")
-baseMovementSpeed = 20.0
+baseMovementSpeed = 40.0
 
 [node name="CameraRig" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 process_mode = 3
@@ -236,7 +236,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.129412, 0.145098, 0.160784, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Audio" type="Node2D" parent="."]
 

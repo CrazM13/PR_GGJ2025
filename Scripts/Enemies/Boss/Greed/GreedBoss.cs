@@ -85,7 +85,7 @@ public partial class GreedBoss : Enemy {
 			body.CollisionLayer = 1;
 		}
 
-		pearlSprite.GlobalPosition = sprites[selected].GlobalPosition - new Vector2(0, 32);
+		pearlSprite.GlobalPosition = sprites[selected].GlobalPosition + new Vector2(0, 32);
 		pearlSprite.Visible = true;
 		CollisionLayer = hitboxLayer;
 	}
@@ -127,6 +127,8 @@ public partial class GreedBoss : Enemy {
 			GameManager.Instance.Player.CameraReset();
 			GetTree().Paused = false;
 
+			GameManager.Instance.WasSuccess = true;
+			GameManager.Instance.Level = null;
 			SceneManagement.SceneManager.Instance.LoadScene("res://Scenes/LobbyScene.tscn");
 		};
 		Close();

@@ -41,7 +41,7 @@ attackPrefab = ExtResource("2_366ua")
 attackCooldown = 0.5
 waveCooldown = 8.0
 attacksPerWave = 32
-MaxHealth = 1000
+MaxHealth = 200
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)

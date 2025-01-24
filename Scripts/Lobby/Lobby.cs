@@ -5,6 +5,7 @@ public partial class Lobby : Node {
 	[Export] private Textbox text;
 
 	[Export] private AudioStream[] tts;
+	[Export] private AudioStream sfx;
 
 	public override void _Ready() {
 		base._Ready();
@@ -32,6 +33,25 @@ public partial class Lobby : Node {
 			text.QueueText("You are not a doctor Stephen. Out.", tts[17]);
 
 			text.NextMessage();
+		} else if (GameManager.Instance.WasSuccess.HasValue) {
+			if (GameManager.Instance.WasSuccess.Value) {
+				text.QueueText("[Digital Message] Amazing work!", sfx);
+
+				bool gameCompleted = true;
+				for (int i = 0; i < 8; i++) {
+					if (!GameManager.Instance.ActivatedAbilities[i]) {
+						gameCompleted = false;
+						break;
+					}
+				}
+				if (gameCompleted) {
+					text.QueueText("[Digital Message] You did it! You defeated them all!", sfx);
+					text.QueueText("[Digital Message] Now uhh, we still haven't figured out how to get you out of there sooo...", sfx);
+					text.QueueText("[Digital Message] Feel free to explore!", sfx);
+				}
+			} else {
+				text.QueueText("[Digital Message] That is alright, you can't really die in the noosphere, unless everyone you've ever known forgets you anyway. Go ahead and try again.", sfx);
+			}
 		}
 	}
 
@@ -44,7 +64,7 @@ public partial class Lobby : Node {
 			GetTree().Paused = false;
 		}
 
-		GameManager.Instance.AirPercentage += 0.1f;
+		GameManager.Instance.CurrentAir += 0.1f;
 
 	}
 

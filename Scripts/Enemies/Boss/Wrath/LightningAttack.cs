@@ -33,7 +33,7 @@ public partial class LightningAttack : Node2D {
 				Vector2 playerPos = GameManager.Instance.Player.GlobalPosition;
 
 				if (playerPos.DistanceSquaredTo(GlobalPosition) < attackRange * attackRange) {
-					GameManager.Instance.AirPercentage -= attackDamage;
+					GameManager.Instance.CurrentAir -= attackDamage;
 				}
 
 				GetTree().CreateTimer(attackDuration).Timeout += () => {

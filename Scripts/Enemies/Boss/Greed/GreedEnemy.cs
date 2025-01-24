@@ -24,7 +24,7 @@ public partial class GreedEnemy : Enemy {
 			this.GlobalPosition = this.GlobalPosition.MoveToward(playerPos, (float) delta * speed);
 
 			if (this.GlobalPosition == playerPos) {
-				GameManager.Instance.AirPercentage -= airCost;
+				GameManager.Instance.CurrentAir -= airCost;
 				isHunting = false;
 			}
 		} else {

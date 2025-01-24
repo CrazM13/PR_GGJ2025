@@ -15,24 +15,32 @@ public class GameManager {
 	private GameManager() { /*MT*/ }
 	#endregion
 
-	private float airPercentage;
-	public float AirPercentage {
-		get => airPercentage;
+	private float air;
+	public float CurrentAir {
+		get => air;
 		set {
-			airPercentage = value;
-			if (airPercentage > 1) {
-				airPercentage = 1;
-			} else if (airPercentage < 0) {
-				airPercentage = 0;
+			air = value;
+			if (air > MaxAir) {
+				air = MaxAir;
+			} else if (air < 0) {
+				air = 0;
 
 				// TODO Game Lose
 				if (Player != null) {
 					Player.Die();
-					SceneManagement.SceneManager.Instance.LoadScene(SceneManagement.SceneManager.Instance.GetTree().CurrentScene.SceneFilePath);
+					WasSuccess = false;
+					GameManager.Instance.Level = null;
+					SceneManagement.SceneManager.Instance.LoadScene("res://Scenes/LobbyScene.tscn");
 				}
 			}
 		}
 	}
+
+	public float GetAirPercentage() {
+		return CurrentAir / MaxAir;
+	}
+
+	public float MaxAir { get; set; } = 1f;
 
 	public LevelBuilder Level { get; set; }
 	public Player Player { get; set; }
@@ -40,6 +48,7 @@ public class GameManager {
 	public float LoadingPercentage { get; set; }
 	public float MonsterStrength { get; set; } = 0;
 	public bool HasSeenIntro { get; set; } = false;
+	public bool? WasSuccess { get; set; } = null;
 	public int CurrentLevel { get; set; } = -1;
 
 	private int selectedAbility = 0;
@@ -51,14 +60,15 @@ public class GameManager {
 	}
 
 	public int CoinCount { get; set; } = 0;
-	public bool[] ActivatedAbilities { get; set; } = new bool[7] {
+	public bool[] ActivatedAbilities { get; set; } = new bool[8] {
 		true,
 		true,
 		false,
 		false,
 		false,
 		false,
-		false
+		false,
+		false,
 	};
 
 }
