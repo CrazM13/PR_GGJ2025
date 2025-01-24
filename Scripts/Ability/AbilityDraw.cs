@@ -41,6 +41,8 @@ public partial class AbilityDraw : BaseAbility {
 	}
 
 	public void UpdateMinimap(Vector2 globalPosition) {
+		if (GameManager.Instance.Level == null) return;
+
 		Vector2I cellPosition = new Vector2I(Mathf.RoundToInt(globalPosition.X / 32), Mathf.RoundToInt(globalPosition.Y / 32)) + new Vector2I(16, 16);
 
 		if (cellPosition.X < 0 || cellPosition.Y < 0) {

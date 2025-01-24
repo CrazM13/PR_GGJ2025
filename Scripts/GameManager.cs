@@ -39,6 +39,8 @@ public class GameManager {
 
 	public float LoadingPercentage { get; set; }
 	public float MonsterStrength { get; set; } = 0;
+	public bool HasSeenIntro { get; set; } = false;
+	public int CurrentLevel { get; set; } = -1;
 
 	private int selectedAbility = 0;
 	public int SelectedAbility {

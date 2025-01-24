@@ -42,6 +42,12 @@ public partial class Minimap : TextureRect {
 
 		timeUntilUpdate = updateInterval;
 
+		if (GameManager.Instance.Level != null) {
+			((Control) this.GetParent()).Visible = true;
+		} else {
+			((Control) this.GetParent()).Visible = false;
+		}
+
 	}
 
 	public override void _Process(double delta) {
@@ -49,12 +55,18 @@ public partial class Minimap : TextureRect {
 
 		timeUntilUpdate -= (float) delta;
 		if (timeUntilUpdate < 0) {
-			Vector2 playerPosition = GameManager.Instance.Player.GlobalPosition;
+			if (GameManager.Instance.Level != null) {
+				Vector2 playerPosition = GameManager.Instance.Player.GlobalPosition;
 
-			Vector2I tilePosition = new Vector2I(Mathf.RoundToInt(playerPosition.X / 32), Mathf.RoundToInt(playerPosition.Y / 32)) + new Vector2I(16, 16);
+				Vector2I tilePosition = new Vector2I(Mathf.RoundToInt(playerPosition.X / 32), Mathf.RoundToInt(playerPosition.Y / 32)) + new Vector2I(16, 16);
 
-			UpdateMinimap(tilePosition);
-			this.Position = -tilePosition + (((Control)this.GetParent()).Size * 0.5f);
+				((Control)this.GetParent()).Visible = true;
+				UpdateMinimap(tilePosition);
+				this.Position = -tilePosition + (((Control) this.GetParent()).Size * 0.5f);
+			} else {
+				((Control) this.GetParent()).Visible = false;
+			}
+			
 
 			timeUntilUpdate = updateInterval;
 		}

@@ -126,6 +126,8 @@ public partial class GreedBoss : Enemy {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();
 			GetTree().Paused = false;
+
+			SceneManagement.SceneManager.Instance.LoadScene("res://Scenes/LobbyScene.tscn");
 		};
 		Close();
 	}

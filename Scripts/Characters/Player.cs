@@ -14,7 +14,9 @@ public partial class Player : CharacterBody2D {
 	public override void _Ready() {
 		base._Ready();
 
-		this.GlobalPosition = GameManager.Instance.Level.GetStartingLocation() * 32;
+		if (GameManager.Instance.Level != null) {
+			this.GlobalPosition = GameManager.Instance.Level.GetStartingLocation() * 32;
+		}
 
 		GameManager.Instance.AirPercentage = 1;
 		GameManager.Instance.Player = this;
