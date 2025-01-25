@@ -56,18 +56,17 @@ public class GameManager {
 	public int SelectedAbility {
 		get => selectedAbility;
 		set {
-			selectedAbility = (10 + value) % 10;
+			selectedAbility = (9 + value) % 9;
 		}
 	}
 
 	public int CoinCount { get; set; } = 0;
-	public bool[] ActivatedAbilities { get; set; } = new bool[10] {
+	public bool[] ActivatedAbilities { get; set; } = new bool[9] {
 		true,
 		true,
 		false,
 		false,
 		false,
-		true,
 		false,
 		false,
 		false,

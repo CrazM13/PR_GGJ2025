@@ -113,8 +113,6 @@ public partial class Player : CharacterBody2D {
 			GameManager.Instance.SelectedAbility = 7;
 		} else if (Input.IsActionJustPressed("ability_select8")) {
 			GameManager.Instance.SelectedAbility = 8;
-		} else if (Input.IsActionJustPressed("ability_select9")) {
-			GameManager.Instance.SelectedAbility = 9;
 		}
 
 		if (Input.IsActionJustPressed("ability_select_next")) {

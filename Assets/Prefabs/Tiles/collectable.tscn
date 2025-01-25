@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://43xk8xq44d2l"]
+[gd_scene load_steps=5 format=3 uid="uid://43xk8xq44d2l"]
 
 [ext_resource type="Script" path="res://Scripts/Collectables/Collectable.cs" id="1_i5737"]
 [ext_resource type="Texture2D" uid="uid://bl0y7s76gqcn8" path="res://Assets/Textures/Shapes/Gold_Coin.png" id="2_nubfw"]
+[ext_resource type="AudioStream" uid="uid://biynvk226riq2" path="res://Assets/Audio/SFX/coin_ding.wav" id="3_j0d3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu07n"]
 size = Vector2(32, 32)
@@ -16,3 +17,7 @@ shape = SubResource("RectangleShape2D_mu07n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nubfw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j0d3i")
+max_polyphony = 4

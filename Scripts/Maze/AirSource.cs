@@ -30,7 +30,11 @@ public partial class AirSource : Area2D {
 			float distance = this.GlobalPosition.DistanceSquaredTo(GameManager.Instance.Player.GlobalPosition);
 		
 			particles.Emitting = distance < maxDistance * maxDistance;
-			audio.Playing = distance < maxDistance * maxDistance;
+			if (distance < maxDistance * maxDistance) {
+				if (!audio.IsPlaying()) audio.Play();
+			} else {
+				if (audio.IsPlaying()) audio.Stop();
+			}
 		}
 
 		if (isInSource) {

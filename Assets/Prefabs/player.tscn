@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=51 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -161,6 +161,28 @@ fill_to = Vector2(1, 0.4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
 size = Vector2(22, 23)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rbvuo"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_d0wni"]
+max_value = 10.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 10), 0.0, 0.0, 0, 0, Vector2(0.75, 10), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_mpvmo"]
+curve = SubResource("Curve_d0wni")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ra4sr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(256, 5, 1)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 44.0
+initial_velocity_max = 98.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_mpvmo")
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "Camera", "collectLine", "sprite", "abilities")]
 light_mask = 512
 z_index = 5
@@ -251,6 +273,17 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CameraRig/Camera2D"]
+self_modulate = Color(1, 1, 1, 0.0627451)
+z_index = 100
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_rbvuo")
+position = Vector2(0, 256)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ra4sr")
+texture = ExtResource("3_4am3i")
+lifetime = 10.0
 
 [node name="Audio" type="Node2D" parent="."]
 

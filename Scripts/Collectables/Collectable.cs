@@ -4,6 +4,7 @@ using System;
 public partial class Collectable : Area2D {
 
 	[Export] private Node2D sprite;
+	[Export] private AudioStreamPlayer2D sfx;
 	[Export] private float height = 4;
 
 	private bool collected = false;
@@ -29,6 +30,7 @@ public partial class Collectable : Area2D {
 		if (!collected && body is Player player) {
 			player.OnCollect(this);
 			sprite.QueueFree();
+			sfx.Play();
 			collected = true;
 
 			GameManager.Instance.CoinCount++;

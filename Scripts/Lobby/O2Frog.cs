@@ -6,6 +6,7 @@ public partial class O2Frog : Area2D {
 	[ExportGroup("References")]
 	[Export] private Textbox textBox;
 	[Export] private AudioStream tts;
+	[Export] private AudioStreamPlayer2D transactSFX;
 
 	[ExportGroup("Settings")]
 	[Export] private float airPerCoin = 0.01f;
@@ -33,6 +34,7 @@ public partial class O2Frog : Area2D {
 			if (currentCD <= 0) {
 				GameManager.Instance.CoinCount--;
 				GameManager.Instance.MaxAir += airPerCoin;
+				transactSFX.Play();
 
 				currentCD = transactionCooldown;
 			}

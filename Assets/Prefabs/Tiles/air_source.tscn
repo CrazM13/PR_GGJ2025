@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Maze/AirSource.cs" id="1_4r5ir"]
 [ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="2_sip50"]
-[ext_resource type="AudioStream" uid="uid://dsppr0gqddc1r" path="res://Assets/Audio/Ambience/SlowBubble.wav" id="4_8wjcy"]
+[ext_resource type="AudioStream" uid="uid://dk55875am5qsw" path="res://Assets/Audio/Ambience/BubblesSteve.wav" id="3_gvv1k"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomizeStartAudio.cs" id="5_rppj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu07n"]
@@ -58,7 +58,8 @@ lifetime = 2.0
 speed_scale = 0.5
 
 [node name="BubbleSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_8wjcy")
+stream = ExtResource("3_gvv1k")
+volume_db = -10.0
 max_distance = 512.0
 attenuation = 2.14355
 script = ExtResource("5_rppj0")

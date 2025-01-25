@@ -19,6 +19,7 @@ public partial class Bullet : CharacterBody2D {
 	public void RandomizeScale(RandomNumberGenerator rng) {
 		float scale = (rng.Randf() * (scaleMax - scaleMin)) + scaleMin;
 		this.Scale = new Vector2(scale, scale);
+		this.lifetime += rng.Randf();
 	}
 
 	public override void _PhysicsProcess(double delta) {
