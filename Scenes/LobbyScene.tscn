@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://djifg3uw5jr82"]
+[gd_scene load_steps=32 format=4 uid="uid://djifg3uw5jr82"]
 
 [ext_resource type="Script" path="res://Scripts/Lobby/Lobby.cs" id="1_kgtwl"]
 [ext_resource type="AudioStream" uid="uid://c6nu75b30f0g" path="res://Assets/Audio/Voice/Lobby/NPCLine1.wav" id="2_afhw5"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://dsp3khu2whqfq" path="res://Assets/Audio/Voice/Lobby/PlayerLine8.wav" id="17_1eoxx"]
 [ext_resource type="AudioStream" uid="uid://rs8hd5y7sup7" path="res://Assets/Audio/Voice/Lobby/NPCLine9.wav" id="18_a4144"]
 [ext_resource type="AudioStream" uid="uid://b8hvcdfflxlge" path="res://Assets/Audio/Voice/Lobby/PlayerLine9.wav" id="19_qr6vj"]
+[ext_resource type="AudioStream" uid="uid://caj8cxmqxrhl1" path="res://Assets/Audio/SFX/Ring.wav" id="20_ejj7g"]
 [ext_resource type="Script" path="res://Scripts/Lobby/StartLevel.cs" id="21_nnvxs"]
 [ext_resource type="AudioStream" uid="uid://33y7h8fjxyns" path="res://Assets/Audio/Voice/Lobby/Ribbit.wav" id="22_ws4ta"]
 [ext_resource type="PackedScene" uid="uid://cjbee1cxk55xj" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
@@ -39,7 +40,7 @@ y_sort_enabled = true
 script = ExtResource("1_kgtwl")
 text = NodePath("Text")
 tts = Array[AudioStream]([ExtResource("2_afhw5"), ExtResource("3_guhe7"), ExtResource("4_nhh56"), ExtResource("5_hx1ud"), ExtResource("6_phaeo"), ExtResource("7_6sowg"), ExtResource("8_xftad"), ExtResource("9_6qwax"), ExtResource("10_urrqo"), ExtResource("11_ywyre"), ExtResource("12_sciu7"), ExtResource("13_8ryof"), ExtResource("14_i02ep"), ExtResource("15_aoajd"), ExtResource("16_qa0p7"), ExtResource("17_1eoxx"), ExtResource("18_a4144"), ExtResource("19_qr6vj")])
-sfx = ExtResource("22_ws4ta")
+sfx = ExtResource("20_ejj7g")
 
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -74,7 +75,7 @@ script = ExtResource("21_nnvxs")
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Wrath. A powerful concept and the creator of violence. Destroy it and maybe bring peace.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Wrath. A powerful concept and the creator of violence. Destroy it and maybe bring peace.", "[Digital Message] So let\'s see what you think of when you think of Wrath", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level1"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -86,7 +87,7 @@ levelNumber = 1
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Envy. Needless to say I don\'t envy you right now. This concept like to take what others have, watch your supplies closely.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Envy. Needless to say I don\'t envy you right now. This concept like to take what others have, watch your supplies closely.", "[Digital Message] So let\'s see what you think of when you think of Envy", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level2"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -98,7 +99,7 @@ levelNumber = 2
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Greed is a sleeping bear. Not literally of course, your mind seems to prefer sea animals. Greed sneaks up on you and temps you in ways that are hard to fight, and even harder to notice.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Greed is a sleeping bear. Not literally of course, your mind seems to prefer sea animals. Greed sneaks up on you and temps you in ways that are hard to fight, and even harder to notice.", "[Digital Message] So let\'s see what you think of when you think of Greed", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level3"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -110,7 +111,7 @@ levelNumber = 3
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Wrath. A powerful concept and the creator of violence. Destroy it and maybe bring peace.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Gluttony, an uneeded hunger. Really easy to get this one mixed up.", "[Digital Message] So let\'s see what you think of when you think of Gluttony", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level4"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -122,7 +123,7 @@ levelNumber = 4
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Wrath. A powerful concept and the creator of violence. Destroy it and maybe bring peace.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Lust is going to be a fun one. Luckily the noosphere seems to be modest so I wouldn\'t be too worried", "[Digital Message] So let\'s see what you think of when you think of Lust. I won\'t judge", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level5"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -134,7 +135,7 @@ levelNumber = 5
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Wrath. A powerful concept and the creator of violence. Destroy it and maybe bring peace.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Yawn... Sigh, yeah its Sloth or whetever.", "[Digital Message] So let\'s see what you think of when you think of Sloth", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level6"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -146,7 +147,7 @@ levelNumber = 6
 levelPath = "res://Scenes/GameScene.tscn"
 sfx = ExtResource("22_ws4ta")
 textBox = NodePath("../../Text")
-introText = PackedStringArray("[Digital Message] Wrath. A powerful concept and the creator of violence. Destroy it and maybe bring peace.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
+introText = PackedStringArray("[Digital Message] Pride is many things, some good and some not. There is the kind of pride that grows smiles and the pride that makes you incapaple of growth.", "[Digital Message] So let\'s see what you think of when you think of Pride. The good? The bad? Some other third thing? Probably some other third thing.", "[Digital Message] When you enter you will have limited oxygen and reduced vision. be prepaired.", "[Digital Message] You have your toolbelt there. One of those tools should be a weapon of some kind.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Level7"]
 shape = SubResource("CircleShape2D_kvpsb")
@@ -253,9 +254,9 @@ horizontal_alignment = 2
 
 [node name="O2Frog" parent="." node_paths=PackedStringArray("textBox") instance=ExtResource("28_2owm2")]
 z_index = 25
-z_as_relative = false
 position = Vector2(368, 424)
 textBox = NodePath("../Text")
+airPerCoin = 0.1
 
 [editable path="Player"]
 [editable path="SceneBase"]

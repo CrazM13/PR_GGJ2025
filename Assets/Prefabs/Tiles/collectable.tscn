@@ -7,10 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu07n"]
 size = Vector2(32, 32)
 
-[node name="Collectable" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="Collectable" type="Area2D" node_paths=PackedStringArray("sprite", "sfx")]
 texture_filter = 1
 script = ExtResource("1_i5737")
 sprite = NodePath("Sprite2D")
+sfx = NodePath("AudioStreamPlayer2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mu07n")

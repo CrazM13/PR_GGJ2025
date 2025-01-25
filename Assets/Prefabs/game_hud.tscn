@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://q0vql2ah3jd"]
+[gd_scene load_steps=30 format=3 uid="uid://q0vql2ah3jd"]
 
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_2vlt0"]
 [ext_resource type="Texture2D" uid="uid://ccb6ghpwgu2of" path="res://Assets/Textures/O2/O2_Interior.png" id="1_6bu7s"]
@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://b5sxbi2yucjsy" path="res://Assets/Textures/AbilityUI/AbilityEnvy.tres" id="18_6b7ds"]
 [ext_resource type="Texture2D" uid="uid://ct0k16owm2r31" path="res://Assets/Textures/AbilityUI/AbilityGreed.tres" id="19_ajmto"]
 [ext_resource type="Texture2D" uid="uid://bor3hb1u76k3n" path="res://Assets/Textures/AbilityUI/AbilityGluttony.tres" id="20_0cbwb"]
+[ext_resource type="Texture2D" uid="uid://dbwki2rsjmasd" path="res://Assets/Textures/AbilityUI/AbilityLust.tres" id="21_18sjq"]
+[ext_resource type="Texture2D" uid="uid://do0ipro11u7eh" path="res://Assets/Textures/AbilityUI/AbilitySloth.tres" id="22_ofd5n"]
+[ext_resource type="Texture2D" uid="uid://c8ls0bk7a5m7g" path="res://Assets/Textures/AbilityUI/AbilityPride.tres" id="23_37ocy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_abjhg"]
 font_size = 48
@@ -50,8 +53,6 @@ gradient = SubResource("Gradient_x2llv")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.9, 0.2)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pfjld"]
 
 [node name="GameHud" type="CanvasLayer" node_paths=PackedStringArray("score_label")]
 process_mode = 3
@@ -214,7 +215,7 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 script = ExtResource("7_wnhjv")
 abilityIcons = [NodePath("AbilityContainer0/TextureRect"), NodePath("AbilityContainer1/TextureRect"), NodePath("AbilityContainer2/TextureRect"), NodePath("AbilityContainer3/TextureRect"), NodePath("AbilityContainer4/TextureRect"), NodePath("AbilityContainer5/TextureRect"), NodePath("AbilityContainer6/TextureRect"), NodePath("AbilityContainer7/TextureRect"), NodePath("AbilityContainer8/TextureRect")]
-lockIcons = [NodePath("AbilityContainer0/TextureRect/TextureRect4"), NodePath("AbilityContainer1/TextureRect/TextureRect4"), NodePath("AbilityContainer2/TextureRect/TextureRect4"), NodePath("AbilityContainer3/TextureRect/TextureRect4"), NodePath("AbilityContainer4/TextureRect/TextureRect4"), NodePath("AbilityContainer5/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4"), NodePath("AbilityContainer7/TextureRect/TextureRect4")]
+lockIcons = [NodePath("AbilityContainer0/TextureRect/TextureRect4"), NodePath("AbilityContainer1/TextureRect/TextureRect4"), NodePath("AbilityContainer2/TextureRect/TextureRect4"), NodePath("AbilityContainer3/TextureRect/TextureRect4"), NodePath("AbilityContainer4/TextureRect/TextureRect4"), NodePath("AbilityContainer5/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4"), NodePath("AbilityContainer7/TextureRect/TextureRect4"), NodePath("AbilityContainer8/TextureRect/TextureRect4")]
 
 [node name="AbilityContainer0" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -612,7 +613,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("21_18sjq")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 6
@@ -673,7 +674,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("22_ofd5n")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 7
@@ -734,7 +735,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("23_37ocy")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 8

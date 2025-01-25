@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxm60d1ron0n4"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Pride/PrideFire.cs" id="1_0ax4e"]
+[ext_resource type="Shader" uid="uid://5xb8lb8e4bsi" path="res://Assets/Shaders/Irridesent.tres" id="1_yr55m"]
+[ext_resource type="Texture2D" uid="uid://0ws6w4t08y58" path="res://Assets/Textures/Character_Tiles/Pride/Firewall.png" id="2_tkdyy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gk1un"]
+shader = ExtResource("1_yr55m")
+shader_parameter/TimeScale = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhy32"]
+atlas = ExtResource("2_tkdyy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhqpt"]
+atlas = ExtResource("2_tkdyy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjncs"]
+atlas = ExtResource("2_tkdyy")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5dy7"]
+atlas = ExtResource("2_tkdyy")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mg70v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhy32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhqpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjncs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5dy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl41k"]
+size = Vector2(32, 32)
+
+[node name="Fire" type="Area2D"]
+z_index = 2
+z_as_relative = false
+script = ExtResource("1_0ax4e")
+attackDelay = 0.01
+damage = 0.001
+maxLifetime = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.525101, 0.525101, 0.525101, 1)
+z_index = 2
+z_as_relative = false
+material = SubResource("ShaderMaterial_gk1un")
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_mg70v")
+autoplay = "default"
+frame_progress = 0.103565
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_gk1un")
+sprite_frames = SubResource("SpriteFrames_mg70v")
+autoplay = "default"
+frame_progress = 0.936556
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dl41k")

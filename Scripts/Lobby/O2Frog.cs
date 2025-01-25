@@ -22,8 +22,6 @@ public partial class O2Frog : Area2D {
 
 		this.BodyEntered += this.OnBodyEnter;
 		this.BodyExited += this.OnBodyExit;
-
-		GameManager.Instance.CoinCount = 100;
 	}
 
 	public override void _Process(double delta) {

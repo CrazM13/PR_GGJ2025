@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=54 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -28,6 +28,8 @@
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityBubbleShield.cs" id="26_yfsqr"]
 [ext_resource type="PackedScene" uid="uid://bjaib5477y8ny" path="res://Assets/Prefabs/Abilities/bubble_shield_bullet.tscn" id="27_vuosq"]
 [ext_resource type="PackedScene" uid="uid://cofirwp8gua2d" path="res://Assets/Prefabs/Abilities/shark_attack.tscn" id="28_ww85l"]
+[ext_resource type="Script" path="res://Scripts/Ability/Pride/AbilityWarp.cs" id="29_n5hk0"]
+[ext_resource type="PackedScene" uid="uid://cxm60d1ron0n4" path="res://Assets/Prefabs/pride_fire.tscn" id="30_vxmcn"]
 
 [sub_resource type="Gradient" id="Gradient_6b7jc"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -183,6 +185,9 @@ initial_velocity_max = 98.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_mpvmo")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ndip"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "Camera", "collectLine", "sprite", "abilities")]
 light_mask = 512
 z_index = 5
@@ -195,7 +200,7 @@ movement = NodePath("Components/MovementComponent")
 Camera = NodePath("CameraRig")
 collectLine = NodePath("Audio/CollectVoice")
 sprite = NodePath("AnimatedSprite2D")
-abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield"), NodePath("Abilities/GluttanyAbility")]
+abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield"), NodePath("Abilities/GluttanyAbility"), NodePath("Abilities/Chalk"), NodePath("Abilities/Chalk"), NodePath("Abilities/PrideAbility")]
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -349,6 +354,17 @@ script = ExtResource("24_pemo4")
 prefab = ExtResource("28_ww85l")
 spawnCount = 1
 cooldown = 10.0
+
+[node name="PrideAbility" type="Node" parent="Abilities" node_paths=PackedStringArray("shapeCast")]
+script = ExtResource("29_n5hk0")
+backfirePrefab = ExtResource("30_vxmcn")
+shapeCast = NodePath("ShapeCast2D")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Abilities/PrideAbility"]
+position = Vector2(66, 60)
+shape = SubResource("CircleShape2D_4ndip")
+target_position = Vector2(0, 0)
+collision_mask = 8
 
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="AnimatedSprite2D/GPUParticles2D" method="set_emitting" binds= [true]]
