@@ -20,7 +20,7 @@ public partial class AbilityFireSpreadProjectile : BaseAbility {
 		Vector2 mouseDirection = (player.GetGlobalMousePosition() - player.GlobalPosition).Normalized();
 
 		float spreadIterval = spread / projectileCount;
-		for (int i = 0; i < projectileCount; i++) {
+		for (int i = -(int)(projectileCount * 0.5f); i < (int) (projectileCount * 0.5f); i++) {
 			CreateProjectile(player.GlobalPosition, mouseDirection.Rotated(Mathf.DegToRad(spreadIterval * i)));
 		}
 
