@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MazeRuleCell" load_steps=3 format=3 uid="uid://cerwhwgd5o1la"]
+[gd_resource type="Resource" script_class="MazeRuleCell" load_steps=4 format=3 uid="uid://cerwhwgd5o1la"]
 
 [ext_resource type="PackedScene" uid="uid://casikq0f5qes5" path="res://Assets/Prefabs/MazeCells/Rooms/DownRoom1.tscn" id="1_117n2"]
 [ext_resource type="Script" path="res://Scripts/Maze/MazeRuleCell.cs" id="1_g238i"]
+[ext_resource type="PackedScene" uid="uid://da804g4tgvlmq" path="res://Assets/Prefabs/MazeCells/Rooms/DownRoom2.tscn" id="2_px18j"]
 
 [resource]
 script = ExtResource("1_g238i")
 Connections = 2
-SceneSet = Array[PackedScene]([ExtResource("1_117n2")])
+SceneSet = Array[PackedScene]([ExtResource("1_117n2"), ExtResource("2_px18j")])

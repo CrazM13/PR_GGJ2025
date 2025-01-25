@@ -153,7 +153,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqmvg"]
-size = Vector2(34, 31)
+size = Vector2(30, 31)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "camera", "collectLine", "sprite", "abilities")]
 light_mask = 512
