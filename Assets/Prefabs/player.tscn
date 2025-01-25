@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=46 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -18,10 +18,15 @@
 [ext_resource type="AudioStream" uid="uid://cpttrddrf3r8b" path="res://Assets/Audio/Voice/Collectable-07.wav" id="15_p63mo"]
 [ext_resource type="AudioStream" uid="uid://crdmvxhn0vybb" path="res://Assets/Audio/Voice/Collectable-08.wav" id="16_p1anf"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityFireProjectile.cs" id="17_yrwpy"]
-[ext_resource type="PackedScene" uid="uid://bfjdsws2lpq1p" path="res://Assets/Prefabs/bubble_bullet.tscn" id="18_7a4ph"]
+[ext_resource type="PackedScene" uid="uid://bfjdsws2lpq1p" path="res://Assets/Prefabs/Abilities/bubble_bullet.tscn" id="18_7a4ph"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityDraw.cs" id="19_dg2nr"]
-[ext_resource type="PackedScene" uid="uid://xxuv5vtg1ax8" path="res://Assets/Prefabs/lightning_bullet.tscn" id="20_cbvj8"]
+[ext_resource type="PackedScene" uid="uid://xxuv5vtg1ax8" path="res://Assets/Prefabs/Abilities/lightning_bullet.tscn" id="20_cbvj8"]
 [ext_resource type="Texture2D" uid="uid://c4e2isyv7k3hf" path="res://Assets/Textures/Particle_Effects/ChalkDust.png" id="20_ou6ad"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilityFireSpreadProjectile.cs" id="20_tah73"]
+[ext_resource type="Script" path="res://Scripts/Ability/Envy/AbilitySpawn.cs" id="24_pemo4"]
+[ext_resource type="PackedScene" uid="uid://dev68a8tgb7h1" path="res://Assets/Prefabs/Abilities/envy_ally.tscn" id="25_6bcql"]
+[ext_resource type="Script" path="res://Scripts/Ability/AbilityBubbleShield.cs" id="26_yfsqr"]
+[ext_resource type="PackedScene" uid="uid://bjaib5477y8ny" path="res://Assets/Prefabs/Abilities/bubble_shield_bullet.tscn" id="27_vuosq"]
 
 [sub_resource type="Gradient" id="Gradient_6b7jc"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -166,7 +171,7 @@ movement = NodePath("Components/MovementComponent")
 camera = NodePath("CameraRig")
 collectLine = NodePath("Audio/CollectVoice")
 sprite = NodePath("AnimatedSprite2D")
-abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt")]
+abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield")]
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -273,23 +278,33 @@ wait_time = 13.3
 [node name="BubbleGun" type="Node" parent="Abilities"]
 script = ExtResource("17_yrwpy")
 bulletPrefab = ExtResource("18_7a4ph")
-cooldown = 0.1
 spread = 10.0
 cost = 0.001
 recoil = 4.0
+cooldown = 0.1
 
 [node name="LightningBolt" type="Node" parent="Abilities"]
-script = ExtResource("17_yrwpy")
+script = ExtResource("20_tah73")
 bulletPrefab = ExtResource("20_cbvj8")
-power = 0.25
-cooldown = 2.0
-spread = 0.0
+power = 4.0
+spread = 45.0
 
 [node name="Chalk" type="Node" parent="Abilities"]
 script = ExtResource("19_dg2nr")
 texture = ExtResource("20_ou6ad")
 scale = 1.0
 showOnMinimap = true
+
+[node name="SpawnEnvyAlly" type="Node" parent="Abilities"]
+script = ExtResource("24_pemo4")
+prefab = ExtResource("25_6bcql")
+spawnCount = 4
+
+[node name="BubbleShield" type="Node" parent="Abilities"]
+script = ExtResource("26_yfsqr")
+bulletPrefab = ExtResource("27_vuosq")
+cost = 0.004
+cooldown = 2.5
 
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="AnimatedSprite2D/GPUParticles2D" method="set_emitting" binds= [true]]

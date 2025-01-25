@@ -3,7 +3,7 @@ using System;
 
 public partial class EnemySpawner : Node
 {
-	[Export] PackedScene enemy_scn;
+	[Export] PackedScene[] enemy_scn;
 	[Export] float eps = 1f;
 
 	[Export] private int mapSize = 64;
@@ -41,7 +41,7 @@ public partial class EnemySpawner : Node
         RandomNumberGenerator rng = new RandomNumberGenerator();
         Vector2 location = spawnPoints[rng.Randi() % spawnPoints.Length];
 
-        Node2D enemy = (Node2D) enemy_scn.Instantiate();
+        Node2D enemy = (Node2D) enemy_scn[GameManager.Instance.CurrentLevel].Instantiate();
         enemy.GlobalPosition = location;
 
 		GetTree().CurrentScene.AddChild(enemy);

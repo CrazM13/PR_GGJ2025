@@ -130,4 +130,12 @@ public partial class Player : CharacterBody2D {
 		sprite.SelfModulate = Colors.Red;
 	}
 
+	public float GetCooldownPercentage(int abilityIndex) {
+		if (abilityIndex < abilities.Length) {
+			return abilities[abilityIndex].CooldownPercentage;
+		}
+
+		return 0;
+	}
+
 }

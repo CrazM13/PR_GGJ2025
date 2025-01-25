@@ -57,7 +57,7 @@ collision_layer = 128
 collision_mask = 24
 script = ExtResource("1_gxgwx")
 sprite = NodePath("AnimatedSprite2D")
-damage = 8
+damage = 4.0
 scaleMax = 1.0
 scaleMin = 1.0
 

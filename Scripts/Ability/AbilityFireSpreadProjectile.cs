@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public partial class AbilityFireProjectile : BaseAbility {
+public partial class AbilityFireSpreadProjectile : BaseAbility {
 
 	[Export] private PackedScene bulletPrefab;
 	[Export] private float power = 1f;
 	[Export] private float spread = 20f;
+	[Export] private int projectileCount = 4;
 	[Export] private float cost = 0f;
 	[Export] private float recoil = 0f;
 
@@ -18,7 +19,10 @@ public partial class AbilityFireProjectile : BaseAbility {
 
 		Vector2 mouseDirection = (player.GetGlobalMousePosition() - player.GlobalPosition).Normalized();
 
-		CreateProjectile(player.GlobalPosition, mouseDirection);
+		float spreadIterval = spread / projectileCount;
+		for (int i = 0; i < projectileCount; i++) {
+			CreateProjectile(player.GlobalPosition, mouseDirection.Rotated(Mathf.DegToRad(spreadIterval * i)));
+		}
 
 		if (recoil != 0) player.MoveInDirection(-mouseDirection * recoil);
 
@@ -31,11 +35,11 @@ public partial class AbilityFireProjectile : BaseAbility {
 		Bullet bubble = bulletPrefab.Instantiate<Bullet>();
 		bubble.GlobalPosition = position;
 
-		float angleOffset = RNG.RandfRange(-spread, spread);
-		direction = direction.Normalized().Rotated(Mathf.DegToRad(angleOffset));
+		direction = direction.Normalized();
 
 		bubble.Velocity = direction * power;
 		bubble.RandomizeScale(RNG);
 		GetTree().CurrentScene.AddChild(bubble);
 	}
+
 }

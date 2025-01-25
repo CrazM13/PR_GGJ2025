@@ -4,6 +4,7 @@ using System;
 public partial class AbilityIconUI : TextureRect {
 
 	[Export] private int abilityIndex;
+	[Export] private TextureProgressBar cooldownUI;
 
 	public override void _Input(InputEvent @event) {
 		base._Input(@event);
@@ -16,6 +17,13 @@ public partial class AbilityIconUI : TextureRect {
 				}
 			}
 		}
+	}
+
+	public override void _Process(double delta) {
+		base._Process(delta);
+
+		cooldownUI.Value = GameManager.Instance.Player.GetCooldownPercentage(abilityIndex);
+
 	}
 
 }

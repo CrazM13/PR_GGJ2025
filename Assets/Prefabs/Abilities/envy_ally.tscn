@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dev68a8tgb7h1"]
+
+[ext_resource type="Script" path="res://Scripts/Ability/Envy/EnvyAlly.cs" id="1_0dwoe"]
+[ext_resource type="Texture2D" uid="uid://b82w6e7kh1r6r" path="res://Assets/Textures/Character_Tiles/Envy/MiniEel.png" id="2_hcod0"]
+[ext_resource type="Script" path="res://Scripts/Ability/Envy/EnvyAllyDetection.cs" id="3_i1q7s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4s6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hcod0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2c8r"]
+size = Vector2(30, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ialku"]
+radius = 256.0
+
+[node name="EnvyAlly" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_0dwoe")
+sprite = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m4s6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u2c8r")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("ally")]
+collision_mask = 25
+script = ExtResource("3_i1q7s")
+ally = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ialku")
