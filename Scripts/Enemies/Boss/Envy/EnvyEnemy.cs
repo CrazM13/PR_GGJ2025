@@ -40,6 +40,7 @@ public partial class EnvyEnemy : Enemy {
 
 			if (this.GlobalPosition == playerPos) {
 				GameManager.Instance.CurrentAir -= airCost;
+				GameManager.Instance.Player.OnDamage();
 				state = EelState.RETURN;
 			}
 		} else if (state == EelState.RETURN) {

@@ -19,6 +19,7 @@ public class GameManager {
 	public float CurrentAir {
 		get => air;
 		set {
+			float oldValue = air;
 			air = value;
 			if (air > MaxAir) {
 				air = MaxAir;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://q0vql2ah3jd"]
+[gd_scene load_steps=21 format=3 uid="uid://q0vql2ah3jd"]
 
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_2vlt0"]
 [ext_resource type="Texture2D" uid="uid://ccb6ghpwgu2of" path="res://Assets/Textures/O2/O2_Interior.png" id="1_6bu7s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpta7oi7nkv7m" path="res://Assets/Textures/O2/O2_Amount.png" id="3_fnav1"]
 [ext_resource type="Script" path="res://Scripts/Oxygen/Oxygen.cs" id="4_i2m87"]
 [ext_resource type="Script" path="res://Scripts/Minimap/Minimap.cs" id="6_6yffa"]
+[ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="6_ta3bf"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityBarUI.cs" id="7_wnhjv"]
 [ext_resource type="Texture2D" uid="uid://bch6243sa3iwr" path="res://Assets/Textures/AbilityUI/Ring.png" id="8_jsgyu"]
 [ext_resource type="Texture2D" uid="uid://ujuerfniyov0" path="res://Assets/Textures/AbilityUI/Circle.png" id="9_vhfgc"]
@@ -16,6 +17,22 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_abjhg"]
 font_size = 48
+
+[sub_resource type="Curve" id="Curve_d8bkf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503333, 1), 0.0, 0.0, 0, 0, Vector2(0.903333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_puev5"]
+curve = SubResource("Curve_d8bkf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m53eh"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 75.732
+initial_velocity_max = 3.0
+gravity = Vector3(0, -10, 0)
+scale_curve = SubResource("CurveTexture_puev5")
 
 [sub_resource type="Gradient" id="Gradient_x2llv"]
 interpolation_mode = 1
@@ -63,29 +80,87 @@ layout_mode = 2
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 
-[node name="OxygenTank" type="TextureProgressBar" parent="VBoxContainer/O2"]
+[node name="Control" type="Control" parent="VBoxContainer/O2"]
+anchors_preset = 0
+offset_left = -24.0
+offset_right = 16.0
+offset_bottom = 40.0
+
+[node name="OxygenTank" type="Control" parent="VBoxContainer/O2/Control"]
 texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+offset_bottom = -8.0
+grow_vertical = 2
+scale = Vector2(4, 4)
+size_flags_vertical = 3
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer/O2/Control/OxygenTank"]
+z_index = -2
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_right = 8.0
-offset_bottom = -96.0
+offset_right = 32.0
 grow_vertical = 2
-scale = Vector2(4, 4)
-size_flags_vertical = 3
+texture = ExtResource("1_6bu7s")
+patch_margin_top = 14
+patch_margin_bottom = 16
+
+[node name="ProgressBar" type="TextureProgressBar" parent="VBoxContainer/O2/Control/OxygenTank" node_paths=PackedStringArray("damageIndicator")]
+self_modulate = Color(0, 1, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_top = 14.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 max_value = 1.0
 step = 0.0
-value = 0.57
+value = 1.0
 fill_mode = 3
 nine_patch_stretch = true
-stretch_margin_top = 16
-stretch_margin_bottom = 16
-texture_under = ExtResource("1_6bu7s")
-texture_over = ExtResource("2_f8kj4")
 texture_progress = ExtResource("3_fnav1")
 script = ExtResource("4_i2m87")
+damageIndicator = NodePath("../ProgressBar2")
+shakeDecay = 4.0
+
+[node name="ProgressBar2" type="TextureProgressBar" parent="VBoxContainer/O2/Control/OxygenTank"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_top = 14.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("3_fnav1")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/O2/Control/OxygenTank"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+texture = ExtResource("2_f8kj4")
+patch_margin_top = 14
+patch_margin_bottom = 16
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="VBoxContainer/O2/Control/OxygenTank"]
+position = Vector2(24, 1.75)
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_m53eh")
+texture = ExtResource("6_ta3bf")
+lifetime = 4.0
 
 [node name="MinimapFrame" type="TextureRect" parent="."]
 self_modulate = Color(0, 0, 0, 1)

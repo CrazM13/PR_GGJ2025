@@ -138,6 +138,7 @@ public partial class GluttonyBoss : Enemy {
 		attack.BodyEntered += (body) => {
 			if (body is Player) {
 				GameManager.Instance.CurrentAir -= 0.5f;
+				GameManager.Instance.Player.OnDamage();
 				attack.QueueFree();
 			}
 		};

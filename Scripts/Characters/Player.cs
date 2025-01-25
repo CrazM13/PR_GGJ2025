@@ -33,6 +33,8 @@ public partial class Player : CharacterBody2D {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
+		sprite.SelfModulate = sprite.SelfModulate.Lerp(Colors.White, (float) delta * 10);
+
 		GetMovementInput((float) delta);
 		AbilitySelectInput();
 
@@ -122,6 +124,10 @@ public partial class Player : CharacterBody2D {
 
 	public void CameraReset() {
 		camera.CameraLookAtLocal(Vector2.Zero);
+	}
+
+	public void OnDamage() {
+		sprite.SelfModulate = Colors.Red;
 	}
 
 }

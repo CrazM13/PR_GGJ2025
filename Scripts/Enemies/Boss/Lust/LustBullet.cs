@@ -7,6 +7,7 @@ public partial class LustBullet : Bullet {
 
 		if (collision.GetCollider() is Player) {
 			GameManager.Instance.CurrentAir -= damage;
+			GameManager.Instance.Player.OnDamage();
 
 			IsActive = false;
 
