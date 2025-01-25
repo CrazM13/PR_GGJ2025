@@ -34,7 +34,7 @@ public partial class Oxygen : TextureProgressBar {
 		if (this.Value < newAir) {
 			if (damageIndicator.Value < newAir) {
 				damageIndicator.Value = newAir;
-				skipFilling = true;
+				if (Mathf.Abs(this.Value - damageIndicator.Value) < 0.2f) skipFilling = true;
 				isFilling = true;
 			} else if (damageIndicator.Value > newAir) {
 				damageIndicator.Value = newAir;
@@ -42,7 +42,7 @@ public partial class Oxygen : TextureProgressBar {
 			}
 		} else if (this.Value > newAir) {
 			this.Value = newAir;
-			skipFilling = true;
+			if (Mathf.Abs(this.Value - damageIndicator.Value) < 0.2f) skipFilling = true;
 			isFilling = true;
 		}
 		

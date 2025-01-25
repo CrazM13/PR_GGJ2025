@@ -1,12 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://43xk8xq44d2l"]
 
 [ext_resource type="Script" path="res://Scripts/Collectables/Collectable.cs" id="1_i5737"]
+[ext_resource type="Texture2D" uid="uid://bl0y7s76gqcn8" path="res://Assets/Textures/Shapes/Gold_Coin.png" id="2_nubfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu07n"]
 size = Vector2(32, 32)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cisoj"]
-size = Vector2(8, 8)
 
 [node name="Collectable" type="Area2D" node_paths=PackedStringArray("sprite")]
 texture_filter = 1
@@ -17,4 +15,4 @@ sprite = NodePath("Sprite2D")
 shape = SubResource("RectangleShape2D_mu07n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_cisoj")
+texture = ExtResource("2_nubfw")

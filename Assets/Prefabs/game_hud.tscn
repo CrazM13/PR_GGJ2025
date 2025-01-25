@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_2vlt0"]
 [ext_resource type="Texture2D" uid="uid://ccb6ghpwgu2of" path="res://Assets/Textures/O2/O2_Interior.png" id="1_6bu7s"]
+[ext_resource type="Texture2D" uid="uid://bl0y7s76gqcn8" path="res://Assets/Textures/Shapes/Gold_Coin.png" id="2_58h0p"]
 [ext_resource type="Texture2D" uid="uid://bm8el1ixng1ns" path="res://Assets/Textures/O2/O2_Tank.png" id="2_f8kj4"]
 [ext_resource type="Texture2D" uid="uid://bpta7oi7nkv7m" path="res://Assets/Textures/O2/O2_Amount.png" id="3_fnav1"]
 [ext_resource type="Script" path="res://Scripts/Oxygen/Oxygen.cs" id="4_i2m87"]
@@ -12,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ujuerfniyov0" path="res://Assets/Textures/AbilityUI/Circle.png" id="9_vhfgc"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityIconUI.cs" id="10_11jye"]
 [ext_resource type="Texture2D" uid="uid://dmr612tr6i046" path="res://Assets/Textures/AbilityUI/Lock.png" id="10_vnq7o"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3feg7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_abjhg"]
 font_size = 48
@@ -62,7 +61,7 @@ layout_mode = 2
 
 [node name="CoinIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_3feg7")
+texture = ExtResource("2_58h0p")
 expand_mode = 3
 stretch_mode = 5
 
