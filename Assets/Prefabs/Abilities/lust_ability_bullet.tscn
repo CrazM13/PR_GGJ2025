@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp3yb2rng5pnv"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Lust/LustBullet.cs" id="1_uqyp3"]
+[ext_resource type="PackedScene" uid="uid://cdae1ouxl655e" path="res://Assets/Prefabs/Abilities/collectable_air.tscn" id="2_2fvar"]
+[ext_resource type="Texture2D" uid="uid://nh8vd4xdngfd" path="res://Assets/Textures/Character_Tiles/Lust/HeartUncoloured.png" id="2_kgokr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mxvk"]
+radius = 8.0
+
+[node name="LustBullet" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+z_index = 5
+z_as_relative = false
+collision_layer = 128
+collision_mask = 8
+script = ExtResource("1_uqyp3")
+decayProduct = ExtResource("2_2fvar")
+sprite = NodePath("Sprite2D")
+maxLifetime = 5.0
+damage = 0.1
+scaleMax = 1.0
+scaleMin = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2mxvk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.639216, 1, 1)
+texture = ExtResource("2_kgokr")

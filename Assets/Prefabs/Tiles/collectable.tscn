@@ -8,6 +8,8 @@
 size = Vector2(32, 32)
 
 [node name="Collectable" type="Area2D" node_paths=PackedStringArray("sprite", "sfx")]
+z_index = 5
+z_as_relative = false
 texture_filter = 1
 script = ExtResource("1_i5737")
 sprite = NodePath("Sprite2D")

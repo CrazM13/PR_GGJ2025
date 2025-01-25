@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdae1ouxl655e"]
+
+[ext_resource type="Script" path="res://Scripts/Collectables/CollectableAir.cs" id="1_vnkjv"]
+[ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="2_liuu4"]
+[ext_resource type="AudioStream" uid="uid://b15o4me1cee3k" path="res://Assets/Audio/SFX/Pop.wav" id="3_2cvft"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rw77p"]
+radius = 4.0
+
+[node name="CollectableAir" type="Area2D" node_paths=PackedStringArray("sprite", "sfx")]
+z_index = 5
+z_as_relative = false
+script = ExtResource("1_vnkjv")
+sprite = NodePath("Sprite2D")
+sfx = NodePath("AudioStreamPlayer2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rw77p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_liuu4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2cvft")

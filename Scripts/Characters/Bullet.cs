@@ -34,14 +34,7 @@ public partial class Bullet : CharacterBody2D {
 		if (collision != null) {
 			OnCollision(collision);
 		} else if (lifetime >= maxLifetime) {
-			IsActive = false;
-			popSound?.Play();
-
-			sprite.Visible = false;
-
-			GetTree().CreateTimer(2).Timeout += () => {
-				QueueFree();
-			};
+			OnDecay();
 		}
 	}
 
@@ -58,6 +51,17 @@ public partial class Bullet : CharacterBody2D {
 		if (collision.GetCollider() is Enemy enemy) {
 			enemy.Damage((int)damage);
 		}
+	}
+
+	protected virtual void OnDecay() {
+		IsActive = false;
+		popSound?.Play();
+
+		sprite.Visible = false;
+
+		GetTree().CreateTimer(2).Timeout += () => {
+			QueueFree();
+		};
 	}
 
 }

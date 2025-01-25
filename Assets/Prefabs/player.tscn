@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=55 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cofirwp8gua2d" path="res://Assets/Prefabs/Abilities/shark_attack.tscn" id="28_ww85l"]
 [ext_resource type="Script" path="res://Scripts/Ability/Pride/AbilityWarp.cs" id="29_n5hk0"]
 [ext_resource type="PackedScene" uid="uid://cxm60d1ron0n4" path="res://Assets/Prefabs/pride_fire.tscn" id="30_vxmcn"]
+[ext_resource type="PackedScene" uid="uid://bp3yb2rng5pnv" path="res://Assets/Prefabs/Abilities/lust_ability_bullet.tscn" id="31_ytlyf"]
 
 [sub_resource type="Gradient" id="Gradient_6b7jc"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -200,7 +201,7 @@ movement = NodePath("Components/MovementComponent")
 Camera = NodePath("CameraRig")
 collectLine = NodePath("Audio/CollectVoice")
 sprite = NodePath("AnimatedSprite2D")
-abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield"), NodePath("Abilities/GluttanyAbility"), NodePath("Abilities/Chalk"), NodePath("Abilities/Chalk"), NodePath("Abilities/PrideAbility")]
+abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield"), NodePath("Abilities/GluttanyAbility"), NodePath("Abilities/LustAbility"), NodePath("Abilities/Chalk"), NodePath("Abilities/PrideAbility")]
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -365,6 +366,14 @@ position = Vector2(66, 60)
 shape = SubResource("CircleShape2D_4ndip")
 target_position = Vector2(0, 0)
 collision_mask = 8
+
+[node name="LustAbility" type="Node" parent="Abilities"]
+script = ExtResource("20_tah73")
+bulletPrefab = ExtResource("31_ytlyf")
+power = 2.0
+spread = 360.0
+projectileCount = 8
+cooldown = 25.0
 
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="AnimatedSprite2D/GPUParticles2D" method="set_emitting" binds= [true]]
