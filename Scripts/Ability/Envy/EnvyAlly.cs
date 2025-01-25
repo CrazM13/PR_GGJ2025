@@ -43,6 +43,7 @@ public partial class EnvyAlly : CharacterBody2D {
 
 				if (this.GlobalPosition == targetEnemy.GlobalPosition) {
 					targetEnemy.Damage(damage);
+					targetEnemy = null;
 					healing = damage * 0.1f;
 					state = EelState.RETURN;
 				}

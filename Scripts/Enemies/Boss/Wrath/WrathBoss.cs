@@ -139,7 +139,7 @@ public partial class WrathBoss : Enemy {
 
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
-		GameManager.Instance.ActivatedAbilities[2] = true;
+		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();

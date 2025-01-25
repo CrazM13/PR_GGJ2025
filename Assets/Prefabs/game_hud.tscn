@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://q0vql2ah3jd"]
+[gd_scene load_steps=28 format=3 uid="uid://q0vql2ah3jd"]
 
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_2vlt0"]
 [ext_resource type="Texture2D" uid="uid://ccb6ghpwgu2of" path="res://Assets/Textures/O2/O2_Interior.png" id="1_6bu7s"]
@@ -13,7 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://ujuerfniyov0" path="res://Assets/Textures/AbilityUI/Circle.png" id="9_vhfgc"]
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityIconUI.cs" id="10_11jye"]
 [ext_resource type="Texture2D" uid="uid://dmr612tr6i046" path="res://Assets/Textures/AbilityUI/Lock.png" id="10_vnq7o"]
+[ext_resource type="Texture2D" uid="uid://ijulnc1eo6ui" path="res://Assets/Textures/AbilityUI/AbilityChalk.tres" id="12_6co3y"]
 [ext_resource type="Texture2D" uid="uid://bgi73b1ymxvy3" path="res://Assets/Textures/Shapes/Circle.png" id="13_eka2s"]
+[ext_resource type="Texture2D" uid="uid://du2tkenvnsfda" path="res://Assets/Textures/AbilityUI/AbilityBubbleGun.tres" id="16_hyet1"]
+[ext_resource type="Texture2D" uid="uid://d3ewqr2qkj62m" path="res://Assets/Textures/AbilityUI/AbilityWrath.tres" id="17_x5gil"]
+[ext_resource type="Texture2D" uid="uid://b5sxbi2yucjsy" path="res://Assets/Textures/AbilityUI/AbilityEnvy.tres" id="18_6b7ds"]
+[ext_resource type="Texture2D" uid="uid://ct0k16owm2r31" path="res://Assets/Textures/AbilityUI/AbilityGreed.tres" id="19_ajmto"]
+[ext_resource type="Texture2D" uid="uid://bor3hb1u76k3n" path="res://Assets/Textures/AbilityUI/AbilityGluttony.tres" id="20_0cbwb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_abjhg"]
 font_size = 48
@@ -207,8 +213,8 @@ theme_override_constants/margin_bottom = 16
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 script = ExtResource("7_wnhjv")
-abilityIcons = [NodePath("AbilityContainer0/TextureRect"), NodePath("AbilityContainer1/TextureRect"), NodePath("AbilityContainer2/TextureRect"), NodePath("AbilityContainer3/TextureRect"), NodePath("AbilityContainer4/TextureRect"), NodePath("AbilityContainer5/TextureRect"), NodePath("AbilityContainer6/TextureRect")]
-lockIcons = [NodePath("AbilityContainer0/TextureRect/TextureRect4"), NodePath("AbilityContainer1/TextureRect/TextureRect4"), NodePath("AbilityContainer2/TextureRect/TextureRect4"), NodePath("AbilityContainer3/TextureRect/TextureRect4"), NodePath("AbilityContainer4/TextureRect/TextureRect4"), NodePath("AbilityContainer5/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4")]
+abilityIcons = [NodePath("AbilityContainer0/TextureRect"), NodePath("AbilityContainer1/TextureRect"), NodePath("AbilityContainer2/TextureRect"), NodePath("AbilityContainer3/TextureRect"), NodePath("AbilityContainer4/TextureRect"), NodePath("AbilityContainer5/TextureRect"), NodePath("AbilityContainer6/TextureRect"), NodePath("AbilityContainer6/TextureRect/TextureRect2/TextureRect3"), NodePath("AbilityContainer7/TextureRect/TextureRect2/TextureRect3"), NodePath("AbilityContainer8/TextureRect/TextureRect2/TextureRect3")]
+lockIcons = [NodePath("AbilityContainer0/TextureRect/TextureRect4"), NodePath("AbilityContainer1/TextureRect/TextureRect4"), NodePath("AbilityContainer2/TextureRect/TextureRect4"), NodePath("AbilityContainer3/TextureRect/TextureRect4"), NodePath("AbilityContainer4/TextureRect/TextureRect4"), NodePath("AbilityContainer5/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4"), NodePath("AbilityContainer6/TextureRect/TextureRect4"), NodePath("AbilityContainer7/TextureRect/TextureRect4"), NodePath("AbilityContainer8/TextureRect/TextureRect4")]
 
 [node name="AbilityContainer0" type="Control" parent="MarginContainer/AbilityBar"]
 custom_minimum_size = Vector2(32, 32)
@@ -241,7 +247,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("12_6co3y")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 cooldownUI = NodePath("TextureProgressBar")
@@ -279,10 +285,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -4.0
-offset_right = -32.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jsgyu")
@@ -305,7 +307,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("16_hyet1")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 1
@@ -344,10 +346,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -4.0
-offset_right = -32.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jsgyu")
@@ -370,7 +368,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("17_x5gil")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 2
@@ -409,10 +407,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -4.0
-offset_right = -32.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jsgyu")
@@ -435,7 +429,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("18_6b7ds")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 3
@@ -474,10 +468,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -4.0
-offset_right = -32.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jsgyu")
@@ -500,7 +490,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("19_ajmto")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 4
@@ -539,10 +529,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -4.0
-offset_right = -32.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jsgyu")
@@ -565,7 +551,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_pfjld")
+texture = ExtResource("20_0cbwb")
 stretch_mode = 5
 script = ExtResource("10_11jye")
 abilityIndex = 5
@@ -604,10 +590,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -4.0
-offset_right = -32.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_jsgyu")
@@ -651,6 +633,128 @@ nine_patch_stretch = true
 texture_progress = ExtResource("13_eka2s")
 
 [node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer6/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
+
+[node name="AbilityContainer7" type="Control" parent="MarginContainer/AbilityBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer7/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer7/TextureRect/TextureRect2" node_paths=PackedStringArray("cooldownUI")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+script = ExtResource("10_11jye")
+abilityIndex = 7
+cooldownUI = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/AbilityBar/AbilityContainer7/TextureRect/TextureRect2/TextureRect3"]
+self_modulate = Color(0, 0, 0, 0.501961)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("13_eka2s")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer7/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_vnq7o")
+stretch_mode = 3
+
+[node name="AbilityContainer8" type="Control" parent="MarginContainer/AbilityBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jsgyu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer8/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vhfgc")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer8/TextureRect/TextureRect2" node_paths=PackedStringArray("cooldownUI")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_pfjld")
+stretch_mode = 5
+script = ExtResource("10_11jye")
+abilityIndex = 8
+cooldownUI = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/AbilityBar/AbilityContainer8/TextureRect/TextureRect2/TextureRect3"]
+self_modulate = Color(0, 0, 0, 0.501961)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("13_eka2s")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/AbilityBar/AbilityContainer8/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
