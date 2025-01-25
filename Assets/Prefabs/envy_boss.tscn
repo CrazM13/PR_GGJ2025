@@ -59,6 +59,8 @@ outline_color = Color(0, 0, 0, 0.776471)
 
 [node name="EnvyBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud")]
 process_mode = 3
+z_index = 5
+z_as_relative = false
 collision_layer = 8
 script = ExtResource("1_qmysc")
 sprite = NodePath("Sprite2D")

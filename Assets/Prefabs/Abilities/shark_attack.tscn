@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://cofirwp8gua2d"]
+
+[ext_resource type="Texture2D" uid="uid://cueualmxjy5cx" path="res://Assets/Textures/Character_Tiles/Gluttony/Shark.png" id="1_qwvhj"]
+[ext_resource type="Script" path="res://Scripts/Ability/Gluttony/SharkAttack.cs" id="1_r6d6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhv6b"]
+atlas = ExtResource("1_qwvhj")
+region = Rect2(64, 65, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1gsk"]
+atlas = ExtResource("1_qwvhj")
+region = Rect2(0, 65, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihhkj"]
+atlas = ExtResource("1_qwvhj")
+region = Rect2(192, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1cr"]
+atlas = ExtResource("1_qwvhj")
+region = Rect2(128, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juk6i"]
+atlas = ExtResource("1_qwvhj")
+region = Rect2(64, 0, 64, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbruq"]
+atlas = ExtResource("1_qwvhj")
+region = Rect2(0, 0, 64, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_63m6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhv6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1gsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihhkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx1cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juk6i")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_cbruq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1gsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhv6b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jk0i"]
+radius = 152.738
+
+[node name="SharkAttack" type="Area2D"]
+z_index = 5
+z_as_relative = false
+script = ExtResource("1_r6d6b")
+attackDelay = 1.5
+damage = 32
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_63m6y")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2jk0i")

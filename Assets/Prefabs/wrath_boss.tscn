@@ -32,6 +32,8 @@ outline_color = Color(0, 0, 0, 0.776471)
 
 [node name="Wrath" type="CharacterBody2D" node_paths=PackedStringArray("head", "tendrils", "bossHud")]
 process_mode = 3
+z_index = 5
+z_as_relative = false
 collision_layer = 16
 script = ExtResource("1_qcbrx")
 head = NodePath("JellyHead")

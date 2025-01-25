@@ -35,6 +35,8 @@ size = Vector2(49, 27)
 
 [node name="LustBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud")]
 process_mode = 3
+z_index = 5
+z_as_relative = false
 collision_layer = 16
 script = ExtResource("1_viseg")
 sprite = NodePath("Sprite2D/Sprite2D")

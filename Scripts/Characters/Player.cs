@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D {
 
 	[Export] private CharacterMovement movement;
-	[Export] private CameraController camera;
+	[Export] public CameraController Camera { get; private set; }
 	[Export] private RandomAudio collectLine;
 	[Export] private AnimatedSprite2D sprite;
 	[Export] private BaseAbility[] abilities;
@@ -119,11 +119,11 @@ public partial class Player : CharacterBody2D {
 	}
 
 	public void CameraLookAt(Vector2 position) {
-		camera.CameraLookAt(position);
+		Camera.CameraLookAt(position);
 	}
 
 	public void CameraReset() {
-		camera.CameraLookAtLocal(Vector2.Zero);
+		Camera.CameraLookAtLocal(Vector2.Zero);
 	}
 
 	public void OnDamage() {

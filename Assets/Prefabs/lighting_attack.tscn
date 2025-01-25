@@ -54,6 +54,8 @@ animations = [{
 blend_mode = 1
 
 [node name="LightingAttack" type="Node2D" node_paths=PackedStringArray("attackSprite", "staticParticles")]
+z_index = 5
+z_as_relative = false
 script = ExtResource("1_7s4yu")
 attackSprite = NodePath("AnimatedSprite2D")
 staticParticles = NodePath("GPUParticles2D")

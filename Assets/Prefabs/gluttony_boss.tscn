@@ -117,6 +117,8 @@ animations = [{
 }]
 
 [node name="GluttonyBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "hitboxes")]
+z_index = 5
+z_as_relative = false
 collision_layer = 16
 script = ExtResource("1_kotgs")
 bossHud = NodePath("BossHUD")

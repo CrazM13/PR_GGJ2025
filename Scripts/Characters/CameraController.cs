@@ -8,6 +8,9 @@ public partial class CameraController : Node2D {
 
 	private Vector2? lookAtLocal;
 
+	private float shakeTimer;
+	private float shakeStrength;
+
 	public void CameraLookAt(Vector2 position) {
 		lookAtLocal = ToLocal(position);
 
@@ -34,6 +37,22 @@ public partial class CameraController : Node2D {
 			}
 		}
 
+		if (shakeStrength > 0) {
+			shakeTimer += (float) delta;
+
+			camera.Offset = new Vector2(Mathf.Sin(shakeTimer * 13), Mathf.Cos(shakeTimer * 17)) * shakeStrength;
+
+			shakeStrength *= 0.75f;
+			if (shakeStrength < 1) {
+				shakeStrength = 0;
+				camera.Offset = Vector2.Zero;
+			}
+		}
+
+	}
+
+	public void Shake(float strength) {
+		shakeStrength = Mathf.Max(shakeStrength, strength);
 	}
 
 

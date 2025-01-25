@@ -33,6 +33,8 @@ scale_min = 0.25
 scale_curve = SubResource("CurveTexture_5w7gx")
 
 [node name="O2Frog" type="Area2D"]
+z_index = 5
+z_as_relative = false
 position = Vector2(367, 418)
 script = ExtResource("1_xs05s")
 tts = ExtResource("2_cbhon")

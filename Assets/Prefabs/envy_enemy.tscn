@@ -18,6 +18,8 @@ animations = [{
 size = Vector2(30, 8)
 
 [node name="EnvyEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+z_index = 5
+z_as_relative = false
 collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_w7n5i")

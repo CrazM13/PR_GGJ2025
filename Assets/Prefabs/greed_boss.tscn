@@ -54,6 +54,8 @@ outline_size = 16
 outline_color = Color(0, 0, 0, 0.776471)
 
 [node name="GreedBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "pearlSprite", "protectors")]
+z_index = 5
+z_as_relative = false
 collision_layer = 8
 script = ExtResource("1_100tc")
 bossHud = NodePath("BossHUD")
