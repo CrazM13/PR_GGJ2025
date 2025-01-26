@@ -29,17 +29,17 @@
 [ext_resource type="AudioStream" uid="uid://caj8cxmqxrhl1" path="res://Assets/Audio/SFX/Ring.wav" id="20_ejj7g"]
 [ext_resource type="Script" path="res://Scripts/Lobby/StartLevel.cs" id="21_nnvxs"]
 [ext_resource type="AudioStream" uid="uid://33y7h8fjxyns" path="res://Assets/Audio/Voice/Lobby/Ribbit.wav" id="22_ws4ta"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
+[ext_resource type="PackedScene" uid="uid://cjbee1cxk55xj" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
 [ext_resource type="FontFile" uid="uid://ceassf0g115gu" path="res://Assets/Fonts/sniglet/Sniglet-ExtraBold.otf" id="31_a0vfc"]
 [ext_resource type="AudioStream" uid="uid://c4svlwrkpkjxy" path="res://Assets/Audio/Music/JoyiousGrandather.wav" id="32_jxena"]
 [ext_resource type="Script" path="res://Scripts/Lobby/Trophy.cs" id="33_hmyie"]
-[ext_resource type="Texture2D" uid="uid://qtva8r8ye7tg" path="res://Assets/Textures/Character_Tiles/Wrath Head.tres" id="33_pwyf4"]
-[ext_resource type="Texture2D" uid="uid://ctth8n3ktsa48" path="res://Assets/Textures/Character_Tiles/Envy Head.tres" id="35_hobpv"]
-[ext_resource type="Texture2D" uid="uid://c6xgt67vu1mhv" path="res://Assets/Textures/Character_Tiles/Greed Head.tres" id="36_0vti6"]
-[ext_resource type="Texture2D" uid="uid://csa5li3r7srui" path="res://Assets/Textures/Character_Tiles/Gluttony Head.tres" id="37_8qegk"]
-[ext_resource type="Texture2D" uid="uid://jv1idthi1mbg" path="res://Assets/Textures/Character_Tiles/Lust Head.tres" id="38_4db2o"]
-[ext_resource type="Texture2D" uid="uid://duivyt0s6hkmq" path="res://Assets/Textures/Character_Tiles/Sloth Head.tres" id="39_sfeba"]
-[ext_resource type="Texture2D" uid="uid://c2dqwx3genbym" path="res://Assets/Textures/Character_Tiles/Pride Head.tres" id="40_pktcl"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Wrath Head.tres" id="33_pwyf4"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Envy Head.tres" id="35_hobpv"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Greed Head.tres" id="36_0vti6"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Gluttony Head.tres" id="37_8qegk"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Lust Head.tres" id="38_4db2o"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Sloth Head.tres" id="39_sfeba"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Character_Tiles/Pride Head.tres" id="40_pktcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvpsb"]
 radius = 83.9524
@@ -177,6 +177,9 @@ visible = false
 
 [node name="ColorRect" parent="Player/CameraRig/Camera2D/CanvasLayer" index="0"]
 color = Color(0.129412, 0.145098, 0.160784, 1)
+
+[node name="Node2D" parent="Player/CameraRig/Camera2D" index="2"]
+visible = false
 
 [node name="Breathing" parent="Player/Audio" index="0"]
 volume_db = -18.0
@@ -455,7 +458,7 @@ y_sort_enabled = true
 position = Vector2(112, 421)
 texture = ExtResource("33_pwyf4")
 script = ExtResource("33_hmyie")
-abilityIndex = 3
+abilityIndex = 2
 
 [node name="Envy" type="Sprite2D" parent="BossHeads"]
 z_index = 30
@@ -464,7 +467,7 @@ y_sort_enabled = true
 position = Vector2(496, 424)
 texture = ExtResource("35_hobpv")
 script = ExtResource("33_hmyie")
-abilityIndex = 4
+abilityIndex = 3
 
 [node name="Greed" type="Sprite2D" parent="BossHeads"]
 z_index = 30
@@ -473,7 +476,7 @@ y_sort_enabled = true
 position = Vector2(1009, 417)
 texture = ExtResource("36_0vti6")
 script = ExtResource("33_hmyie")
-abilityIndex = 5
+abilityIndex = 4
 
 [node name="Gluttony" type="Sprite2D" parent="BossHeads"]
 z_index = 30
@@ -482,7 +485,7 @@ y_sort_enabled = true
 position = Vector2(1393, 423)
 texture = ExtResource("37_8qegk")
 script = ExtResource("33_hmyie")
-abilityIndex = 6
+abilityIndex = 5
 
 [node name="Lust" type="Sprite2D" parent="BossHeads"]
 z_index = 30
@@ -491,7 +494,7 @@ y_sort_enabled = true
 position = Vector2(1776, 418)
 texture = ExtResource("38_4db2o")
 script = ExtResource("33_hmyie")
-abilityIndex = 7
+abilityIndex = 6
 
 [node name="Sloth" type="Sprite2D" parent="BossHeads"]
 z_index = 30
@@ -500,7 +503,7 @@ y_sort_enabled = true
 position = Vector2(2160, 427)
 texture = ExtResource("39_sfeba")
 script = ExtResource("33_hmyie")
-abilityIndex = 8
+abilityIndex = 7
 
 [node name="Pride" type="Sprite2D" parent="BossHeads"]
 z_index = 30
@@ -509,7 +512,7 @@ y_sort_enabled = true
 position = Vector2(2416, 414)
 texture = ExtResource("40_pktcl")
 script = ExtResource("33_hmyie")
-abilityIndex = 9
+abilityIndex = 8
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 
