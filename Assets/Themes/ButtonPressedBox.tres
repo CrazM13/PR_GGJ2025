@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://2iwsaox3igsw"]
+
+[ext_resource type="Texture2D" uid="uid://b85i4mmvoncrc" path="res://Assets/Textures/Lobby/TextBox.png" id="1_rabws"]
+
+[resource]
+texture = ExtResource("1_rabws")
+texture_margin_left = 64.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.82606, 0.82606, 0.82606, 1)

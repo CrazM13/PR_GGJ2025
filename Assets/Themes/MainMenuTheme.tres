@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://chc7pvkrfap8f"]
+
+[ext_resource type="FontFile" uid="uid://ceassf0g115gu" path="res://Assets/Fonts/sniglet/Sniglet-ExtraBold.otf" id="1_8vodw"]
+[ext_resource type="StyleBox" uid="uid://c3msotf0oydh1" path="res://Assets/Themes/ButtonHoverBox.tres" id="2_fko4l"]
+[ext_resource type="StyleBox" uid="uid://brt0ipi2ua14f" path="res://Assets/Themes/PanelBox.tres" id="2_ruvdy"]
+[ext_resource type="StyleBox" uid="uid://c06gbs5k5hfju" path="res://Assets/Themes/ButtonNormalBox.tres" id="3_ouwsu"]
+[ext_resource type="StyleBox" uid="uid://2iwsaox3igsw" path="res://Assets/Themes/ButtonPressedBox.tres" id="4_fa7mn"]
+
+[resource]
+Button/constants/outline_size = 16
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_8vodw")
+Button/styles/hover = ExtResource("2_fko4l")
+Button/styles/normal = ExtResource("3_ouwsu")
+Button/styles/pressed = ExtResource("4_fa7mn")
+Label/constants/outline_size = 32
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_8vodw")
+Panel/styles/panel = ExtResource("2_ruvdy")
