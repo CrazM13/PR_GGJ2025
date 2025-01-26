@@ -1,13 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://p0lb653lujgc"]
+[gd_scene load_steps=19 format=3 uid="uid://p0lb653lujgc"]
 
 [ext_resource type="Script" path="res://Scripts/Maze/LevelBuilder.cs" id="1_62vjt"]
 [ext_resource type="Resource" uid="uid://ddvbk1vpojhvn" path="res://Data/Maze/MazeRules.tres" id="2_f4ijh"]
 [ext_resource type="Resource" uid="uid://dnllvqk3luhyn" path="res://Data/Maze/BossRules.tres" id="3_hhsqo"]
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
-[ext_resource type="PackedScene" uid="uid://bwjx1xlsss88p" path="res://Assets/Prefabs/lighting_attack.tscn" id="5_ee2me"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
-[ext_resource type="PackedScene" uid="uid://bek7laygqtvme" path="res://Assets/Prefabs/envy_enemy.tscn" id="6_l87b2"]
 [ext_resource type="PackedScene" uid="uid://fc4y83auxpyt" path="res://Assets/Prefabs/greed_enemy.tscn" id="7_2f6ws"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomAmbience.cs" id="9_60fcr"]
 [ext_resource type="AudioStream" uid="uid://w7a83b6dej3d" path="res://Assets/Audio/Ambience/ACAmbience.wav" id="10_h8c7v"]
@@ -36,7 +34,7 @@ cellsPerFrame = 16
 
 [node name="EnemySpawner" type="Node" parent="Map"]
 script = ExtResource("16_70ogu")
-enemy_scn = Array[PackedScene]([ExtResource("5_ee2me"), ExtResource("6_l87b2"), ExtResource("7_2f6ws"), ExtResource("5_ee2me"), ExtResource("5_ee2me"), ExtResource("5_ee2me"), ExtResource("5_ee2me")])
+enemy_scn = Array[PackedScene]([ExtResource("7_2f6ws"), ExtResource("7_2f6ws"), ExtResource("7_2f6ws"), ExtResource("7_2f6ws"), ExtResource("7_2f6ws"), ExtResource("7_2f6ws"), ExtResource("7_2f6ws")])
 eps = 0.5
 mapSize = 16
 
