@@ -25,10 +25,13 @@ public partial class LustBullet : Bullet {
 	protected override void OnDecay() {
 		base.OnDecay();
 
-		Node2D decay = decayProduct.Instantiate<Node2D>();
-		decay.GlobalPosition = this.GlobalPosition;
+		if (decayProduct != null) {
+			Node2D decay = decayProduct.Instantiate<Node2D>();
+			decay.GlobalPosition = this.GlobalPosition;
 
-		GetTree().CurrentScene.AddChild(decay);
+			GetTree().CurrentScene.AddChild(decay);
+		}
+		
 	}
 
 }

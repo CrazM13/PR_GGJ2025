@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b7nauh3t4bjm0"]
+
+[ext_resource type="Texture2D" uid="uid://b0pf7lnxecxva" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth.png" id="1_2bfh6"]
+
+[resource]
+atlas = ExtResource("1_2bfh6")
+region = Rect2(512, 448, 288, 192)

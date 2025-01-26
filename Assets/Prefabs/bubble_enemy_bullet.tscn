@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd2xcye3lrsnw"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Lust/LustBullet.cs" id="1_637sb"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="2_6j1a4"]
+[ext_resource type="AudioStream" uid="uid://bk2tpsgkfqhm5" path="res://Assets/Audio/SFX/Pop2.wav" id="3_56hq0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3llgd"]
+radius = 10.0499
+
+[node name="BubbleBullet" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "popSound")]
+z_index = 5
+z_as_relative = false
+collision_layer = 128
+collision_mask = 9
+script = ExtResource("1_637sb")
+sprite = NodePath("Sprite2D")
+popSound = NodePath("AudioStreamPlayer2D")
+damage = 0.01
+scaleMax = 1.0
+scaleMin = 0.75
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3llgd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6j1a4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_56hq0")
+volume_db = -10.667
+attenuation = 4.75683

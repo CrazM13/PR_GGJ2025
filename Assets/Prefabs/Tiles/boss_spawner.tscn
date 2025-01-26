@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://b6mtoanaqffw3" path="res://Assets/Prefabs/wrath_boss.tscn" id="2_xor4b"]
 [ext_resource type="PackedScene" uid="uid://cdb6majyuw575" path="res://Assets/Prefabs/envy_boss.tscn" id="3_lmm35"]
 [ext_resource type="PackedScene" uid="uid://ck4i6eibrd6s0" path="res://Assets/Prefabs/gluttony_boss.tscn" id="5_5ytob"]
-[ext_resource type="PackedScene" uid="uid://43xk8xq44d2l" path="res://Assets/Prefabs/Tiles/collectable.tscn" id="5_wwuwy"]
 [ext_resource type="PackedScene" uid="uid://dkfiuxu7cvl5u" path="res://Assets/Prefabs/lust_boss.tscn" id="6_a6tm6"]
+[ext_resource type="PackedScene" uid="uid://pg67d67evxky" path="res://Assets/Prefabs/sloth_boss.tscn" id="7_shmjf"]
 [ext_resource type="PackedScene" uid="uid://dsyle4owhcw8b" path="res://Assets/Prefabs/pride_boss.tscn" id="8_l6t4l"]
 
 [node name="BossSpawner" type="Node2D"]
 position = Vector2(-16, -16)
 script = ExtResource("1_i1hkm")
-bossPrefabs = Array[PackedScene]([ExtResource("2_xor4b"), ExtResource("3_lmm35"), ExtResource("2_rnk4y"), ExtResource("5_5ytob"), ExtResource("6_a6tm6"), ExtResource("5_wwuwy"), ExtResource("8_l6t4l")])
+bossPrefabs = Array[PackedScene]([ExtResource("2_xor4b"), ExtResource("3_lmm35"), ExtResource("2_rnk4y"), ExtResource("5_5ytob"), ExtResource("6_a6tm6"), ExtResource("7_shmjf"), ExtResource("8_l6t4l")])

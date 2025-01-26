@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Pride/PrideBoss.cs" id="1_x1t6d"]
 [ext_resource type="PackedScene" uid="uid://cxm60d1ron0n4" path="res://Assets/Prefabs/pride_fire.tscn" id="2_kv5jc"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="3_ijnjm"]
+[ext_resource type="Texture2D" uid="uid://bdj81f4x20nx1" path="res://Assets/Textures/Character_Tiles/Pride/PrideHealth.png" id="5_dn7pc"]
 [ext_resource type="Texture2D" uid="uid://ct7fr3o8m0a01" path="res://Assets/Textures/Character_Tiles/Pride/SeaHorseBase.png" id="6_1ames"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="6_tkpb6"]
 [ext_resource type="Texture2D" uid="uid://b6ldkgegkgtgs" path="res://Assets/Textures/Character_Tiles/Pride/SeaHorseHairBase.png" id="7_6dkv0"]
 [ext_resource type="Shader" uid="uid://5xb8lb8e4bsi" path="res://Assets/Shaders/Irridesent.tres" id="7_8soh6"]
-[ext_resource type="Texture2D" uid="uid://3erlo1santqs" path="res://Assets/Textures/Character_Tiles/Lust/LustHealth.png" id="7_roamd"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_46acg"]
 
 [sub_resource type="Gradient" id="Gradient_epbvh"]
@@ -97,7 +97,7 @@ nine_patch_stretch = true
 stretch_margin_left = 16
 stretch_margin_right = 16
 texture_under = ExtResource("6_tkpb6")
-texture_over = ExtResource("7_roamd")
+texture_over = ExtResource("5_dn7pc")
 texture_progress = ExtResource("6_tkpb6")
 tint_under = Color(0.180005, 0.180005, 0.180005, 1)
 tint_progress = Color(0.901961, 0.470588, 0.541176, 1)

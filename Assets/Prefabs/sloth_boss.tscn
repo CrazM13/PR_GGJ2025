@@ -1,0 +1,298 @@
+[gd_scene load_steps=28 format=3 uid="uid://pg67d67evxky"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/Sloth/SlothBoss.cs" id="1_6od56"]
+[ext_resource type="PackedScene" uid="uid://dd2xcye3lrsnw" path="res://Assets/Prefabs/bubble_enemy_bullet.tscn" id="2_65oa5"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="3_grlwr"]
+[ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="4_vfu10"]
+[ext_resource type="Texture2D" uid="uid://bvxhgosw4n4d1" path="res://Assets/Textures/Character_Tiles/Sloth/SlothHealth.png" id="5_3mbf3"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="6_7bxeb"]
+[ext_resource type="Texture2D" uid="uid://cm5tdi0iqofc7" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth1.tres" id="7_2boiy"]
+[ext_resource type="Texture2D" uid="uid://4dyknaob8ftu" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth3.tres" id="8_tmuay"]
+[ext_resource type="Texture2D" uid="uid://b42b03i06ojue" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth4.tres" id="9_pbclb"]
+[ext_resource type="Texture2D" uid="uid://dcfg7d1ay4m6p" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth5.tres" id="10_nq8ea"]
+[ext_resource type="Texture2D" uid="uid://p7qrxc8t44xv" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth2.tres" id="11_1pxi8"]
+[ext_resource type="Texture2D" uid="uid://d1c7jqqrmlavq" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth6.tres" id="12_e5gub"]
+[ext_resource type="Texture2D" uid="uid://bv3ci72rt505t" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth7.tres" id="13_5sfas"]
+[ext_resource type="Texture2D" uid="uid://b7nauh3t4bjm0" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth8.tres" id="14_tdyh8"]
+[ext_resource type="Texture2D" uid="uid://cgnsmuet3l1vu" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth9.tres" id="15_4v2i2"]
+[ext_resource type="Texture2D" uid="uid://btmomkwvqcaif" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth10.tres" id="16_i24gi"]
+[ext_resource type="Texture2D" uid="uid://m1ex6n7isj53" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth11.tres" id="17_qxjrj"]
+[ext_resource type="Texture2D" uid="uid://buw3juinadoxf" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth12.tres" id="18_dua8c"]
+[ext_resource type="Texture2D" uid="uid://3kn2f11dek3a" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth14.tres" id="18_u14t0"]
+[ext_resource type="Texture2D" uid="uid://7iqmjiccg788" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth13.tres" id="19_b4x4n"]
+
+[sub_resource type="Gradient" id="Gradient_epbvh"]
+offsets = PackedFloat32Array(0, 0.831169, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678944, 0.678944, 0.678944, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_koce6"]
+gradient = SubResource("Gradient_epbvh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.46789)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pny2"]
+size = Vector2(512, 512)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhqga"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 0.776471)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jjxy"]
+size = Vector2(174, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6b7qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2boiy")
+}, {
+"duration": 3.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}],
+"loop": false,
+"name": &"fart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tmuay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pbclb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2boiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nq8ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1pxi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e5gub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5sfas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tdyh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4v2i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_i24gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qxjrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2boiy")
+}],
+"loop": false,
+"name": &"tail_attack",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mghb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_u14t0")
+}],
+"loop": false,
+"name": &"fart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dua8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_b4x4n")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"tail_attack",
+"speed": 5.0
+}]
+
+[node name="SlothBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "bossBody", "sprite", "effects", "backEnd")]
+process_mode = 3
+z_index = 3
+z_as_relative = false
+position = Vector2(476, 355)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_6od56")
+bossHud = NodePath("BossHUD")
+bossBody = NodePath("BossBody")
+sprite = NodePath("BossBody/AnimatedSprite2D")
+effects = NodePath("BossBody/AnimatedSprite2D2")
+backEnd = NodePath("BossBody/Node2D")
+attackPrefab = ExtResource("2_65oa5")
+attackCooldown = 10.0
+speed = 200.0
+
+[node name="IlluminatingLight" type="PointLight2D" parent="."]
+color = Color(0.654902, 1, 1, 1)
+energy = 0.25
+range_item_cull_mask = 513
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_koce6")
+texture_scale = 10.0
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+monitorable = false
+script = ExtResource("3_grlwr")
+boss = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6pny2")
+
+[node name="BossHUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="BossHUD"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="BossHUD/CenterContainer"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="BossHUD/CenterContainer/Control" node_paths=PackedStringArray("boss")]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(128, 0)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_right = 16
+texture_under = ExtResource("4_vfu10")
+texture_over = ExtResource("5_3mbf3")
+texture_progress = ExtResource("4_vfu10")
+tint_under = Color(0.180005, 0.180005, 0.180005, 1)
+tint_progress = Color(0.901961, 0.470588, 0.541176, 1)
+script = ExtResource("6_7bxeb")
+boss = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="BossHUD/CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sloth"
+label_settings = SubResource("LabelSettings_dhqga")
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="BossBody" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5jjxy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BossBody"]
+sprite_frames = SubResource("SpriteFrames_6b7qj")
+animation = &"fart"
+autoplay = "idle"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BossBody"]
+position = Vector2(-114, 0)
+sprite_frames = SubResource("SpriteFrames_mghb4")
+animation = &"fart"
+autoplay = "idle"
+
+[node name="Node2D" type="Node2D" parent="BossBody"]
+position = Vector2(66, 38)
