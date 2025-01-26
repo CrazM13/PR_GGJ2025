@@ -174,6 +174,8 @@ public partial class SlothBoss : Enemy {
 	}
 
 	public override void OnDeath() {
+		sprite.Play("death");
+		effects.Play("idle");
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;

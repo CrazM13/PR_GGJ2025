@@ -90,13 +90,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_pbclb")
+"texture": ExtResource("7_2boiy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_tmuay")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_pbclb")
+"texture": ExtResource("11_1pxi8")
 }],
 "loop": true,
 "name": &"idle",
@@ -285,8 +282,9 @@ shape = SubResource("RectangleShape2D_5jjxy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BossBody"]
 sprite_frames = SubResource("SpriteFrames_6b7qj")
-animation = &"fart"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.929781
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BossBody"]
 position = Vector2(-114, 0)
