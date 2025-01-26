@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6mtoanaqffw3"]
+[gd_scene load_steps=15 format=3 uid="uid://b6mtoanaqffw3"]
 
 [ext_resource type="Texture2D" uid="uid://bil3wabd018b1" path="res://Assets/Textures/Character_Tiles/Wrath/JellyBossTendrils.png" id="1_ja1ba"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Wrath/WrathBoss.cs" id="1_qcbrx"]
 [ext_resource type="PackedScene" uid="uid://bwjx1xlsss88p" path="res://Assets/Prefabs/lighting_attack.tscn" id="2_366ua"]
 [ext_resource type="Texture2D" uid="uid://8n47mg6u4ygu" path="res://Assets/Textures/Character_Tiles/Wrath/JellyBossHead.png" id="2_675vd"]
+[ext_resource type="AudioStream" uid="uid://oexiuiyw2hiq" path="res://Assets/Audio/Music/WrathTheme.wav" id="3_p7bdm"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="5_3q6h7"]
 [ext_resource type="Texture2D" uid="uid://0xcfws4usrmt" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealth.png" id="6_qdr1j"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="7_hxxp7"]
@@ -45,6 +46,12 @@ waveCooldown = 8.0
 attacksPerWave = 32
 MaxHealth = 200
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_p7bdm")
+volume_db = -10.0
+attenuation = 2.0
+
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.25
@@ -65,10 +72,11 @@ z_index = 60
 z_as_relative = false
 texture = ExtResource("2_675vd")
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss", "bossMusic")]
 monitorable = false
 script = ExtResource("5_3q6h7")
 boss = NodePath("..")
+bossMusic = NodePath("../BossMusic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6pny2")
@@ -121,3 +129,5 @@ label_settings = SubResource("LabelSettings_dhqga")
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
+
+[connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkfiuxu7cvl5u"]
+[gd_scene load_steps=16 format=3 uid="uid://dkfiuxu7cvl5u"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Lust/LustBoss.cs" id="1_viseg"]
 [ext_resource type="PackedScene" uid="uid://dwpqrhyq8l3nb" path="res://Assets/Prefabs/lust_bullet.tscn" id="2_qqca2"]
+[ext_resource type="AudioStream" uid="uid://cxrpec5gef8d3" path="res://Assets/Audio/Music/LustTheme.wav" id="3_mip5q"]
 [ext_resource type="Texture2D" uid="uid://c1bmi1ofqghke" path="res://Assets/Textures/Character_Tiles/Lust/Rock.png" id="5_dy4up"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="5_ty2cc"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="6_3vofn"]
@@ -46,6 +47,11 @@ attackCooldown = 0.75
 attackPower = 2.0
 MaxHealth = 1000
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_mip5q")
+volume_db = -10.0
+
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.25
@@ -54,10 +60,11 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_koce6")
 texture_scale = 10.0
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss", "bossMusic")]
 monitorable = false
 script = ExtResource("5_ty2cc")
 boss = NodePath("..")
+bossMusic = NodePath("../BossMusic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6pny2")
@@ -129,3 +136,5 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3.5, 3.5)
 shape = SubResource("RectangleShape2D_jadq1")
+
+[connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://pg67d67evxky"]
+[gd_scene load_steps=29 format=3 uid="uid://pg67d67evxky"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Sloth/SlothBoss.cs" id="1_6od56"]
 [ext_resource type="PackedScene" uid="uid://dd2xcye3lrsnw" path="res://Assets/Prefabs/bubble_enemy_bullet.tscn" id="2_65oa5"]
+[ext_resource type="AudioStream" uid="uid://co6qrxsjvvfr2" path="res://Assets/Audio/Music/SlothTheme.wav" id="3_gluor"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="3_grlwr"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="4_vfu10"]
 [ext_resource type="Texture2D" uid="uid://bvxhgosw4n4d1" path="res://Assets/Textures/Character_Tiles/Sloth/SlothHealth.png" id="5_3mbf3"]
@@ -220,6 +221,12 @@ attackPrefab = ExtResource("2_65oa5")
 attackCooldown = 10.0
 speed = 200.0
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_gluor")
+volume_db = -10.0
+attenuation = 2.0
+
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.25
@@ -228,10 +235,11 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_koce6")
 texture_scale = 10.0
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss", "bossMusic")]
 monitorable = false
 script = ExtResource("3_grlwr")
 boss = NodePath("..")
+bossMusic = NodePath("../BossMusic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6pny2")
@@ -301,3 +309,5 @@ autoplay = "idle"
 
 [node name="Node2D" type="Node2D" parent="BossBody"]
 position = Vector2(66, 38)
+
+[connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

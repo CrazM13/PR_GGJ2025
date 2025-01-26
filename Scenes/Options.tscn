@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b8366vdkw3j40"]
+[gd_scene load_steps=17 format=4 uid="uid://b8366vdkw3j40"]
 
 [ext_resource type="TileSet" uid="uid://cn475u34w3aj2" path="res://Data/Level0.tres" id="1_t12u0"]
 [ext_resource type="Texture2D" uid="uid://bj8guovckce25" path="res://Assets/Textures/Character_Tiles/O2Frog.png" id="2_ry33b"]
@@ -18,6 +18,11 @@ point_count = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jw7y7"]
 shader = ExtResource("4_85a8q")
+
+[sub_resource type="LabelSettings" id="LabelSettings_c7y0r"]
+font_size = 32
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qq0x"]
 texture = ExtResource("7_mesd1")
@@ -138,7 +143,7 @@ alignment = 1
 custom_minimum_size = Vector2(0, 196)
 layout_mode = 2
 size_flags_vertical = 3
-text = "Options"
+text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -154,8 +159,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Coming soon?
-probs not."
+text = "WASD - Move
+Q/E - Change Ability
+Number Keys - Set Ability
+Click - Use Ability"
+label_settings = SubResource("LabelSettings_c7y0r")
 horizontal_alignment = 1
 vertical_alignment = 1
 

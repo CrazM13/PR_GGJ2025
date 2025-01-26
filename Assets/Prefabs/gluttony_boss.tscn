@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://ck4i6eibrd6s0"]
+[gd_scene load_steps=23 format=3 uid="uid://ck4i6eibrd6s0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Gluttony/GluttonyBoss.cs" id="1_kotgs"]
+[ext_resource type="AudioStream" uid="uid://c1cnt0e3jmk31" path="res://Assets/Audio/Music/GluttonyTheme.wav" id="2_d8vpl"]
 [ext_resource type="Texture2D" uid="uid://tyaxa7k4ruoi" path="res://Assets/Textures/Character_Tiles/Gluttony/GluttonyHealth.png" id="4_et352"]
 [ext_resource type="Texture2D" uid="uid://cueualmxjy5cx" path="res://Assets/Textures/Character_Tiles/Gluttony/Shark.png" id="6_gdls7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="6_ilm3n"]
@@ -130,6 +131,12 @@ seperation = 24.0
 speed = 2.0
 MaxHealth = 1000
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("2_d8vpl")
+volume_db = -10.0
+attenuation = 2.0
+
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.25
@@ -138,10 +145,11 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_kvhj2")
 texture_scale = 10.0
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss", "bossMusic")]
 monitorable = false
 script = ExtResource("6_ilm3n")
 boss = NodePath("..")
+bossMusic = NodePath("../BossMusic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_yy7fu")
@@ -286,3 +294,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4yv38")
 animation = &"idle"
 autoplay = "idle"
+
+[connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

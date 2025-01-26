@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsyle4owhcw8b"]
+[gd_scene load_steps=17 format=3 uid="uid://dsyle4owhcw8b"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Pride/PrideBoss.cs" id="1_x1t6d"]
 [ext_resource type="PackedScene" uid="uid://cxm60d1ron0n4" path="res://Assets/Prefabs/pride_fire.tscn" id="2_kv5jc"]
+[ext_resource type="AudioStream" uid="uid://hyar7h5n3h3c" path="res://Assets/Audio/Music/PrideTheme.wav" id="3_8bm20"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="3_ijnjm"]
 [ext_resource type="Texture2D" uid="uid://bdj81f4x20nx1" path="res://Assets/Textures/Character_Tiles/Pride/PrideHealth.png" id="5_dn7pc"]
 [ext_resource type="Texture2D" uid="uid://ct7fr3o8m0a01" path="res://Assets/Textures/Character_Tiles/Pride/SeaHorseBase.png" id="6_1ames"]
@@ -53,6 +54,11 @@ speed = 16.0
 runDistance = 128.0
 MaxHealth = 1000
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_8bm20")
+attenuation = 2.0
+
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
 energy = 0.25
@@ -61,10 +67,11 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_koce6")
 texture_scale = 10.0
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss", "bossMusic")]
 monitorable = false
 script = ExtResource("3_ijnjm")
 boss = NodePath("..")
+bossMusic = NodePath("../BossMusic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6pny2")
@@ -130,3 +137,5 @@ texture = ExtResource("6_1ames")
 material = SubResource("ShaderMaterial_87hlb")
 position = Vector2(13.5, -18)
 texture = ExtResource("7_6dkv0")
+
+[connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdb6majyuw575"]
+[gd_scene load_steps=19 format=3 uid="uid://cdb6majyuw575"]
 
 [ext_resource type="Texture2D" uid="uid://c4dsegr8d1ltr" path="res://Assets/Textures/Character_Tiles/Envy/Eel.png" id="1_4kn7y"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Envy/EnvyBoss.cs" id="1_qmysc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="2_lygel"]
 [ext_resource type="PackedScene" uid="uid://bek7laygqtvme" path="res://Assets/Prefabs/envy_enemy.tscn" id="2_qkh67"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="3_kw03a"]
+[ext_resource type="AudioStream" uid="uid://ds8qsyk0ufm1k" path="res://Assets/Audio/Music/EnvyTheme.wav" id="3_y4yl1"]
 [ext_resource type="Texture2D" uid="uid://cfmbpreiuls7d" path="res://Assets/Textures/Character_Tiles/Envy/EnvyHealth.png" id="4_v75c4"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="5_3qc73"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Envy/EnvyEye.cs" id="5_hxwxl"]
@@ -71,6 +72,11 @@ attackCooldown = 0.5
 waveCooldown = 16.0
 MaxHealth = 1000
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("3_y4yl1")
+volume_db = -10.0
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5onah")
 animation = &"attack"
@@ -101,10 +107,11 @@ shape = SubResource("CircleShape2D_8hg04")
 position = Vector2(83, 31)
 shape = SubResource("CircleShape2D_iqpje")
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("boss", "bossMusic")]
 monitorable = false
 script = ExtResource("2_lygel")
 boss = NodePath("..")
+bossMusic = NodePath("../BossMusic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_nkcja")
@@ -157,3 +164,5 @@ label_settings = SubResource("LabelSettings_lsyj6")
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
+
+[connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]
