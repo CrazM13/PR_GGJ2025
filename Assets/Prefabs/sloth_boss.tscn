@@ -47,6 +47,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_2boiy")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2boiy")
 }, {
 "duration": 3.0,
 "texture": ExtResource("8_tmuay")
@@ -282,9 +290,8 @@ shape = SubResource("RectangleShape2D_5jjxy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BossBody"]
 sprite_frames = SubResource("SpriteFrames_6b7qj")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.929781
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BossBody"]
 position = Vector2(-114, 0)
