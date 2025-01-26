@@ -37,7 +37,7 @@ public partial class EnvyAlly : CharacterBody2D {
 
 		if (state == EelState.ATTACK) {
 
-			if (targetEnemy != null) {
+			if (targetEnemy != null && IsInstanceValid(targetEnemy)) {
 				sprite.LookAt(targetEnemy.GlobalPosition);
 				this.GlobalPosition = this.GlobalPosition.MoveToward(targetEnemy.GlobalPosition, (float) delta * speed);
 
@@ -47,7 +47,7 @@ public partial class EnvyAlly : CharacterBody2D {
 					healing = damage * 0.1f;
 					state = EelState.RETURN;
 				}
-			} else if (targetAirSource != null) {
+			} else if (targetAirSource != null && IsInstanceValid(targetAirSource)) {
 				sprite.LookAt(targetAirSource.GlobalPosition);
 				this.GlobalPosition = this.GlobalPosition.MoveToward(targetAirSource.GlobalPosition, (float) delta * speed);
 
