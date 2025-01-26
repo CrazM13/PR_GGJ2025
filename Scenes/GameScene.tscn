@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtjcm8qovoq1h" path="res://Assets/Prefabs/player.tscn" id="4_j18ty"]
 [ext_resource type="PackedScene" uid="uid://c8vs8ik72a41f" path="res://Assets/Prefabs/scene_base.tscn" id="5_7tsa6"]
 [ext_resource type="AudioStream" uid="uid://c5meum8i7nyiy" path="res://Assets/Audio/Ambience/Rain.wav" id="6_hme8d"]
-[ext_resource type="PackedScene" uid="uid://fc4y83auxpyt" path="res://Assets/Prefabs/greed_enemy.tscn" id="7_2f6ws"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/greed_enemy.tscn" id="7_2f6ws"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomAmbience.cs" id="9_60fcr"]
 [ext_resource type="AudioStream" uid="uid://w7a83b6dej3d" path="res://Assets/Audio/Ambience/ACAmbience.wav" id="10_h8c7v"]
 [ext_resource type="AudioStream" uid="uid://c4o8njxtd2bas" path="res://Assets/Audio/Ambience/ScaryNoise-01.wav" id="11_empdc"]

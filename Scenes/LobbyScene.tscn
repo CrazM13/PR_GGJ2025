@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://djifg3uw5jr82"]
+[gd_scene load_steps=34 format=4 uid="uid://djifg3uw5jr82"]
 
 [ext_resource type="Script" path="res://Scripts/Lobby/Lobby.cs" id="1_kgtwl"]
 [ext_resource type="AudioStream" uid="uid://c6nu75b30f0g" path="res://Assets/Audio/Voice/Lobby/NPCLine1.wav" id="2_afhw5"]
@@ -29,10 +29,14 @@
 [ext_resource type="AudioStream" uid="uid://caj8cxmqxrhl1" path="res://Assets/Audio/SFX/Ring.wav" id="20_ejj7g"]
 [ext_resource type="Script" path="res://Scripts/Lobby/StartLevel.cs" id="21_nnvxs"]
 [ext_resource type="AudioStream" uid="uid://33y7h8fjxyns" path="res://Assets/Audio/Voice/Lobby/Ribbit.wav" id="22_ws4ta"]
-[ext_resource type="PackedScene" uid="uid://cjbee1cxk55xj" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
+[ext_resource type="FontFile" uid="uid://ceassf0g115gu" path="res://Assets/Fonts/sniglet/Sniglet-ExtraBold.otf" id="31_a0vfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvpsb"]
 radius = 83.9524
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ofsf"]
+font = ExtResource("31_a0vfc")
 
 [node name="LobbyScene" type="Node2D" node_paths=PackedStringArray("text")]
 process_mode = 3
@@ -260,6 +264,173 @@ z_index = 25
 position = Vector2(368, 424)
 textBox = NodePath("../Text")
 airPerCoin = 0.1
+
+[node name="Boss Labels" type="Node2D" parent="."]
+z_index = 40
+z_as_relative = false
+position = Vector2(67, 354)
+
+[node name="Wrath" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_right = 60.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Wrath"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wrath2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 158.0
+offset_right = 218.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Wrath"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Envy" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 400.0
+offset_top = 1.0
+offset_right = 444.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Envy
+"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Envy2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 542.0
+offset_right = 586.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Envy"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Greed" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 775.0
+offset_right = 828.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Greed"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Greed2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 926.0
+offset_right = 979.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Greed"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gluttony" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 1129.0
+offset_right = 1212.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Gluttony"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gluttony2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 1310.0
+offset_right = 1393.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Gluttony
+"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lust" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 1554.0
+offset_top = 1.0
+offset_right = 1596.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Lust"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lust2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 1694.0
+offset_top = 1.0
+offset_right = 1736.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Lust"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sloth" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 1931.0
+offset_top = 1.0
+offset_right = 1980.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Sloth"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sloth2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 2078.0
+offset_top = 1.0
+offset_right = 2120.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Sloth"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pride" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 2315.0
+offset_top = 1.0
+offset_right = 2364.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Pride"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pride2" type="Label" parent="Boss Labels"]
+z_index = 1
+offset_left = 2462.0
+offset_top = 1.0
+offset_right = 2511.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("31_a0vfc")
+text = "Pride"
+label_settings = SubResource("LabelSettings_2ofsf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Player"]
 [editable path="SceneBase"]

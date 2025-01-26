@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d01shln63act3" path="res://Assets/Prefabs/MazeCells/Hallways/VerticalHallway.tscn" id="7_pkser"]
 [ext_resource type="PackedScene" uid="uid://bytsiexjc7vu8" path="res://Assets/Prefabs/MazeCells/Hallways/HorizontalHallway.tscn" id="8_1rncc"]
 [ext_resource type="PackedScene" uid="uid://6fgs0tru4aj2" path="res://Assets/Prefabs/MazeCells/Hallways/UpDownLeftHallway.tscn" id="9_0l4ar"]
-[ext_resource type="PackedScene" uid="uid://cxxh0x6gfjfpn" path="res://Assets/Prefabs/MazeCells/Hallways/HorizontalCubbyHallway.tscn" id="9_lmt7q"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/MazeCells/Hallways/HorizontalCubbyHallway.tscn" id="9_lmt7q"]
 [ext_resource type="PackedScene" uid="uid://c8kr354oh0eri" path="res://Assets/Prefabs/MazeCells/Hallways/LeftRightDownHallway.tscn" id="10_vv6cb"]
 [ext_resource type="PackedScene" uid="uid://c6s5a7pnd32y6" path="res://Assets/Prefabs/MazeCells/Hallways/LeftRightUpHallway.tscn" id="11_8hx2j"]
 [ext_resource type="PackedScene" uid="uid://b5mq1fq660mr7" path="res://Assets/Prefabs/MazeCells/Hallways/UpDownRightHallway.tscn" id="11_uwyvy"]
