@@ -69,7 +69,7 @@ public class GameManager {
 		false,
 		false,
 		false,
-		false,
+		true,
 		false,
 	};
 

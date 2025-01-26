@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://2iswmian6t6s"]
+
+[ext_resource type="Script" path="res://Scripts/Ability/Sloth/SlothAirBubble.cs" id="1_3de28"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="2_2ipgo"]
+
+[sub_resource type="Curve" id="Curve_gbsu1"]
+max_value = 0.02
+_data = [Vector2(0, 0.02), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7x63"]
+radius = 24.0
+
+[node name="SlothHealBubble" type="Area2D"]
+z_index = 5
+z_as_relative = false
+script = ExtResource("1_3de28")
+speed = 40.0
+healing = SubResource("Curve_gbsu1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b7x63")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_2ipgo")

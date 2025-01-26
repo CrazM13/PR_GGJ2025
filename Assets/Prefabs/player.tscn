@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=56 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://Scripts/Ability/AbilityBubbleShield.cs" id="26_yfsqr"]
 [ext_resource type="PackedScene" uid="uid://bjaib5477y8ny" path="res://Assets/Prefabs/Abilities/bubble_shield_bullet.tscn" id="27_vuosq"]
 [ext_resource type="PackedScene" uid="uid://cofirwp8gua2d" path="res://Assets/Prefabs/Abilities/shark_attack.tscn" id="28_ww85l"]
+[ext_resource type="PackedScene" uid="uid://2iswmian6t6s" path="res://Assets/Prefabs/Abilities/sloth_heal_bubble.tscn" id="29_8w816"]
 [ext_resource type="Script" path="res://Scripts/Ability/Pride/AbilityWarp.cs" id="29_n5hk0"]
 [ext_resource type="PackedScene" uid="uid://cxm60d1ron0n4" path="res://Assets/Prefabs/pride_fire.tscn" id="30_vxmcn"]
 [ext_resource type="PackedScene" uid="uid://bp3yb2rng5pnv" path="res://Assets/Prefabs/Abilities/lust_ability_bullet.tscn" id="31_ytlyf"]
@@ -201,7 +202,7 @@ movement = NodePath("Components/MovementComponent")
 Camera = NodePath("CameraRig")
 collectLine = NodePath("Audio/CollectVoice")
 sprite = NodePath("AnimatedSprite2D")
-abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield"), NodePath("Abilities/GluttanyAbility"), NodePath("Abilities/LustAbility"), NodePath("Abilities/Chalk"), NodePath("Abilities/PrideAbility")]
+abilities = [NodePath("Abilities/Chalk"), NodePath("Abilities/BubbleGun"), NodePath("Abilities/LightningBolt"), NodePath("Abilities/SpawnEnvyAlly"), NodePath("Abilities/BubbleShield"), NodePath("Abilities/GluttanyAbility"), NodePath("Abilities/LustAbility"), NodePath("Abilities/SlothAbility"), NodePath("Abilities/PrideAbility")]
 
 [node name="IlluminatingLight" type="PointLight2D" parent="."]
 color = Color(0.654902, 1, 1, 1)
@@ -355,6 +356,12 @@ script = ExtResource("24_pemo4")
 prefab = ExtResource("28_ww85l")
 spawnCount = 1
 cooldown = 10.0
+
+[node name="SlothAbility" type="Node" parent="Abilities"]
+script = ExtResource("24_pemo4")
+prefab = ExtResource("29_8w816")
+spawnCount = 1
+cooldown = 15.0
 
 [node name="PrideAbility" type="Node" parent="Abilities" node_paths=PackedStringArray("shapeCast")]
 script = ExtResource("29_n5hk0")
