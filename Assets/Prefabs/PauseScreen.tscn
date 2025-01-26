@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfm0w7crysoy5"]
+
+[ext_resource type="Theme" uid="uid://chc7pvkrfap8f" path="res://Assets/Themes/MainMenuTheme.tres" id="1_odatn"]
+[ext_resource type="Script" path="res://Scripts/Pause/PauseMenu.cs" id="1_xsxx4"]
+[ext_resource type="Texture2D" uid="uid://dq44nnni80gfo" path="res://Assets/Textures/Character_Tiles/O2FrogBig.png" id="3_kw0a2"]
+[ext_resource type="Texture2D" uid="uid://cy0niknrl4c86" path="res://Assets/Textures/Lobby/TextBoxFlipped.png" id="3_stfb7"]
+[ext_resource type="Texture2D" uid="uid://b82w6e7kh1r6r" path="res://Assets/Textures/Character_Tiles/Envy/MiniEel.png" id="5_uoxr5"]
+[ext_resource type="Texture2D" uid="uid://bkfvpda7pfujs" path="res://Assets/Textures/Particle_Effects/Bubble.png" id="6_cmjsr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwvl6"]
+texture = ExtResource("3_stfb7")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 64.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.617455, 0.617455, 0.617455, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0pqv5"]
+texture = ExtResource("3_stfb7")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 64.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.82606, 0.82606, 0.82606, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_10ymr"]
+texture = ExtResource("3_stfb7")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 64.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.35907, 0.359069, 0.359069, 1)
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_xsxx4")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_odatn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+text = "Quit to Lobby"
+icon = ExtResource("3_kw0a2")
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+theme_override_styles/hover = SubResource("StyleBoxTexture_nwvl6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0pqv5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_10ymr")
+text = "Quit to Menu"
+icon = ExtResource("5_uoxr5")
+icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+text = "Back to Game"
+icon = ExtResource("6_cmjsr")
+expand_icon = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="GoToScene" binds= ["res://Scenes/LobbyScene.tscn"]]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/HBoxContainer/Button2" to="." method="GoToScene" binds= ["res://Scenes/MainMenu.tscn"]]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer2/Button3" to="." method="Pause" binds= [false]]

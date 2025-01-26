@@ -29,7 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://caj8cxmqxrhl1" path="res://Assets/Audio/SFX/Ring.wav" id="20_ejj7g"]
 [ext_resource type="Script" path="res://Scripts/Lobby/StartLevel.cs" id="21_nnvxs"]
 [ext_resource type="AudioStream" uid="uid://33y7h8fjxyns" path="res://Assets/Audio/Voice/Lobby/Ribbit.wav" id="22_ws4ta"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
+[ext_resource type="PackedScene" uid="uid://cjbee1cxk55xj" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
 [ext_resource type="FontFile" uid="uid://ceassf0g115gu" path="res://Assets/Fonts/sniglet/Sniglet-ExtraBold.otf" id="31_a0vfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvpsb"]
