@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bo4yl3oic0ayo"]
+[gd_scene load_steps=20 format=3 uid="uid://bo4yl3oic0ayo"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Greed/GreedBoss.cs" id="1_100tc"]
 [ext_resource type="Texture2D" uid="uid://db006mt0xf6f" path="res://Assets/Textures/Character_Tiles/Greed/OysterClosed.png" id="1_sjssc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://do7fjdn5l72ig" path="res://Assets/Textures/Character_Tiles/Greed/Pearl.png" id="4_rw1li"]
 [ext_resource type="Texture2D" uid="uid://byx5e8inyh4ah" path="res://Assets/Textures/Character_Tiles/Greed/GreedHealth.png" id="5_dihuv"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="6_hn8v7"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="11_7cg8p"]
 
 [sub_resource type="Gradient" id="Gradient_3tok7"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -54,7 +55,13 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 0.776471)
 
-[node name="GreedBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "pearlSprite", "protectors")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qsxo6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
+
+[node name="GreedBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "pearlSprite", "protectors", "gibs")]
 z_index = 2
 z_as_relative = false
 collision_layer = 16
@@ -63,6 +70,7 @@ bossHud = NodePath("BossHUD")
 sprites = [NodePath("AnimatedSprite2D"), NodePath("AnimatedSprite2D2"), NodePath("AnimatedSprite2D3"), NodePath("AnimatedSprite2D4")]
 pearlSprite = NodePath("CollisionShape2D")
 protectors = [NodePath("AnimatedSprite2D/StaticBody2D"), NodePath("AnimatedSprite2D2/StaticBody2D"), NodePath("AnimatedSprite2D3/StaticBody2D"), NodePath("AnimatedSprite2D4/StaticBody2D")]
+gibs = [NodePath("Node2D/BossGibbs"), NodePath("Node2D/BossGibbs2"), NodePath("Node2D/BossGibbs3"), NodePath("Node2D/BossGibbs4")]
 attackPrefab = ExtResource("2_r2oie")
 attackCooldown = 30.0
 MaxHealth = 1000
@@ -227,5 +235,44 @@ label_settings = SubResource("LabelSettings_eprkj")
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
+
+[node name="Node2D" type="Node2D" parent="."]
+process_mode = 3
+
+[node name="BossGibbs" type="GPUParticles2D" parent="Node2D"]
+position = Vector2(-127, -154)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_qsxo6")
+texture = ExtResource("11_7cg8p")
+one_shot = true
+explosiveness = 0.75
+
+[node name="BossGibbs2" type="GPUParticles2D" parent="Node2D"]
+position = Vector2(129, -163)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_qsxo6")
+texture = ExtResource("11_7cg8p")
+one_shot = true
+explosiveness = 0.75
+
+[node name="BossGibbs3" type="GPUParticles2D" parent="Node2D"]
+position = Vector2(-127, 69)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_qsxo6")
+texture = ExtResource("11_7cg8p")
+one_shot = true
+explosiveness = 0.75
+
+[node name="BossGibbs4" type="GPUParticles2D" parent="Node2D"]
+position = Vector2(126, 81)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_qsxo6")
+texture = ExtResource("11_7cg8p")
+one_shot = true
+explosiveness = 0.75
 
 [connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

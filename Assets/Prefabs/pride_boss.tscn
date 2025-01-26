@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsyle4owhcw8b"]
+[gd_scene load_steps=19 format=3 uid="uid://dsyle4owhcw8b"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Pride/PrideBoss.cs" id="1_x1t6d"]
 [ext_resource type="PackedScene" uid="uid://cxm60d1ron0n4" path="res://Assets/Prefabs/pride_fire.tscn" id="2_kv5jc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ldkgegkgtgs" path="res://Assets/Textures/Character_Tiles/Pride/SeaHorseHairBase.png" id="7_6dkv0"]
 [ext_resource type="Shader" uid="uid://5xb8lb8e4bsi" path="res://Assets/Shaders/Irridesent.tres" id="7_8soh6"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_46acg"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="11_goooh"]
 
 [sub_resource type="Gradient" id="Gradient_epbvh"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -37,16 +38,22 @@ height = 148.0
 shader = ExtResource("7_8soh6")
 shader_parameter/TimeScale = 0.5
 
-[node name="PrideBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprite")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_klf5b"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
+
+[node name="PrideBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprite", "gibs")]
 process_mode = 3
 z_index = 3
 z_as_relative = false
-position = Vector2(527, 320)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_x1t6d")
 bossHud = NodePath("BossHUD")
 sprite = NodePath("BossBody")
+gibs = [NodePath("BossBody/BossGibbs")]
 attackPrefab = ExtResource("2_kv5jc")
 attackCooldown = 2.5
 seperation = 48.0
@@ -137,5 +144,14 @@ texture = ExtResource("6_1ames")
 material = SubResource("ShaderMaterial_87hlb")
 position = Vector2(13.5, -18)
 texture = ExtResource("7_6dkv0")
+
+[node name="BossGibbs" type="GPUParticles2D" parent="BossBody"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_klf5b")
+texture = ExtResource("11_goooh")
+one_shot = true
+explosiveness = 0.75
 
 [connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

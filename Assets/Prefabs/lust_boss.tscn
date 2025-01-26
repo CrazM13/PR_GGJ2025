@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkfiuxu7cvl5u"]
+[gd_scene load_steps=18 format=3 uid="uid://dkfiuxu7cvl5u"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Lust/LustBoss.cs" id="1_viseg"]
 [ext_resource type="PackedScene" uid="uid://dwpqrhyq8l3nb" path="res://Assets/Prefabs/lust_bullet.tscn" id="2_qqca2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://kia1x8hvwaee" path="res://Assets/Textures/Character_Tiles/Lust/Mermaid.png" id="6_q2uey"]
 [ext_resource type="Texture2D" uid="uid://3erlo1santqs" path="res://Assets/Textures/Character_Tiles/Lust/LustHealth.png" id="7_awrt7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_cf4x7"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="10_s16wv"]
 
 [sub_resource type="Gradient" id="Gradient_epbvh"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -34,7 +35,13 @@ size = Vector2(24, 117.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jadq1"]
 size = Vector2(49, 27)
 
-[node name="LustBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fl2oy"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
+
+[node name="LustBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud", "gibs")]
 process_mode = 3
 z_index = 2
 z_as_relative = false
@@ -42,6 +49,7 @@ collision_layer = 16
 script = ExtResource("1_viseg")
 sprite = NodePath("Sprite2D/Sprite2D")
 bossHud = NodePath("BossHUD")
+gibs = [NodePath("BossGibbs")]
 bulletPrefab = ExtResource("2_qqca2")
 attackCooldown = 0.75
 attackPower = 2.0
@@ -136,5 +144,15 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(3.5, 3.5)
 shape = SubResource("RectangleShape2D_jadq1")
+
+[node name="BossGibbs" type="GPUParticles2D" parent="."]
+process_mode = 3
+position = Vector2(8, -87)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_fl2oy")
+texture = ExtResource("10_s16wv")
+one_shot = true
+explosiveness = 0.75
 
 [connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

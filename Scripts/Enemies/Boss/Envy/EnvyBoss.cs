@@ -5,6 +5,7 @@ public partial class EnvyBoss : Enemy {
 
 	[Export] private AnimatedSprite2D sprite;
 	[Export] private CanvasLayer bossHud;
+	[Export] private GpuParticles2D[] gibs;
 
 	[ExportGroup("Attacks")]
 	[Export] private PackedScene attackPrefab;
@@ -97,6 +98,8 @@ public partial class EnvyBoss : Enemy {
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
+		foreach (GpuParticles2D particles in gibs) particles.Emitting = true;
+
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();

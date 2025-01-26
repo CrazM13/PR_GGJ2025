@@ -5,6 +5,7 @@ public partial class LustBoss : Enemy {
 
 	[Export] private Sprite2D sprite;
 	[Export] private CanvasLayer bossHud;
+	[Export] private GpuParticles2D[] gibs;
 
 	[ExportGroup("Attacks")]
 	[Export] private PackedScene bulletPrefab;
@@ -33,6 +34,9 @@ public partial class LustBoss : Enemy {
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
+		foreach (GpuParticles2D particles in gibs) particles.Emitting = true;
+		sprite.Visible = false;
+
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();

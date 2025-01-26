@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://pg67d67evxky"]
+[gd_scene load_steps=31 format=3 uid="uid://pg67d67evxky"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Sloth/SlothBoss.cs" id="1_6od56"]
 [ext_resource type="PackedScene" uid="uid://dd2xcye3lrsnw" path="res://Assets/Prefabs/bubble_enemy_bullet.tscn" id="2_65oa5"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://buw3juinadoxf" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth12.tres" id="18_dua8c"]
 [ext_resource type="Texture2D" uid="uid://3kn2f11dek3a" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth14.tres" id="18_u14t0"]
 [ext_resource type="Texture2D" uid="uid://7iqmjiccg788" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth13.tres" id="19_b4x4n"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="22_tr2u8"]
 
 [sub_resource type="Gradient" id="Gradient_epbvh"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -204,7 +205,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SlothBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "bossBody", "sprite", "effects", "backEnd")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qwfcy"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
+
+[node name="SlothBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "bossBody", "sprite", "effects", "backEnd", "gibs")]
 process_mode = 3
 z_index = 3
 z_as_relative = false
@@ -217,6 +224,7 @@ bossBody = NodePath("BossBody")
 sprite = NodePath("BossBody/AnimatedSprite2D")
 effects = NodePath("BossBody/AnimatedSprite2D2")
 backEnd = NodePath("BossBody/Node2D")
+gibs = [NodePath("BossBody/BossGibbs")]
 attackPrefab = ExtResource("2_65oa5")
 attackCooldown = 10.0
 speed = 200.0
@@ -309,5 +317,14 @@ autoplay = "idle"
 
 [node name="Node2D" type="Node2D" parent="BossBody"]
 position = Vector2(66, 38)
+
+[node name="BossGibbs" type="GPUParticles2D" parent="BossBody"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_qwfcy")
+texture = ExtResource("22_tr2u8")
+one_shot = true
+explosiveness = 0.75
 
 [connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdb6majyuw575"]
+[gd_scene load_steps=21 format=3 uid="uid://cdb6majyuw575"]
 
 [ext_resource type="Texture2D" uid="uid://c4dsegr8d1ltr" path="res://Assets/Textures/Character_Tiles/Envy/Eel.png" id="1_4kn7y"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Envy/EnvyBoss.cs" id="1_qmysc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="5_3qc73"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Envy/EnvyEye.cs" id="5_hxwxl"]
 [ext_resource type="Texture2D" uid="uid://cxxu0y4k2f6iv" path="res://Assets/Textures/Character_Tiles/Envy/EelEye.png" id="5_o3dt7"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="12_cyja7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5onah"]
 animations = [{
@@ -58,7 +59,13 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 0.776471)
 
-[node name="EnvyBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydixf"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
+
+[node name="EnvyBoss" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bossHud", "gibs")]
 process_mode = 3
 z_index = 2
 z_as_relative = false
@@ -66,6 +73,7 @@ collision_layer = 16
 script = ExtResource("1_qmysc")
 sprite = NodePath("Sprite2D")
 bossHud = NodePath("BossHUD")
+gibs = [NodePath("BossGibbs")]
 attackPrefab = ExtResource("2_qkh67")
 attackSpawnpoint = Vector2(45, 67)
 attackCooldown = 0.5
@@ -164,5 +172,14 @@ label_settings = SubResource("LabelSettings_lsyj6")
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
+
+[node name="BossGibbs" type="GPUParticles2D" parent="."]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_ydixf")
+texture = ExtResource("12_cyja7")
+one_shot = true
+explosiveness = 0.75
 
 [connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

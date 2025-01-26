@@ -7,6 +7,7 @@ public partial class GreedBoss : Enemy {
 	[Export] private AnimatedSprite2D[] sprites;
 	[Export] private Node2D pearlSprite;
 	[Export] private StaticBody2D[] protectors;
+	[Export] private GpuParticles2D[] gibs;
 
 	[ExportGroup("Attacks")]
 	[Export] private PackedScene attackPrefab;
@@ -122,8 +123,12 @@ public partial class GreedBoss : Enemy {
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
+		foreach (GpuParticles2D particles in gibs) particles.Emitting = true;
+		foreach (AnimatedSprite2D sprite in sprites) sprite.Visible = false;
+
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
+			
 			GameManager.Instance.Player.CameraReset();
 			GetTree().Paused = false;
 

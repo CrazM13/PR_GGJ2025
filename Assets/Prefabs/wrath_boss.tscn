@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6mtoanaqffw3"]
+[gd_scene load_steps=17 format=3 uid="uid://b6mtoanaqffw3"]
 
 [ext_resource type="Texture2D" uid="uid://bil3wabd018b1" path="res://Assets/Textures/Character_Tiles/Wrath/JellyBossTendrils.png" id="1_ja1ba"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Wrath/WrathBoss.cs" id="1_qcbrx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://0xcfws4usrmt" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealth.png" id="6_qdr1j"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="7_hxxp7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="8_je4e2"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="10_404k4"]
 
 [sub_resource type="Gradient" id="Gradient_epbvh"]
 offsets = PackedFloat32Array(0, 0.831169, 1)
@@ -31,7 +32,13 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 0.776471)
 
-[node name="Wrath" type="CharacterBody2D" node_paths=PackedStringArray("head", "tendrils", "bossHud")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlkm4"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
+
+[node name="Wrath" type="CharacterBody2D" node_paths=PackedStringArray("head", "tendrils", "bossHud", "gibs")]
 process_mode = 3
 z_index = 2
 z_as_relative = false
@@ -40,6 +47,7 @@ script = ExtResource("1_qcbrx")
 head = NodePath("JellyHead")
 tendrils = NodePath("Tendrals")
 bossHud = NodePath("BossHUD")
+gibs = [NodePath("BossGibbs")]
 attackPrefab = ExtResource("2_366ua")
 attackCooldown = 0.5
 waveCooldown = 8.0
@@ -129,5 +137,13 @@ label_settings = SubResource("LabelSettings_dhqga")
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
+
+[node name="BossGibbs" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_qlkm4")
+texture = ExtResource("10_404k4")
+one_shot = true
+explosiveness = 0.75
 
 [connection signal="finished" from="BossMusic" to="BossMusic" method="play" binds= [0.0]]

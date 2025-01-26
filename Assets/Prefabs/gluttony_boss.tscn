@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://ck4i6eibrd6s0"]
+[gd_scene load_steps=25 format=3 uid="uid://ck4i6eibrd6s0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/Gluttony/GluttonyBoss.cs" id="1_kotgs"]
 [ext_resource type="AudioStream" uid="uid://c1cnt0e3jmk31" path="res://Assets/Audio/Music/GluttonyTheme.wav" id="2_d8vpl"]
 [ext_resource type="Texture2D" uid="uid://tyaxa7k4ruoi" path="res://Assets/Textures/Character_Tiles/Gluttony/GluttonyHealth.png" id="4_et352"]
 [ext_resource type="Texture2D" uid="uid://cueualmxjy5cx" path="res://Assets/Textures/Character_Tiles/Gluttony/Shark.png" id="6_gdls7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossActivator.cs" id="6_ilm3n"]
+[ext_resource type="Texture2D" uid="uid://bhgepk67nctyt" path="res://Assets/Textures/Character_Tiles/Sloth/Sloth15.tres" id="7_lferd"]
 [ext_resource type="Texture2D" uid="uid://dscy2i06lt2ke" path="res://Assets/Textures/Character_Tiles/Wrath/WrathHealthFill.png" id="7_lrej3"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Boss/BossHealthBar.cs" id="9_ephsf"]
 
@@ -28,6 +29,12 @@ outline_color = Color(0, 0, 0, 0.776471)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shax0"]
 radius = 64.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etpbs"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, -98, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kf7qa"]
 atlas = ExtResource("6_gdls7")
@@ -117,7 +124,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GluttonyBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "hitboxes")]
+[node name="GluttonyBoss" type="CharacterBody2D" node_paths=PackedStringArray("bossHud", "sprites", "hitboxes", "gibs")]
 z_index = 5
 z_as_relative = false
 collision_layer = 16
@@ -125,6 +132,7 @@ script = ExtResource("1_kotgs")
 bossHud = NodePath("BossHUD")
 sprites = [NodePath("CanvasGroup/AnimatedSprite2D"), NodePath("CanvasGroup/AnimatedSprite2D2"), NodePath("CanvasGroup/AnimatedSprite2D3"), NodePath("CanvasGroup/AnimatedSprite2D4"), NodePath("CanvasGroup/AnimatedSprite2D5"), NodePath("CanvasGroup/AnimatedSprite2D6"), NodePath("CanvasGroup/AnimatedSprite2D7"), NodePath("CanvasGroup/AnimatedSprite2D8")]
 hitboxes = [NodePath("CollisionShape2D"), NodePath("CollisionShape2D2"), NodePath("CollisionShape2D3"), NodePath("CollisionShape2D4"), NodePath("CollisionShape2D5"), NodePath("CollisionShape2D6"), NodePath("CollisionShape2D7"), NodePath("CollisionShape2D8")]
+gibs = [NodePath("CollisionShape2D/BossGibbs"), NodePath("CollisionShape2D2/BossGibbs"), NodePath("CollisionShape2D4/BossGibbs"), NodePath("CollisionShape2D5/BossGibbs"), NodePath("CollisionShape2D6/BossGibbs"), NodePath("CollisionShape2D7/BossGibbs"), NodePath("CollisionShape2D8/BossGibbs")]
 attackCooldown = 20.0
 damageDelay = 2.0
 seperation = 24.0
@@ -206,26 +214,98 @@ uppercase = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
 
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
+
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D2"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
 
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D3"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
+
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
+
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D4"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
 
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D5"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
+
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
+
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D6"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
 
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D7"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
+
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_shax0")
+
+[node name="BossGibbs" type="GPUParticles2D" parent="CollisionShape2D8"]
+process_mode = 3
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_etpbs")
+texture = ExtResource("7_lferd")
+one_shot = true
+explosiveness = 0.75
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

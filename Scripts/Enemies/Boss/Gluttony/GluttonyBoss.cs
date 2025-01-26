@@ -6,6 +6,7 @@ public partial class GluttonyBoss : Enemy {
 	[Export] private CanvasLayer bossHud;
 	[Export] private AnimatedSprite2D[] sprites;
 	[Export] private CollisionShape2D[] hitboxes;
+	[Export] private GpuParticles2D[] gibs;
 
 	[ExportGroup("Attacks")]
 	[Export] private float attackCooldown = 0.2f;
@@ -107,6 +108,9 @@ public partial class GluttonyBoss : Enemy {
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
+		foreach (GpuParticles2D particles in gibs) particles.Emitting = true;
+		foreach (AnimatedSprite2D sprite in sprites) sprite.Visible = false;
+
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();

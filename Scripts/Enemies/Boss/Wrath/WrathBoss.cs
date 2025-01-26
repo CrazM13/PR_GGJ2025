@@ -17,6 +17,7 @@ public partial class WrathBoss : Enemy {
 	[Export] private Node2D head;
 	[Export] private Node2D tendrils;
 	[Export] private CanvasLayer bossHud;
+	[Export] private GpuParticles2D[] gibs;
 
 	[ExportGroup("Attacks")]
 	[Export] private PackedScene attackPrefab;
@@ -140,6 +141,8 @@ public partial class WrathBoss : Enemy {
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
+		foreach (GpuParticles2D particles in gibs) particles.Emitting = true;
+
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();

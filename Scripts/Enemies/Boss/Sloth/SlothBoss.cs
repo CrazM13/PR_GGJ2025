@@ -15,6 +15,7 @@ public partial class SlothBoss : Enemy {
 	[Export] private AnimatedSprite2D sprite;
 	[Export] private AnimatedSprite2D effects;
 	[Export] private Node2D backEnd;
+	[Export] private GpuParticles2D[] gibs;
 
 	[ExportGroup("Attacks")]
 	[Export] private PackedScene attackPrefab;
@@ -179,6 +180,8 @@ public partial class SlothBoss : Enemy {
 		GetTree().Paused = true;
 		GameManager.Instance.Player.CameraLookAt(this.GlobalPosition);
 		GameManager.Instance.ActivatedAbilities[GameManager.Instance.CurrentLevel + 2] = true;
+		foreach (GpuParticles2D particles in gibs) particles.Emitting = true;
+
 		GetTree().CreateTimer(4).Timeout += () => {
 			bossHud.Visible = false;
 			GameManager.Instance.Player.CameraReset();
