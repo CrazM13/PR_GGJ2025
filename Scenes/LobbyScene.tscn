@@ -180,6 +180,9 @@ color = Color(0.129412, 0.145098, 0.160784, 1)
 [node name="Node2D" parent="Player/CameraRig/Camera2D" index="2"]
 visible = false
 
+[node name="Timer" parent="Player/CameraRig/Camera2D/Node2D" index="0"]
+autostart = false
+
 [node name="Breathing" parent="Player/Audio" index="0"]
 volume_db = -18.0
 

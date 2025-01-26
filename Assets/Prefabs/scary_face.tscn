@@ -11,6 +11,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.495751, 0.497238), 0.0, 0.0, 0
 point_count = 3
 
 [node name="Sprite2D" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 25
 z_as_relative = false
 material = SubResource("CanvasItemMaterial_o4xqr")
