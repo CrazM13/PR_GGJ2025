@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dtjcm8qovoq1h"]
+[gd_scene load_steps=58 format=3 uid="uid://dtjcm8qovoq1h"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player.cs" id="1_e5m1v"]
 [ext_resource type="Texture2D" uid="uid://c8fm4h47sl7bx" path="res://Assets/Textures/Character_Tiles/Main_Character_Prototype_Spritesheet.png" id="2_kdw66"]
@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterMovement.cs" id="4_vllac"]
 [ext_resource type="Script" path="res://Scripts/Characters/CameraController.cs" id="5_al5yg"]
 [ext_resource type="AudioStream" uid="uid://bi7woyumj2it1" path="res://Assets/Audio/Ambience/Cough.wav" id="5_f28d5"]
-[ext_resource type="Texture2D" uid="uid://wcwfttp2ga21" path="res://Assets/Textures/Character_Tiles/Monster_In_The_Dark.png" id="6_tjvdk"]
-[ext_resource type="Script" path="res://Scripts/ScaryFace.cs" id="7_5141a"]
+[ext_resource type="Script" path="res://Scripts/ScaryFaceSpawner.cs" id="6_mvh0t"]
 [ext_resource type="AudioStream" uid="uid://bi8hjk2x4yfj4" path="res://Assets/Audio/Ambience/BreathBubbles.wav" id="7_bw06o"]
+[ext_resource type="PackedScene" uid="uid://bvxqorerlwx7q" path="res://Assets/Prefabs/scary_face.tscn" id="7_yencx"]
 [ext_resource type="Script" path="res://Scripts/Audio/RandomAudio.cs" id="8_ddxl3"]
 [ext_resource type="AudioStream" uid="uid://8xunr33f1s0b" path="res://Assets/Audio/Voice/Collectable-01.wav" id="9_hg5jm"]
 [ext_resource type="AudioStream" uid="uid://bu58fhjan31qh" path="res://Assets/Audio/Voice/Collectable-02.wav" id="10_jd6nc"]
@@ -189,13 +189,6 @@ initial_velocity_max = 98.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_mpvmo")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o4xqr"]
-blend_mode = 1
-
-[sub_resource type="Curve" id="Curve_1bqcj"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.495751, 0.497238), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ndip"]
 radius = 16.0
 
@@ -302,94 +295,11 @@ texture = ExtResource("3_4am3i")
 lifetime = 10.0
 
 [node name="Node2D" type="Node2D" parent="CameraRig/Camera2D"]
+script = ExtResource("6_mvh0t")
+scaryPrefab = ExtResource("7_yencx")
 
-[node name="Sprite2D" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(169, -95)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D2" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(221, 109)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D3" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(-225, 114)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D4" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(1, 155)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D5" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(-287, -75)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D6" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(-49, -164)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D7" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(279, -147)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D8" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(303, 28)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D9" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(122, 165)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D10" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(-115, 31)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
-
-[node name="Sprite2D11" type="Sprite2D" parent="CameraRig/Camera2D/Node2D"]
-material = SubResource("CanvasItemMaterial_o4xqr")
-position = Vector2(-203, -164)
-texture = ExtResource("6_tjvdk")
-script = ExtResource("7_5141a")
-maxLifetime = 5.0
-fade = SubResource("Curve_1bqcj")
+[node name="Timer" type="Timer" parent="CameraRig/Camera2D/Node2D"]
+wait_time = 3.0
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -484,6 +394,7 @@ cooldown = 25.0
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="." method="ConsumeAirTick"]
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="AnimatedSprite2D/GPUParticles2D" method="set_emitting" binds= [true]]
 [connection signal="timeout" from="AnimatedSprite2D/GPUParticles2D/Timer" to="Audio/Bubbles" method="play" binds= [0.0]]
+[connection signal="timeout" from="CameraRig/Camera2D/Node2D/Timer" to="CameraRig/Camera2D/Node2D" method="Spawn"]
 [connection signal="finished" from="Audio/Breathing" to="Audio/Breathing" method="play" binds= [0.0]]
 [connection signal="timeout" from="Audio/Timer" to="Audio/Cough" method="play" binds= [0.0]]
 [connection signal="timeout" from="Audio/Timer2" to="Audio/Cough" method="play" binds= [0.0]]

@@ -22,6 +22,7 @@ public partial class StartLevel : Area2D {
 
 			textBox.OnTexboxComplete += () => {
 				GameManager.Instance.CurrentLevel = levelNumber;
+				GameManager.Instance.WasSuccess = null;
 				SceneManagement.SceneManager.Instance.LoadScene(levelPath);
 			};
 
