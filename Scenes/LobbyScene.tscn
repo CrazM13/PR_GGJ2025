@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://djifg3uw5jr82"]
+[gd_scene load_steps=37 format=4 uid="uid://djifg3uw5jr82"]
 
 [ext_resource type="Script" path="res://Scripts/Lobby/Lobby.cs" id="1_kgtwl"]
 [ext_resource type="AudioStream" uid="uid://c6nu75b30f0g" path="res://Assets/Audio/Voice/Lobby/NPCLine1.wav" id="2_afhw5"]
@@ -31,12 +31,17 @@
 [ext_resource type="AudioStream" uid="uid://33y7h8fjxyns" path="res://Assets/Audio/Voice/Lobby/Ribbit.wav" id="22_ws4ta"]
 [ext_resource type="PackedScene" uid="uid://cjbee1cxk55xj" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
 [ext_resource type="FontFile" uid="uid://ceassf0g115gu" path="res://Assets/Fonts/sniglet/Sniglet-ExtraBold.otf" id="31_a0vfc"]
+[ext_resource type="AudioStream" uid="uid://c4svlwrkpkjxy" path="res://Assets/Audio/Music/JoyiousGrandather.wav" id="32_jxena"]
+[ext_resource type="Script" path="res://Scripts/Lobby/Trophy.cs" id="33_hmyie"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvpsb"]
 radius = 83.9524
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ofsf"]
 font = ExtResource("31_a0vfc")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jhgo1"]
+size = Vector2(32, 32)
 
 [node name="LobbyScene" type="Node2D" node_paths=PackedStringArray("text")]
 process_mode = 3
@@ -66,7 +71,7 @@ tile_set = ExtResource("2_jawnm")
 z_index = 11
 z_as_relative = false
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAKAA0ACgAAAAQAAAALAA0ACgABAAQAAAAMAA0ACgACAAQAAAAKAAwACgAAAAMAAAALAAwACgABAAMAAAAMAAwACgACAAMAAAANAA0ACgADAAMAAAALAAsACgAEAAMAAAAJAA0ACgACAAYAAAAJAAwACgACAAUAAAAXAA0ACgADAAMAAAAWAA0ACgACAAYAAAAYAA0ACgACAAYAAAAYAAwACgACAAUAAAAWAAwACgACAAUAAAAXAAsACgAEAAQAAAAiAAwACgACAAUAAAAiAA0ACgACAAYAAAAjAAsACgAEAAQAAAAjAA0ACgADAAMAAAAkAAwACgACAAUAAAAkAA0ACgACAAYAAAAuAAwACgACAAUAAAAuAA0ACgACAAYAAAAvAAsACgAEAAQAAAAvAA0ACgADAAMAAAAwAAwACgACAAUAAAAwAA0ACgACAAYAAAA6AAwACgACAAUAAAA6AA0ACgACAAYAAAA7AAsACgAEAAQAAAA7AA0ACgADAAMAAAA8AAwACgACAAUAAAA8AA0ACgACAAYAAABGAAwACgACAAUAAABGAA0ACgACAAYAAABHAAsACgAEAAQAAABHAA0ACgADAAMAAABIAAwACgACAAUAAABIAA0ACgACAAYAAABQAAwACgACAAUAAABQAA0ACgACAAYAAABRAAsACgAEAAQAAABRAA0ACgADAAMAAABSAAwACgACAAUAAABSAA0ACgACAAYAAAABAA0ACgAAAAQAAAACAA0ACgACAAQAAAABAAwACgAAAAMAAAACAAwACgACAAMAAAADAA0ACgADAAMAAAAaAA0ACgAFAAYAAAAaAAwACgAFAAUAAAAbAA0ACgADAAMAAAAZAA0ACgADAAMAAAAgAAoACgAAAAUAAAAgAAsACgAAAAYAAAAgAAwACgAAAAcAAAAhAAoACgABAAUAAAAhAAsACgABAAYAAAAhAAwACgABAAcAAAA9AAoACgAAAAUAAAA9AAsACgAAAAYAAAA9AAwACgAAAAcAAAA+AAoACgABAAUAAAA+AAsACgABAAYAAAA+AAwACgABAAcAAAABABMACgACAAYAAAALABMACgACAAYAAAAXABMACgACAAYAAAAjABMACgACAAYAAAAvABMACgACAAYAAAA7ABMACgACAAYAAABHABMACgACAAYAAABSABMACgACAAYAAAANAAwACgAHAAMAAAACABIACgAAAA4AAAADABIACgABAA4AAAAEABIACgACAA4AAAAEABEACgACAA0AAAADABEACgAFAAYAAAA=")
+tile_map_data = PackedByteArray("AAAKAA0ACgAAAAQAAAALAA0ACgABAAQAAAAMAA0ACgACAAQAAAAKAAwACgAAAAMAAAALAAwACgABAAMAAAAMAAwACgACAAMAAAANAA0ACgADAAMAAAALAAsACgAEAAMAAAAJAA0ACgACAAYAAAAJAAwACgACAAUAAAAXAA0ACgADAAMAAAAWAA0ACgACAAYAAAAYAA0ACgACAAYAAAAYAAwACgACAAUAAAAWAAwACgACAAUAAAAXAAsACgAEAAQAAAAiAAwACgACAAUAAAAiAA0ACgACAAYAAAAjAAsACgAEAAQAAAAjAA0ACgADAAMAAAAkAAwACgACAAUAAAAkAA0ACgACAAYAAAAuAAwACgACAAUAAAAuAA0ACgACAAYAAAAvAAsACgAEAAQAAAAvAA0ACgADAAMAAAAwAAwACgACAAUAAAAwAA0ACgACAAYAAAA6AAwACgACAAUAAAA6AA0ACgACAAYAAAA7AAsACgAEAAQAAAA7AA0ACgADAAMAAAA8AAwACgACAAUAAAA8AA0ACgACAAYAAABGAAwACgACAAUAAABGAA0ACgACAAYAAABHAAsACgAEAAQAAABHAA0ACgADAAMAAABIAAwACgACAAUAAABIAA0ACgACAAYAAABQAAwACgACAAUAAABQAA0ACgACAAYAAABRAAsACgAEAAQAAABRAA0ACgADAAMAAABSAAwACgACAAUAAABSAA0ACgACAAYAAAABAA0ACgAAAAQAAAACAA0ACgACAAQAAAABAAwACgAAAAMAAAACAAwACgACAAMAAAADAA0ACgADAAMAAAAaAA0ACgAFAAYAAAAaAAwACgAFAAUAAAAbAA0ACgADAAMAAAAZAA0ACgADAAMAAAAgAAoACgAAAAUAAAAgAAsACgAAAAYAAAAgAAwACgAAAAcAAAAhAAoACgABAAUAAAAhAAsACgABAAYAAAAhAAwACgABAAcAAAA9AAoACgAAAAUAAAA9AAsACgAAAAYAAAA9AAwACgAAAAcAAAA+AAoACgABAAUAAAA+AAsACgABAAYAAAA+AAwACgABAAcAAAABABMACgACAAYAAAALABMACgACAAYAAAAXABMACgACAAYAAAAjABMACgACAAYAAAAvABMACgACAAYAAAA7ABMACgACAAYAAABHABMACgACAAYAAABSABMACgACAAYAAAANAAwACgAHAAMAAAACABIACgAAAA4AAAADABIACgABAA4AAAAEABIACgACAA4AAAAEABEACgACAA0AAAADABEACgAFAAYAAAAPAA0ACgADAAMAAAAfAA0ACgADAAMAAAArAA0ACgADAAMAAAA3AA0ACgADAAMAAABDAA0ACgADAAMAAABLAA0ACgADAAMAAAA=")
 tile_set = ExtResource("2_jawnm")
 
 [node name="OverlayLayer" type="TileMapLayer" parent="Map"]
@@ -431,6 +436,78 @@ text = "Pride"
 label_settings = SubResource("LabelSettings_2ofsf")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_jxena")
+volume_db = -20.0
+autoplay = true
+
+[node name="BossHeads" type="Node2D" parent="."]
+
+[node name="Wrath" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(112, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 3
+
+[node name="Envy" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(496, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 4
+
+[node name="Greed" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1008, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 5
+
+[node name="Gluttony" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1392, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 6
+
+[node name="Lust" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1776, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 7
+
+[node name="Sloth" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(2160, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 8
+
+[node name="Pride" type="Sprite2D" parent="BossHeads"]
+z_index = 30
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(2416, 424)
+texture = SubResource("PlaceholderTexture2D_jhgo1")
+script = ExtResource("33_hmyie")
+abilityIndex = 9
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 
 [editable path="Player"]
 [editable path="SceneBase"]
