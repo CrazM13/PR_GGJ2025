@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://jv1idthi1mbg"]
+
+[ext_resource type="Texture2D" uid="uid://dik2n5yxf1k63" path="res://Assets/Textures/Character_Tiles/Boss Heads.png" id="1_go1fv"]
+
+[resource]
+atlas = ExtResource("1_go1fv")
+region = Rect2(128, 0, 32, 32)

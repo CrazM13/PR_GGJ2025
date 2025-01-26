@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://djifg3uw5jr82"]
+[gd_scene load_steps=43 format=4 uid="uid://djifg3uw5jr82"]
 
 [ext_resource type="Script" path="res://Scripts/Lobby/Lobby.cs" id="1_kgtwl"]
 [ext_resource type="AudioStream" uid="uid://c6nu75b30f0g" path="res://Assets/Audio/Voice/Lobby/NPCLine1.wav" id="2_afhw5"]
@@ -29,19 +29,23 @@
 [ext_resource type="AudioStream" uid="uid://caj8cxmqxrhl1" path="res://Assets/Audio/SFX/Ring.wav" id="20_ejj7g"]
 [ext_resource type="Script" path="res://Scripts/Lobby/StartLevel.cs" id="21_nnvxs"]
 [ext_resource type="AudioStream" uid="uid://33y7h8fjxyns" path="res://Assets/Audio/Voice/Lobby/Ribbit.wav" id="22_ws4ta"]
-[ext_resource type="PackedScene" uid="uid://cjbee1cxk55xj" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/o_2_frog.tscn" id="28_2owm2"]
 [ext_resource type="FontFile" uid="uid://ceassf0g115gu" path="res://Assets/Fonts/sniglet/Sniglet-ExtraBold.otf" id="31_a0vfc"]
 [ext_resource type="AudioStream" uid="uid://c4svlwrkpkjxy" path="res://Assets/Audio/Music/JoyiousGrandather.wav" id="32_jxena"]
 [ext_resource type="Script" path="res://Scripts/Lobby/Trophy.cs" id="33_hmyie"]
+[ext_resource type="Texture2D" uid="uid://qtva8r8ye7tg" path="res://Assets/Textures/Character_Tiles/Wrath Head.tres" id="33_pwyf4"]
+[ext_resource type="Texture2D" uid="uid://ctth8n3ktsa48" path="res://Assets/Textures/Character_Tiles/Envy Head.tres" id="35_hobpv"]
+[ext_resource type="Texture2D" uid="uid://c6xgt67vu1mhv" path="res://Assets/Textures/Character_Tiles/Greed Head.tres" id="36_0vti6"]
+[ext_resource type="Texture2D" uid="uid://csa5li3r7srui" path="res://Assets/Textures/Character_Tiles/Gluttony Head.tres" id="37_8qegk"]
+[ext_resource type="Texture2D" uid="uid://jv1idthi1mbg" path="res://Assets/Textures/Character_Tiles/Lust Head.tres" id="38_4db2o"]
+[ext_resource type="Texture2D" uid="uid://duivyt0s6hkmq" path="res://Assets/Textures/Character_Tiles/Sloth Head.tres" id="39_sfeba"]
+[ext_resource type="Texture2D" uid="uid://c2dqwx3genbym" path="res://Assets/Textures/Character_Tiles/Pride Head.tres" id="40_pktcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvpsb"]
 radius = 83.9524
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ofsf"]
 font = ExtResource("31_a0vfc")
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jhgo1"]
-size = Vector2(32, 32)
 
 [node name="LobbyScene" type="Node2D" node_paths=PackedStringArray("text")]
 process_mode = 3
@@ -448,64 +452,64 @@ autoplay = true
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(112, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+position = Vector2(112, 421)
+texture = ExtResource("33_pwyf4")
 script = ExtResource("33_hmyie")
-abilityIndex = 2
+abilityIndex = 3
 
 [node name="Envy" type="Sprite2D" parent="BossHeads"]
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(496, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+texture = ExtResource("35_hobpv")
 script = ExtResource("33_hmyie")
-abilityIndex = 3
+abilityIndex = 4
 
 [node name="Greed" type="Sprite2D" parent="BossHeads"]
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(1008, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+position = Vector2(1009, 417)
+texture = ExtResource("36_0vti6")
 script = ExtResource("33_hmyie")
-abilityIndex = 4
+abilityIndex = 5
 
 [node name="Gluttony" type="Sprite2D" parent="BossHeads"]
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(1392, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+position = Vector2(1393, 423)
+texture = ExtResource("37_8qegk")
 script = ExtResource("33_hmyie")
-abilityIndex = 5
+abilityIndex = 6
 
 [node name="Lust" type="Sprite2D" parent="BossHeads"]
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(1776, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+position = Vector2(1776, 418)
+texture = ExtResource("38_4db2o")
 script = ExtResource("33_hmyie")
-abilityIndex = 6
+abilityIndex = 7
 
 [node name="Sloth" type="Sprite2D" parent="BossHeads"]
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(2160, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+position = Vector2(2160, 427)
+texture = ExtResource("39_sfeba")
 script = ExtResource("33_hmyie")
-abilityIndex = 7
+abilityIndex = 8
 
 [node name="Pride" type="Sprite2D" parent="BossHeads"]
 z_index = 30
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(2416, 424)
-texture = SubResource("PlaceholderTexture2D_jhgo1")
+position = Vector2(2416, 414)
+texture = ExtResource("40_pktcl")
 script = ExtResource("33_hmyie")
-abilityIndex = 8
+abilityIndex = 9
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play" binds= [0.0]]
 
