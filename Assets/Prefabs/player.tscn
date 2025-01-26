@@ -299,7 +299,7 @@ script = ExtResource("6_mvh0t")
 scaryPrefab = ExtResource("7_yencx")
 
 [node name="Timer" type="Timer" parent="CameraRig/Camera2D/Node2D"]
-wait_time = 3.0
+autostart = true
 
 [node name="Audio" type="Node2D" parent="."]
 
